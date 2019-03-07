@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GlassButton">
+        <attr name="unfocused_border_color" format="color"/>
+        <attr name="corner" format="float"/>
+    </declare-styleable>
+</resources>

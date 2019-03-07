@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="glassColorPrimary">#FF909090</color>
+
+    <color name="glass_button_unfocused">@color/glassColorPrimary</color>
+
+    <color name="glass_button_focused_glow_top_edge">#FFADDFFF</color>
+    <color name="glass_button_focused_glow_bottom_edge">#FF7784FF</color>
+    <color name="glass_button_focused_top_edge">@color/white</color>
+    <color name="glass_button_focused_mid">#FF353469</color>
+    <color name="glass_button_focused_bottom_edge">#FF090918</color>
+    <color name="glass_button_focused_solid">#FF000000</color>
+
+    <color name="glass_title_text_color">@color/white</color>
+    <color name="glass_button_focused_text_color">@color/white</color>
+    <color name="glass_button_text_color">@color/glassColorPrimary</color>
+
+    <!-- dialog -->
+    <color name="notification_dialog_color">@color/black</color>
+    <color name="notification_dialog_message_color">@color/glassColorPrimary</color>
+</resources>
