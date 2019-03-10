@@ -1,6 +1,7 @@
 package com.rokid.glass.ui.dialog;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -20,8 +21,8 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
     protected TextView mTitleTv;
     protected String mTitle;
 
-    private boolean mCancelable = true;
-    private boolean mCanceledOnTouchOutside = true;
+    private boolean mCancelable;
+    private boolean mCanceledOnTouchOutside;
 
     public GlassDialogBuilder(final Context context) {
         this.mContext = context;
@@ -40,15 +41,23 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
 
     public GlassDialog create(final int style) {
         mGlassDialog = new GlassDialog(mContext, style, this);
+//        mGlassDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
         Context context = mGlassDialog.getContext();
         mRootView = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.layout_glass_dialog, null);
-        mGlassDialog.setCancelable(mCancelable);
-        mGlassDialog.setCanceledOnTouchOutside(mCanceledOnTouchOutside);
         onCreateContent(context, mRootView, mGlassDialog);
 
+        mGlassDialog.setCancelable(mCancelable);
+        mGlassDialog.setCanceledOnTouchOutside(mCanceledOnTouchOutside);
         mGlassDialog.addContentView(mRootView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
+        onAfter(context, mRootView, mGlassDialog);
         return mGlassDialog;
+    }
+
+    public void dynamicTitle(final String title) {
+        if (!TextUtils.isEmpty(title) && mGlassDialog.isShowing()) {
+            mTitleTv.setText(title);
+        }
     }
 
     public T setCancelable(boolean cancelable) {
@@ -66,10 +75,21 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
         return (T) this;
     }
 
+    protected void disimiss() {
+        if (null != mGlassDialog && mGlassDialog.isShowing()) {
+            mGlassDialog.dismiss();
+        }
+    }
+
     protected void dialogShow() {
 
     }
 
+    protected void onAfter(Context context, ViewGroup parent, GlassDialog dialog) {
+
+    }
+
     protected abstract void init();
+
     protected abstract void onCreateContent(Context context, ViewGroup parent, GlassDialog dialog);
 }
