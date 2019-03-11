@@ -8,8 +8,8 @@
     android:padding="@dimen/dialog_image_margin">
 
     <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="@dimen/dialog_image_width"
+        android:layout_height="@dimen/dialog_image_width">
 
         <com.rokid.glass.ui.imageview.RoundCornerImageView
             android:id="@+id/dialog_notify_img"
@@ -25,7 +25,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/dialog_image_margin" />
+            android:layout_marginTop="@dimen/dialog_image_margin"
+            android:gravity="center" />
     </FrameLayout>
 
     <LinearLayout

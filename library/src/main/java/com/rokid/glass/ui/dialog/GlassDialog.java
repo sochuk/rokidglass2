@@ -10,6 +10,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -71,6 +72,68 @@ public class GlassDialog extends Dialog {
         }
     }
 
+
+    /**
+     * simple content
+     */
+    public static class SimpleContentDialogBuilder extends MessageDialogBuilder<SimpleContentDialogBuilder> {
+        private int mMessageContentHeight;
+        private String mContent;
+
+        public SimpleContentDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        protected void init() {
+            super.init();
+            mMessageContentHeight = mContext.getResources().getDimensionPixelSize(R.dimen.dialog_simple_message_content_height);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_simple_message;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+            //set content height
+            ViewGroup.LayoutParams params = view.getLayoutParams();
+            params.height = mMessageContentHeight;
+            view.setLayoutParams(params);
+
+            if (!TextUtils.isEmpty(mContent)) {
+                ViewStub contentView = view.findViewById(R.id.dialog_content);
+                View inflateView = contentView.inflate();
+                ((TextView) inflateView).setText(mContent);
+            }
+        }
+
+        public SimpleContentDialogBuilder setContent(String content) {
+            this.mContent = content;
+            return this;
+        }
+    }
+
+    /**
+     * Simple message
+     */
+    public static class SimpleMessageDialogBuilder extends MessageDialogBuilder<SimpleMessageDialogBuilder> {
+        public SimpleMessageDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_simple_message;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+
+        }
+    }
+
     /**
      * image dialog
      */
@@ -107,12 +170,12 @@ public class GlassDialog extends Dialog {
         }
 
         public ImageDialogBuilder setNotifyResId(int notifyResId) {
-            this.mNotifyResId = mNotifyResId;
+            this.mNotifyResId = notifyResId;
             return this;
         }
 
         public ImageDialogBuilder setNotifyBitmap(Bitmap notifyBitmap) {
-            this.mNotifyBitmap = mNotifyBitmap;
+            this.mNotifyBitmap = notifyBitmap;
             return this;
         }
 
@@ -256,7 +319,7 @@ public class GlassDialog extends Dialog {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-//                        dismiss();
+                        dismiss();
                     }
                 }, mDuration);
             }
