@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.image_btn).setOnClickListener(this);
         findViewById(R.id.simple_message_btn).setOnClickListener(this);
         findViewById(R.id.simple_content_btn).setOnClickListener(this);
+        findViewById(R.id.image_content_btn).setOnClickListener(this);
 
         mCustomTimerView = LayoutInflater.from(this).inflate(R.layout.layout_timer, null);
         mTimerTv = mCustomTimerView.findViewById(R.id.custom_timer);
@@ -159,6 +160,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setConfirmText(getString(R.string.voice_play))
                         .setCancelText(getString(R.string.voice_collapse))
                         .setContent(getString(R.string.simple_content))
+                        .setConfirmListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Confirm", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setCancelListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Cancel", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }).show();
+                break;
+            case R.id.image_content_btn:
+                new GlassDialog.ImageContentDialogBuilder(this)
+                        .setTitle(getString(R.string.image_content_title))
+                        .setConfirmText(getString(R.string.voice_play))
+                        .setCancelText(getString(R.string.voice_collapse))
+                        .setNotifyResId(R.mipmap.ic_notify_img)
+                        .setContent(getString(R.string.simple_content))
+
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {

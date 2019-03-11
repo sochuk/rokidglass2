@@ -4,6 +4,7 @@
     <string name="image_title">收到语音消息\n是否播报？</string>
     <string name="voice_test">收到1条语音消息\n是否立即播报？</string>
     <string name="simple_message_title">8点集合操场集合令</string>
+    <string name="image_content_title">关于海南今晚十级台风</string>
     <string name="simple_content">强烈台风玛莉亚预计将于今晚登陆，气象局已于17:32登陆各个单位必须做好安排</string>
 
     <string name="voice_play">播报</string>

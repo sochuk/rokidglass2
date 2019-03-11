@@ -74,6 +74,59 @@ public class GlassDialog extends Dialog {
 
 
     /**
+     * image content dialog
+     */
+    public static class ImageContentDialogBuilder extends MessageDialogBuilder<ImageContentDialogBuilder> {
+        private RoundCornerImageView mNotifyIv;
+        private int mNotifyResId;
+        private Bitmap mNotifyBitmap;
+        private String mContent;
+
+        public ImageContentDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_image_content_dialog;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+            mNotifyIv = view.findViewById(R.id.dialog_notify_img);
+
+            if (mNotifyResId != 0) {
+                mNotifyIv.setImageResource(mNotifyResId);
+            }
+
+            if (null != mNotifyBitmap) {
+                mNotifyIv.setImageBitmap(mNotifyBitmap);
+            }
+
+            if (!TextUtils.isEmpty(mContent)) {
+                ViewStub contentView = view.findViewById(R.id.dialog_content);
+                View inflateView = contentView.inflate();
+                ((TextView) inflateView).setText(mContent);
+            }
+        }
+
+        public ImageContentDialogBuilder setNotifyResId(int notifyResId) {
+            this.mNotifyResId = notifyResId;
+            return this;
+        }
+
+        public ImageContentDialogBuilder setNotifyBitmap(Bitmap notifyBitmap) {
+            this.mNotifyBitmap = notifyBitmap;
+            return this;
+        }
+
+        public ImageContentDialogBuilder setContent(String content) {
+            this.mContent = content;
+            return this;
+        }
+    }
+
+    /**
      * simple content
      */
     public static class SimpleContentDialogBuilder extends MessageDialogBuilder<SimpleContentDialogBuilder> {
@@ -92,7 +145,7 @@ public class GlassDialog extends Dialog {
 
         @Override
         public int layoutId() {
-            return R.layout.layout_simple_message;
+            return R.layout.layout_simple_message_dialog;
         }
 
         @Override
@@ -125,7 +178,7 @@ public class GlassDialog extends Dialog {
 
         @Override
         public int layoutId() {
-            return R.layout.layout_simple_message;
+            return R.layout.layout_simple_message_dialog;
         }
 
         @Override
