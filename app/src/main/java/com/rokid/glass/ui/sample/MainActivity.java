@@ -1,7 +1,7 @@
 package com.rokid.glass.ui.sample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -17,7 +17,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private GlassDialog mSimpleVoiceDialog;
     private GlassDialog.SimpleVoiceDialogBuilder mSimpleVoiceDialogBuilder;
 
-    private View mCustomTimer;
+    private GlassDialog mImageDialog;
+    private GlassDialog.ImageDialogBuilder mImageDialogBuilder;
+
+    private View mCustomTimerView;
     private TextView mTimerTv;
     private CountDownManager countDownManager;
 
@@ -28,9 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.notification_btn).setOnClickListener(this);
         findViewById(R.id.simple_voice_btn).setOnClickListener(this);
+        findViewById(R.id.image_btn).setOnClickListener(this);
 
-        mCustomTimer = LayoutInflater.from(this).inflate(R.layout.layout_timer, null);
-        mTimerTv = mCustomTimer.findViewById(R.id.custom_timer);
+        mCustomTimerView = LayoutInflater.from(this).inflate(R.layout.layout_timer, null);
+        mTimerTv = mCustomTimerView.findViewById(R.id.custom_timer);
 
         countDownManager = new CountDownManager.Builder()
                 .setMillisInFuture(10000)
@@ -45,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void onFinish() {
                         mSimpleVoiceDialogBuilder.dynamicTitle("播报完毕");
                         mSimpleVoiceDialogBuilder.dynamicConfirmText("重播");
+
+                        //单独处理
+                        mImageDialogBuilder.dynamicConfirmText("重播");
                     }
                 })
                 .build();
@@ -72,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                         "Click Confirm", Toast.LENGTH_SHORT).show();
 
                                 mSimpleVoiceDialogBuilder.dynamicTitle("播放中...");
-                                mSimpleVoiceDialogBuilder.dynamicCustomConfirmView(mCustomTimer);
+                                mSimpleVoiceDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
 
                                 countDownManager.start();
                             }
@@ -82,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             public void onClick(View view) {
                                 Toast.makeText(MainActivity.this,
                                         "Click Cancel", Toast.LENGTH_SHORT).show();
+
                                 if (null != countDownManager) {
                                     countDownManager.cancel();
                                 }
@@ -89,6 +97,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         });
 
                 mSimpleVoiceDialogBuilder.show();
+                break;
+            case R.id.image_btn:
+                mImageDialogBuilder = new GlassDialog.ImageDialogBuilder(this)
+                        .setTitle(getString(R.string.image_title))
+                        .setConfirmText(getString(R.string.voice_play))
+                        .setCancelText(getString(R.string.voice_collapse))
+                        .setNotifyResId(R.mipmap.ic_notify_img)
+                        .setConfirmListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Confirm", Toast.LENGTH_SHORT).show();
+
+                                mImageDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
+                                countDownManager.start();
+                            }
+                        })
+                        .setCancelListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Cancel", Toast.LENGTH_SHORT).show();
+
+                                if (null != countDownManager) {
+                                    countDownManager.cancel();
+                                }
+                            }
+                        });
+
+                mImageDialogBuilder.show();
                 break;
         }
     }

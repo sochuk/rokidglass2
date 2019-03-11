@@ -15,7 +15,7 @@ import com.rokid.glass.ui.R;
 
 public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
     protected GlassDialog mGlassDialog;
-    private Context mContext;
+    protected Context mContext;
     private ViewGroup mRootView;
 
     protected TextView mTitleTv;
@@ -41,7 +41,6 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
 
     public GlassDialog create(final int style) {
         mGlassDialog = new GlassDialog(mContext, style, this);
-//        mGlassDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
         Context context = mGlassDialog.getContext();
         mRootView = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.layout_glass_dialog, null);
         onCreateContent(context, mRootView, mGlassDialog);
@@ -75,7 +74,7 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
         return (T) this;
     }
 
-    protected void disimiss() {
+    protected void dismiss() {
         if (null != mGlassDialog && mGlassDialog.isShowing()) {
             mGlassDialog.dismiss();
         }

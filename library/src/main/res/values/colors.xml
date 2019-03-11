@@ -2,6 +2,7 @@
 <resources>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
+    <color name="transparent">#00000000</color>
     <color name="glassColorPrimary">#FF909090</color>
 
     <color name="glass_button_unfocused">@color/glassColorPrimary</color>
@@ -17,6 +18,7 @@
     <color name="glass_button_focused_text_color">@color/white</color>
     <color name="glass_button_text_color">@color/glassColorPrimary</color>
 
+    <color name="glass_dialog_image_mask_color">#C1000000</color>
     <!-- dialog -->
     <color name="notification_dialog_color">@color/black</color>
     <color name="notification_dialog_message_color">@color/glassColorPrimary</color>

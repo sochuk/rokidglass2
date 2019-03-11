@@ -2,6 +2,7 @@ package com.rokid.glass.ui.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rokid.glass.ui.R;
+import com.rokid.glass.ui.imageview.RoundCornerImageView;
 import com.rokid.glass.ui.util.Utils;
 
 /**
@@ -37,8 +39,8 @@ public class GlassDialog extends Dialog {
     }
 
     private void init() {
-        setCancelable(true);
-        setCanceledOnTouchOutside(true);
+        setCancelable(false);
+        setCanceledOnTouchOutside(false);
     }
 
     @Override
@@ -58,7 +60,7 @@ public class GlassDialog extends Dialog {
         params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
         window.setAttributes(params);
 
-//        window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
     }
 
     @Override
@@ -69,108 +71,48 @@ public class GlassDialog extends Dialog {
         }
     }
 
-    private static class MessageDialogBuilder<T extends GlassDialogBuilder> extends GlassDialogBuilder<T> {
-        public MessageDialogBuilder(Context context) {
-            super(context);
-        }
-
-        @Override
-        protected void init() {
-
-        }
-
-        @Override
-        protected void onCreateContent(Context context, ViewGroup parent, GlassDialog dialog) {
-
-        }
-
-        @Override
-        protected void onAfter(Context context, ViewGroup parent, GlassDialog dialog) {
-            super.onAfter(context, parent, dialog);
-            ViewGroup.LayoutParams params = parent.getLayoutParams();
-            params.height = Utils.getScreenHeight(context);
-            parent.setLayoutParams(params);
-        }
-    }
-
     /**
-     * pure voice
+     * image dialog
      */
-    public static class SimpleVoiceDialogBuilder extends MessageDialogBuilder<SimpleVoiceDialogBuilder> {
+    public static class ImageDialogBuilder extends MessageDialogBuilder<ImageDialogBuilder> {
+        private RoundCornerImageView mNotifyIv;
+
         private ViewGroup mVoiceLayout;
-        private Button mConfirmBtn;
-        private Button mCancelBtn;
         private View mCustomConfirmView;
-        private String mConfirmText;
-        private String mCancelText;
 
-        private GlassDialogListener mConfirmListener;
-        private GlassDialogListener mCancelListener;
+        private int mNotifyResId;
+        private Bitmap mNotifyBitmap;
 
-        public SimpleVoiceDialogBuilder(Context context) {
+        public ImageDialogBuilder(Context context) {
             super(context);
         }
 
         @Override
-        protected void onCreateContent(Context context, ViewGroup parent, final GlassDialog dialog) {
-            super.onCreateContent(context, parent, dialog);
-            View view = LayoutInflater.from(context).inflate(R.layout.layout_simple_voice_dialog, parent, false);
-            mTitleTv = view.findViewById(R.id.simple_voice_title);
-            mConfirmBtn = view.findViewById(R.id.confirm_btn);
-            mCancelBtn = view.findViewById(R.id.cancel_btn);
+        public int layoutId() {
+            return R.layout.layout_image_dialog;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
             mVoiceLayout = view.findViewById(R.id.voice_layout);
+            mNotifyIv = view.findViewById(R.id.dialog_notify_img);
 
-            mTitleTv.setText(mTitle);
-
-            if (!TextUtils.isEmpty(mConfirmText)) {
-                mConfirmBtn.setText(mConfirmText);
+            if (mNotifyResId != 0) {
+                mNotifyIv.setImageResource(mNotifyResId);
             }
 
-            if (!TextUtils.isEmpty(mCancelText)) {
-                mCancelBtn.setText(mCancelText);
+            if (null != mNotifyBitmap) {
+                mNotifyIv.setImageBitmap(mNotifyBitmap);
             }
-
-            mConfirmBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-//                    disimiss();
-                    if (null != mConfirmListener) {
-                        mConfirmListener.onClick(v);
-                    }
-                }
-            });
-
-            mCancelBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    disimiss();
-                    if (null != mCancelListener) {
-                        mCancelListener.onClick(v);
-                    }
-                }
-            });
-
-            parent.addView(view);
         }
 
-        public SimpleVoiceDialogBuilder setConfirmText(String confirmText) {
-            this.mConfirmText = confirmText;
+        public ImageDialogBuilder setNotifyResId(int notifyResId) {
+            this.mNotifyResId = mNotifyResId;
             return this;
         }
 
-        public SimpleVoiceDialogBuilder setCancelText(String cancelText) {
-            this.mCancelText = cancelText;
-            return this;
-        }
-
-
-        public SimpleVoiceDialogBuilder setConfirmListener(GlassDialogListener confirmListener) {
-            this.mConfirmListener = confirmListener;
-            return this;
-        }
-
-        public SimpleVoiceDialogBuilder setCancelListener(GlassDialogListener cancelListener) {
-            this.mCancelListener = cancelListener;
+        public ImageDialogBuilder setNotifyBitmap(Bitmap notifyBitmap) {
+            this.mNotifyBitmap = mNotifyBitmap;
             return this;
         }
 
@@ -186,9 +128,55 @@ public class GlassDialog extends Dialog {
             }
         }
 
-        public void dynamicCancelText(final String cancelText) {
+        public void dynamicCustomConfirmView(View customConfirmView) {
+            this.mConfirmBtn.setEnabled(false);
+            this.mConfirmBtn.setText(null);
+            this.mTitleTv.setText(null);
+            if (null != mNotifyIv) {
+                mNotifyIv.setMaskColor(mContext.getResources().getColor(R.color.transparent));
+            }
+
+            this.mCustomConfirmView = customConfirmView;
+            this.mVoiceLayout.removeAllViews();
+            if (null != mCustomConfirmView.getParent()) {
+                ((ViewGroup) mCustomConfirmView.getParent()).removeAllViews();
+            }
+            this.mVoiceLayout.addView(mCustomConfirmView, new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+            ));
+        }
+    }
+
+    /**
+     * pure voice
+     */
+    public static class SimpleVoiceDialogBuilder extends MessageDialogBuilder<SimpleVoiceDialogBuilder> {
+        private ViewGroup mVoiceLayout;
+        private View mCustomConfirmView;
+
+        public SimpleVoiceDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_simple_voice_dialog;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+            mVoiceLayout = view.findViewById(R.id.voice_layout);
+        }
+
+        //dynamic content
+        public void dynamicConfirmText(final String confirmText) {
             if (mGlassDialog.isShowing()) {
-                mCancelBtn.setText(cancelText);
+                mConfirmBtn.setEnabled(true);
+                mConfirmBtn.setText(confirmText);
+
+                if (null != mCustomConfirmView && null != mCustomConfirmView.getParent()) {
+                    ((ViewGroup) mCustomConfirmView.getParent()).removeAllViews();
+                }
             }
         }
 
@@ -210,9 +198,10 @@ public class GlassDialog extends Dialog {
      * Notification Dialog
      */
     public static class NotificationDialogBuilder extends GlassDialogBuilder<NotificationDialogBuilder> {
+        private final static int DEFAULT_DURATION = 3000;
         private TextView mMessageTv;
         private ImageView mIconResIv;
-        private int mDuration = 3000;
+        private int mDuration = DEFAULT_DURATION;
         private Handler mHandler;
 
         private String mMessage;
@@ -245,6 +234,7 @@ public class GlassDialog extends Dialog {
         @Override
         protected void onCreateContent(Context context, ViewGroup parent, GlassDialog dialog) {
             View view = LayoutInflater.from(context).inflate(R.layout.layout_notification_dialog, parent, false);
+            mGlassDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
             mTitleTv = view.findViewById(R.id.dialog_notification_title);
             mMessageTv = view.findViewById(R.id.dialog_notification_message);
             mIconResIv = view.findViewById(R.id.dialog_notification_icon);
@@ -261,14 +251,120 @@ public class GlassDialog extends Dialog {
         @Override
         protected void dialogShow() {
             super.dialogShow();
+            mDuration = mDuration == 0 ? DEFAULT_DURATION : mDuration;
             if (mDuration > 0) {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        disimiss();
+//                        dismiss();
                     }
                 }, mDuration);
             }
         }
+    }
+
+    /**
+     * common message
+     *
+     * @param
+     */
+    private static abstract class MessageDialogBuilder<T extends GlassDialogBuilder> extends GlassDialogBuilder<T> {
+        protected Button mConfirmBtn;
+        protected Button mCancelBtn;
+        protected String mConfirmText;
+        protected String mCancelText;
+
+        protected GlassDialogListener mConfirmListener;
+        protected GlassDialogListener mCancelListener;
+
+        public MessageDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        protected void init() {
+
+        }
+
+        @Override
+        protected void onCreateContent(Context context, ViewGroup parent, GlassDialog dialog) {
+            View view = LayoutInflater.from(context).inflate(layoutId(), parent, false);
+            mTitleTv = view.findViewById(R.id.dialog_title);
+            mConfirmBtn = view.findViewById(R.id.confirm_btn);
+            mCancelBtn = view.findViewById(R.id.cancel_btn);
+
+            onAfterCreateView(view);
+
+            mTitleTv.setText(mTitle);
+
+            if (!TextUtils.isEmpty(mConfirmText)) {
+                mConfirmBtn.setText(mConfirmText);
+            }
+
+            if (!TextUtils.isEmpty(mCancelText)) {
+                mCancelBtn.setText(mCancelText);
+            }
+
+            mConfirmBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (null != mConfirmListener) {
+                        mConfirmListener.onClick(v);
+                    }
+                }
+            });
+
+            mCancelBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                    if (null != mCancelListener) {
+                        mCancelListener.onClick(v);
+                    }
+                }
+            });
+
+            parent.addView(view);
+        }
+
+        @Override
+        protected void onAfter(Context context, ViewGroup parent, GlassDialog dialog) {
+            super.onAfter(context, parent, dialog);
+            ViewGroup.LayoutParams params = parent.getLayoutParams();
+            params.height = Utils.getScreenHeight(context);
+            parent.setLayoutParams(params);
+        }
+
+        public T setConfirmText(String confirmText) {
+            this.mConfirmText = confirmText;
+            return (T) this;
+        }
+
+        public T setCancelText(String cancelText) {
+            this.mCancelText = cancelText;
+            return (T) this;
+        }
+
+
+        public T setConfirmListener(GlassDialogListener confirmListener) {
+            this.mConfirmListener = confirmListener;
+            return (T) this;
+        }
+
+        public T setCancelListener(GlassDialogListener cancelListener) {
+            this.mCancelListener = cancelListener;
+            return (T) this;
+        }
+
+        //dynamic content
+        public void dynamicCancelText(final String cancelText) {
+            if (mGlassDialog.isShowing()) {
+                mCancelBtn.setText(cancelText);
+            }
+        }
+
+        public abstract int layoutId();
+
+        public abstract void onAfterCreateView(final View view);
     }
 }

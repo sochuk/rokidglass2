@@ -1,7 +1,9 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">GlassUI</string>
 
+    <string name="image_title">收到语音消息\n是否播报？</string>
     <string name="voice_test">收到1条语音消息\n是否立即播报？</string>
+
     <string name="voice_play">播报</string>
     <string name="voice_collapse">收起</string>
 </resources>
