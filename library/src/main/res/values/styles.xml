@@ -60,6 +60,11 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="GlassDialog.Message.Title.Multi" parent="GlassDialog.Message.Title">
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="GlassDialog.Message.Content">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/glass_dialog_voice_content_text_size</item>

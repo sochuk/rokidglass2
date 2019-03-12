@@ -73,6 +73,72 @@ public class GlassDialog extends Dialog {
     }
 
     /**
+     * customer image content dialog
+     */
+    public static class CustomerImageContentDialogBuilder extends CustomerMessageDialogBuilder<CustomerImageContentDialogBuilder> {
+        private RoundCornerImageView mNotifyIv;
+        private int mNotifyResId;
+        private Bitmap mNotifyBitmap;
+        private String mContent;
+
+        private int mLayoutHeight;
+
+        public CustomerImageContentDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        protected void init() {
+            super.init();
+            mLayoutHeight = mContext.getResources().getDimensionPixelSize(R.dimen.dialog_image_customer_height);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_image_content_dialog;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+            super.onAfterCreateView(view);
+            mNotifyIv = view.findViewById(R.id.dialog_notify_img);
+
+            if (mNotifyResId != 0) {
+                mNotifyIv.setImageResource(mNotifyResId);
+            }
+
+            if (null != mNotifyBitmap) {
+                mNotifyIv.setImageBitmap(mNotifyBitmap);
+            }
+
+            if (!TextUtils.isEmpty(mContent)) {
+                ViewStub contentView = view.findViewById(R.id.dialog_content);
+                View inflateView = contentView.inflate();
+                ((TextView) inflateView).setText(mContent);
+                ((TextView) inflateView).setMaxLines(3);
+                ((TextView) inflateView).setEllipsize(TextUtils.TruncateAt.END);
+            }
+
+            changeLayoutParams(view, 0, mLayoutHeight);
+        }
+
+        public CustomerImageContentDialogBuilder setNotifyResId(int notifyResId) {
+            this.mNotifyResId = notifyResId;
+            return this;
+        }
+
+        public CustomerImageContentDialogBuilder setNotifyBitmap(Bitmap notifyBitmap) {
+            this.mNotifyBitmap = notifyBitmap;
+            return this;
+        }
+
+        public CustomerImageContentDialogBuilder setContent(String content) {
+            this.mContent = content;
+            return this;
+        }
+    }
+
+    /**
      * customer image dialog
      */
     public static class CustomerImageDialogBuilder extends CustomerNormalImageDialogBuilder<CustomerImageDialogBuilder> {
@@ -525,7 +591,7 @@ public class GlassDialog extends Dialog {
      */
     private abstract static class CustomerMessageDialogBuilder<T extends MessageDialogBuilder> extends MessageDialogBuilder<T> {
         private Button mCustomerBtn;
-        private String mCustomerText;
+        protected String mCustomerText;
 
         private GlassDialogListener mCustomerListener;
 
@@ -546,7 +612,7 @@ public class GlassDialog extends Dialog {
         @Override
         public void onAfterCreateView(View view) {
             if (!TextUtils.isEmpty(mCustomerText)) {
-                ViewStub contentView = view.findViewById(R.id.play_btn);
+                ViewStub contentView = view.findViewById(R.id.customer_btn);
                 View inflateView = contentView.inflate();
                 mCustomerBtn = (Button) inflateView;
                 if (null == mCustomerBtn) {

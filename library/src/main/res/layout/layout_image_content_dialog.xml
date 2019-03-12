@@ -43,6 +43,7 @@
         android:layout_width="@dimen/glass_button_width"
         android:layout_height="@dimen/glass_button_height"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dialog_margin_normal"
         android:text="@string/confirm_text" />
 
     <com.rokid.glass.ui.button.GlassButton
@@ -54,4 +55,13 @@
         android:layout_marginLeft="@dimen/glass_button_margin"
         android:layout_toRightOf="@id/confirm_btn"
         android:text="@string/cancel_text" />
+
+    <ViewStub
+        android:id="@+id/customer_btn"
+        android:layout_width="@dimen/glass_button_width"
+        android:layout_height="@dimen/glass_button_height"
+        android:layout_alignTop="@id/confirm_btn"
+        android:layout_marginLeft="@dimen/glass_button_margin"
+        android:layout_toRightOf="@id/cancel_btn"
+        android:layout="@layout/item_dialog_button" />
 </RelativeLayout>
