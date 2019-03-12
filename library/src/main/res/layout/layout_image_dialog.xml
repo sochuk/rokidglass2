@@ -58,7 +58,12 @@
             style="@style/GlassButton"
             android:layout_width="@dimen/glass_button_width"
             android:layout_height="@dimen/glass_button_height"
-            android:layout_marginTop="@dimen/glass_button_margin"
             android:text="@string/cancel_text" />
+
+        <ViewStub
+            android:id="@+id/play_btn"
+            android:layout_width="@dimen/glass_button_width"
+            android:layout_height="@dimen/glass_button_height"
+            android:layout="@layout/item_dialog_button" />
     </LinearLayout>
 </LinearLayout>

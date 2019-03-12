@@ -10,4 +10,5 @@
     <string name="voice_play">播报</string>
     <string name="voice_confirm">确定</string>
     <string name="voice_collapse">收起</string>
+    <string name="voice_customer">自定义</string>
 </resources>

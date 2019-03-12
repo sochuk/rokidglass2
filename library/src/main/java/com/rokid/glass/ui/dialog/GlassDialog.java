@@ -73,16 +73,30 @@ public class GlassDialog extends Dialog {
     }
 
     /**
-     *
+     * customer image dialog
      */
-    public static class CustomerSimpleMessageBuilder extends CustomerMessageDialogBuilder<CustomerSimpleMessageBuilder> {
+    public static class CustomerImageDialogBuilder extends CustomerNormalImageDialogBuilder<CustomerImageDialogBuilder> {
+        public CustomerImageDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_image_dialog;
+        }
+    }
+
+    /**
+     * customer simple message dialog
+     */
+    public static class CustomerSimpleMsgDialogBuilder extends CustomerMessageDialogBuilder<CustomerSimpleMsgDialogBuilder> {
         private int mLayoutWidth;
         private int mLayoutHeight;
         private int mLayoutContentHeight;
         private String mVoiceTitle;
         private String mContent;
 
-        public CustomerSimpleMessageBuilder(Context context) {
+        public CustomerSimpleMsgDialogBuilder(Context context) {
             super(context);
         }
 
@@ -99,12 +113,12 @@ public class GlassDialog extends Dialog {
             return R.layout.layout_simple_message_dialog;
         }
 
-        public CustomerSimpleMessageBuilder setVoiceTitle(String voiceTitle) {
+        public CustomerSimpleMsgDialogBuilder setVoiceTitle(String voiceTitle) {
             this.mVoiceTitle = voiceTitle;
             return this;
         }
 
-        public CustomerSimpleMessageBuilder setContent(String content) {
+        public CustomerSimpleMsgDialogBuilder setContent(String content) {
             this.mContent = content;
             return this;
         }
@@ -431,46 +445,120 @@ public class GlassDialog extends Dialog {
     }
 
     /**
+     * customer normal image dialog
+     *
+     * @param <T>
+     */
+    private abstract static class CustomerNormalImageDialogBuilder<T extends CustomerNormalImageDialogBuilder> extends CustomerMessageDialogBuilder<T> {
+        private RoundCornerImageView mNotifyIv;
+
+        private ViewGroup mVoiceLayout;
+        private View mCustomConfirmView;
+
+        private int mNotifyResId;
+        private Bitmap mNotifyBitmap;
+
+        public CustomerNormalImageDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+            super.onAfterCreateView(view);
+            mVoiceLayout = view.findViewById(R.id.voice_layout);
+            mNotifyIv = view.findViewById(R.id.dialog_notify_img);
+
+            if (mNotifyResId != 0) {
+                mNotifyIv.setImageResource(mNotifyResId);
+            }
+
+            if (null != mNotifyBitmap) {
+                mNotifyIv.setImageBitmap(mNotifyBitmap);
+            }
+        }
+
+        public T setNotifyResId(int notifyResId) {
+            this.mNotifyResId = notifyResId;
+            return (T) this;
+        }
+
+        public T setNotifyBitmap(Bitmap notifyBitmap) {
+            this.mNotifyBitmap = notifyBitmap;
+            return (T) this;
+        }
+
+        //dynamic content
+        public void dynamicConfirmText(final String confirmText) {
+            if (mGlassDialog.isShowing()) {
+                mConfirmBtn.setEnabled(true);
+                mConfirmBtn.setText(confirmText);
+
+                if (null != mCustomConfirmView && null != mCustomConfirmView.getParent()) {
+                    ((ViewGroup) mCustomConfirmView.getParent()).removeAllViews();
+                }
+            }
+        }
+
+        public void dynamicCustomConfirmView(View customConfirmView) {
+            this.mConfirmBtn.setEnabled(false);
+            this.mConfirmBtn.setText(null);
+            this.mTitleTv.setText(null);
+            if (null != mNotifyIv) {
+                mNotifyIv.setMaskColor(mContext.getResources().getColor(R.color.transparent));
+            }
+
+            this.mCustomConfirmView = customConfirmView;
+            this.mVoiceLayout.removeAllViews();
+            if (null != mCustomConfirmView.getParent()) {
+                ((ViewGroup) mCustomConfirmView.getParent()).removeAllViews();
+            }
+            this.mVoiceLayout.addView(mCustomConfirmView, new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
+            ));
+        }
+    }
+
+    /**
      * common customer message dialog
      *
      * @param <T>
      */
-    public abstract static class CustomerMessageDialogBuilder<T extends MessageDialogBuilder> extends MessageDialogBuilder<T> {
-        private Button mPlayBtn;
-        private String mPlayText;
+    private abstract static class CustomerMessageDialogBuilder<T extends MessageDialogBuilder> extends MessageDialogBuilder<T> {
+        private Button mCustomerBtn;
+        private String mCustomerText;
 
-        private GlassDialogListener mPlayListener;
+        private GlassDialogListener mCustomerListener;
 
         public CustomerMessageDialogBuilder(Context context) {
             super(context);
         }
 
-        public T setPlayText(String playText) {
-            this.mPlayText = playText;
+        public T setCustomerText(String customerText) {
+            this.mCustomerText = customerText;
             return (T) this;
         }
 
-        public T setPlayListener(GlassDialogListener playListener) {
-            this.mPlayListener = playListener;
+        public T setCustomerListener(GlassDialogListener customerListener) {
+            this.mCustomerListener = customerListener;
             return (T) this;
         }
 
         @Override
         public void onAfterCreateView(View view) {
-            if (!TextUtils.isEmpty(mPlayText)) {
+            if (!TextUtils.isEmpty(mCustomerText)) {
                 ViewStub contentView = view.findViewById(R.id.play_btn);
                 View inflateView = contentView.inflate();
-                mPlayBtn = (Button) inflateView;
-                if (null == mPlayBtn) {
+                mCustomerBtn = (Button) inflateView;
+                if (null == mCustomerBtn) {
                     return;
                 }
 
-                mPlayBtn.setText(mPlayText);
-                mPlayBtn.setOnClickListener(new View.OnClickListener() {
+                mCustomerBtn.setText(mCustomerText);
+                mCustomerBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (null != mPlayListener) {
-                            mPlayListener.onClick(v);
+                        if (null != mCustomerListener) {
+                            mCustomerListener.onClick(v);
                         }
                     }
                 });
@@ -483,7 +571,7 @@ public class GlassDialog extends Dialog {
      *
      * @param
      */
-    public static abstract class MessageDialogBuilder<T extends GlassDialogBuilder> extends GlassDialogBuilder<T> {
+    private static abstract class MessageDialogBuilder<T extends GlassDialogBuilder> extends GlassDialogBuilder<T> {
         protected Button mConfirmBtn;
         protected Button mCancelBtn;
         protected String mConfirmText;

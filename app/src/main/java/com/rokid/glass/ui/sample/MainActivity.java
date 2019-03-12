@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private GlassDialog mCustomerMessageDialog;
 
+    private GlassDialog.CustomerImageDialogBuilder mCustomerImageDialogBuilder;
+
     private View mCustomTimerView;
     private TextView mTimerTv;
     private CountDownManager countDownManager;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.simple_content_btn).setOnClickListener(this);
         findViewById(R.id.image_content_btn).setOnClickListener(this);
         findViewById(R.id.customer_message_btn).setOnClickListener(this);
+        findViewById(R.id.customer_image_btn).setOnClickListener(this);
 
         mCustomTimerView = LayoutInflater.from(this).inflate(R.layout.layout_timer, null);
         mTimerTv = mCustomTimerView.findViewById(R.id.custom_timer);
@@ -54,11 +57,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onFinish() {
-                        mSimpleVoiceDialogBuilder.dynamicTitle("播报完毕");
-                        mSimpleVoiceDialogBuilder.dynamicConfirmText("重播");
+                        if (null != mSimpleVoiceDialogBuilder) {
+                            mSimpleVoiceDialogBuilder.dynamicTitle("播报完毕");
+                            mSimpleVoiceDialogBuilder.dynamicConfirmText("重播");
+                        }
 
-                        //单独处理
-                        mImageDialogBuilder.dynamicConfirmText("重播");
+                        if (null != mImageDialogBuilder) {
+                            //单独处理
+                            mImageDialogBuilder.dynamicConfirmText("重播");
+                        }
+
+                        if (null != mCustomerImageDialogBuilder) {
+                            //customer
+                            mCustomerImageDialogBuilder.dynamicConfirmText("重播");
+                        }
                     }
                 })
                 .build();
@@ -203,17 +215,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }).show();
                 break;
             case R.id.customer_message_btn:
-                mCustomerMessageDialog = new GlassDialog.CustomerSimpleMessageBuilder(this)
+                mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
                         .setTitle(getString(R.string.image_content_title))
-                        .setConfirmText(getString(R.string.voice_confirm))
+                        .setConfirmText(getString(R.string.voice_play))
                         .setCancelText(getString(R.string.voice_collapse))
-                        .setPlayText(getString(R.string.voice_play))
+                        .setCustomerText(getString(R.string.voice_customer))
                         .setContent(getString(R.string.simple_content))
-                        .setPlayListener(new GlassDialogListener() {
+                        .setCustomerListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
                                 Toast.makeText(MainActivity.this,
-                                        "Click Play", Toast.LENGTH_SHORT).show();
+                                        "Click Customer", Toast.LENGTH_SHORT).show();
                             }
                         })
                         .setConfirmListener(new GlassDialogListener() {
@@ -235,6 +247,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         })
                         .show();
+                break;
+            case R.id.customer_image_btn:
+                mCustomerImageDialogBuilder = new GlassDialog.CustomerImageDialogBuilder(this)
+                        .setTitle(getString(R.string.image_title))
+                        .setConfirmText(getString(R.string.voice_play))
+                        .setCancelText(getString(R.string.voice_collapse))
+                        .setCustomerText(getString(R.string.voice_customer))
+                        .setNotifyResId(R.mipmap.ic_notify_img)
+                        .setCustomerListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Customer", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setConfirmListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Play", Toast.LENGTH_SHORT).show();
+                                mCustomerImageDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
+                                countDownManager.start();
+                            }
+                        })
+                        .setCancelListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Cancel", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+
+                mCustomerImageDialogBuilder.show();
                 break;
         }
     }

@@ -25,7 +25,7 @@ public class GlassButton extends AppCompatButton {
     private Paint mFocusedStrokePaint;
     private Paint mUnfocusedStrokePaint;
     private final int mFocusedGlowWidth = 25;
-    private final int mBtnPadding = 27;
+    private final int mBtnPadding = 20;
     private final float mStrokeWidth = 2f;
 
     private int defaultButtonUnfocusedColor;

@@ -33,13 +33,6 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <ViewStub
-            android:id="@+id/play_btn"
-            android:layout_width="@dimen/glass_button_width"
-            android:layout_height="@dimen/glass_button_height"
-            android:layout_marginRight="@dimen/glass_button_margin"
-            android:layout="@layout/item_dialog_button" />
-
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/confirm_btn"
             style="@style/GlassButton"
@@ -54,6 +47,11 @@
             android:layout_height="@dimen/glass_button_height"
             android:layout_marginLeft="@dimen/glass_button_margin"
             android:text="@string/cancel_text" />
-        <!--  -->
+
+        <ViewStub
+            android:id="@+id/play_btn"
+            android:layout_width="@dimen/glass_button_width"
+            android:layout_height="@dimen/glass_button_height"
+            android:layout="@layout/item_dialog_button" />
     </LinearLayout>
 </RelativeLayout>
