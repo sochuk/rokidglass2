@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.rokid.glass.ui.R;
 
+
 /**
  * @author jian.yang
  * @date 2019/3/6
@@ -39,6 +40,7 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
     public GlassDialog create() {
         return create(R.style.GlassDialogStyle);
     }
+    
 
     public GlassDialog create(final int style) {
         mGlassDialog = new GlassDialog(mContext, style, this);

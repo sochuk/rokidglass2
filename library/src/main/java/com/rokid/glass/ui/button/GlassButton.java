@@ -1,5 +1,6 @@
 package com.rokid.glass.ui.button;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.BlurMaskFilter;
@@ -10,8 +11,8 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
-import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
+import android.widget.Button;
 
 import com.rokid.glass.ui.R;
 
@@ -20,7 +21,8 @@ import com.rokid.glass.ui.R;
  * @date 2019/2/20
  */
 
-public class GlassButton extends AppCompatButton {
+@SuppressLint("AppCompatCustomView")
+public class GlassButton extends Button {
     private Paint mFocusedPaint;
     private Paint mFocusedStrokePaint;
     private Paint mUnfocusedStrokePaint;

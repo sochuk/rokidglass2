@@ -3,23 +3,15 @@ package com.rokid.glass.ui.imageview;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
-import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
-import android.graphics.Shader;
 import android.graphics.Xfermode;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -70,11 +62,11 @@ public class RoundCornerImageView extends ImageView {
         this(context, null);
     }
 
-    public RoundCornerImageView(Context context, @Nullable AttributeSet attrs) {
+    public RoundCornerImageView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RoundCornerImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public RoundCornerImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
         this.context = context;
@@ -302,7 +294,7 @@ public class RoundCornerImageView extends ImageView {
         calculateRadiiAndRectF(false);
     }
 
-    public void setBorderColor(@ColorInt int borderColor) {
+    public void setBorderColor(int borderColor) {
         this.borderColor = borderColor;
         invalidate();
     }
@@ -313,7 +305,7 @@ public class RoundCornerImageView extends ImageView {
         invalidate();
     }
 
-    public void setInnerBorderColor(@ColorInt int innerBorderColor) {
+    public void setInnerBorderColor(int innerBorderColor) {
         this.innerBorderColor = innerBorderColor;
         invalidate();
     }
@@ -343,7 +335,7 @@ public class RoundCornerImageView extends ImageView {
         calculateRadiiAndRectF(true);
     }
 
-    public void setMaskColor(@ColorInt int maskColor) {
+    public void setMaskColor(int maskColor) {
         this.maskColor = maskColor;
         invalidate();
     }

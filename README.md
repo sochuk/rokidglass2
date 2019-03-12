@@ -1,6 +1,20 @@
 # Glass UI
 ## 引入库
+在根目录`build.gradle`中增加私有maven库：
+``` gradle
+maven {
+    url 'http://mvnrepo.rokid-inc.com/nexus/content/repositories/snapshots/'
+}
+
+maven {
+    url 'http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/'
+}
+```
 ### Gradle
+引入ui库
+```
+implementation 'com.rokid.glass:ui:1.0.0-SNAPSHOT'
+```
 
 ## 功能列表
 ### GlassButton
