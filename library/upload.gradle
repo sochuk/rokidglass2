@@ -42,12 +42,12 @@ afterEvaluate { project ->
         from android.sourceSets.main.java.sourceFiles
     }
 
-//    //解决 JavaDoc 中文注释生成失败的问题
-//    tasks.withType(Javadoc) {
-//        options.addStringOption('Xdoclint:none', '-quiet')
-//        options.addStringOption('encoding', 'UTF-8')
-//        options.addStringOption('charSet', 'UTF-8')
-//    }
+    //解决 JavaDoc 中文注释生成失败的问题
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
+    }
 
     artifacts {
         archives androidSourcesJar
