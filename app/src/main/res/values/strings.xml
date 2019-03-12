@@ -1,6 +1,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">GlassUI</string>
 
+    <string name="notification_title">您收到一条新的语音通知</string>
+    <string name="notification_message">请在手机APP查看详情</string>
+
     <string name="image_title">收到语音消息\n是否播报？</string>
     <string name="voice_test">收到1条语音消息\n是否立即播报？</string>
     <string name="simple_message_title">8点集合操场集合令</string>
@@ -12,4 +15,11 @@
     <string name="voice_confirm">确定</string>
     <string name="voice_collapse">收起</string>
     <string name="voice_customer">自定义</string>
+
+    <string name="voice_play_over">播报完毕</string>
+    <string name="voice_playing">播放中...</string>
+    <string name="voice_replay">重播</string>
+
+    <!--sample -->
+    <string name="sample_notification">通知栏</string>
 </resources>

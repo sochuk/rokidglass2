@@ -59,18 +59,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onFinish() {
                         if (null != mSimpleVoiceDialogBuilder) {
-                            mSimpleVoiceDialogBuilder.dynamicTitle("播报完毕");
-                            mSimpleVoiceDialogBuilder.dynamicConfirmText("重播");
+                            mSimpleVoiceDialogBuilder.dynamicTitle(getString(R.string.voice_play_over));
+                            mSimpleVoiceDialogBuilder.dynamicConfirmText(getString(R.string.voice_replay));
                         }
 
                         if (null != mImageDialogBuilder) {
                             //单独处理
-                            mImageDialogBuilder.dynamicConfirmText("重播");
+                            mImageDialogBuilder.dynamicConfirmText(getString(R.string.voice_replay));
                         }
 
                         if (null != mCustomerImageDialogBuilder) {
                             //customer
-                            mCustomerImageDialogBuilder.dynamicConfirmText("重播");
+                            mCustomerImageDialogBuilder.dynamicConfirmText(getString(R.string.voice_replay));
                         }
                     }
                 })
@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.notification_btn:
                 mNotificationDialog = new GlassDialog.NotificationDialogBuilder(this)
-                        .setTitle("您收到一条新的语音通知")
-                        .setMessage("请在手机APP查看详情")
+                        .setTitle(getString(R.string.notification_title))
+                        .setMessage(getString(R.string.notification_message))
                         .create();
                 mNotificationDialog.show();
                 break;
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 Toast.makeText(MainActivity.this,
                                         "Click Confirm", Toast.LENGTH_SHORT).show();
 
-                                mSimpleVoiceDialogBuilder.dynamicTitle("播放中...");
+                                mSimpleVoiceDialogBuilder.dynamicTitle(getString(R.string.voice_playing));
                                 mSimpleVoiceDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
 
                                 countDownManager.start();
@@ -156,7 +156,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
-                                Log.d("DEBUG", "##### SimpleMessageDialogBuilder confirm");
                                 Toast.makeText(MainActivity.this,
                                         "Click Confirm", Toast.LENGTH_SHORT).show();
                             }
