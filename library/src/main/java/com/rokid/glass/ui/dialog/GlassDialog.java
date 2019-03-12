@@ -72,6 +72,60 @@ public class GlassDialog extends Dialog {
         }
     }
 
+    /**
+     *
+     */
+    public static class CustomerSimpleMessageBuilder extends CustomerMessageDialogBuilder<CustomerSimpleMessageBuilder> {
+        private int mLayoutWidth;
+        private int mLayoutHeight;
+        private int mLayoutContentHeight;
+        private String mVoiceTitle;
+        private String mContent;
+
+        public CustomerSimpleMessageBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        protected void init() {
+            super.init();
+            mLayoutHeight = mContext.getResources().getDimensionPixelSize(R.dimen.dialog_simple_voice_height);
+            mLayoutWidth = mContext.getResources().getDimensionPixelSize(R.dimen.dialog_customer_message_width);
+            mLayoutContentHeight = mContext.getResources().getDimensionPixelSize(R.dimen.dialog_simple_message_content_height);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_simple_message_dialog;
+        }
+
+        public CustomerSimpleMessageBuilder setVoiceTitle(String voiceTitle) {
+            this.mVoiceTitle = voiceTitle;
+            return this;
+        }
+
+        public CustomerSimpleMessageBuilder setContent(String content) {
+            this.mContent = content;
+            return this;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+            super.onAfterCreateView(view);
+            if (!TextUtils.isEmpty(mVoiceTitle)) {
+                changeLayoutParams(view, mLayoutWidth, mLayoutHeight);
+                mTitleTv.setSingleLine(false);
+                mTitleTv.setText(mVoiceTitle);
+            } else if (!TextUtils.isEmpty(mContent)) {
+                ViewStub contentView = view.findViewById(R.id.dialog_content);
+                View inflateView = contentView.inflate();
+                ((TextView) inflateView).setText(mContent);
+                changeLayoutParams(view, 0, mLayoutContentHeight);
+            } else {
+                changeLayoutParams(view, mLayoutWidth, 0);
+            }
+        }
+    }
 
     /**
      * image content dialog
@@ -151,10 +205,7 @@ public class GlassDialog extends Dialog {
         @Override
         public void onAfterCreateView(View view) {
             //set content height
-            ViewGroup.LayoutParams params = view.getLayoutParams();
-            params.height = mMessageContentHeight;
-            view.setLayoutParams(params);
-
+            changeLayoutParams(view, 0, mMessageContentHeight);
             if (!TextUtils.isEmpty(mContent)) {
                 ViewStub contentView = view.findViewById(R.id.dialog_content);
                 View inflateView = contentView.inflate();
@@ -169,7 +220,7 @@ public class GlassDialog extends Dialog {
     }
 
     /**
-     * Simple message
+     * simple message
      */
     public static class SimpleMessageDialogBuilder extends MessageDialogBuilder<SimpleMessageDialogBuilder> {
         public SimpleMessageDialogBuilder(Context context) {
@@ -380,11 +431,59 @@ public class GlassDialog extends Dialog {
     }
 
     /**
+     * common customer message dialog
+     *
+     * @param <T>
+     */
+    public abstract static class CustomerMessageDialogBuilder<T extends MessageDialogBuilder> extends MessageDialogBuilder<T> {
+        private Button mPlayBtn;
+        private String mPlayText;
+
+        private GlassDialogListener mPlayListener;
+
+        public CustomerMessageDialogBuilder(Context context) {
+            super(context);
+        }
+
+        public T setPlayText(String playText) {
+            this.mPlayText = playText;
+            return (T) this;
+        }
+
+        public T setPlayListener(GlassDialogListener playListener) {
+            this.mPlayListener = playListener;
+            return (T) this;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+            if (!TextUtils.isEmpty(mPlayText)) {
+                ViewStub contentView = view.findViewById(R.id.play_btn);
+                View inflateView = contentView.inflate();
+                mPlayBtn = (Button) inflateView;
+                if (null == mPlayBtn) {
+                    return;
+                }
+
+                mPlayBtn.setText(mPlayText);
+                mPlayBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (null != mPlayListener) {
+                            mPlayListener.onClick(v);
+                        }
+                    }
+                });
+            }
+        }
+    }
+
+    /**
      * common message
      *
      * @param
      */
-    private static abstract class MessageDialogBuilder<T extends GlassDialogBuilder> extends GlassDialogBuilder<T> {
+    public static abstract class MessageDialogBuilder<T extends GlassDialogBuilder> extends GlassDialogBuilder<T> {
         protected Button mConfirmBtn;
         protected Button mCancelBtn;
         protected String mConfirmText;
@@ -408,8 +507,6 @@ public class GlassDialog extends Dialog {
             mTitleTv = view.findViewById(R.id.dialog_title);
             mConfirmBtn = view.findViewById(R.id.confirm_btn);
             mCancelBtn = view.findViewById(R.id.cancel_btn);
-
-            onAfterCreateView(view);
 
             mTitleTv.setText(mTitle);
 
@@ -440,6 +537,7 @@ public class GlassDialog extends Dialog {
                 }
             });
 
+            onAfterCreateView(view);
             parent.addView(view);
         }
 

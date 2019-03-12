@@ -78,6 +78,17 @@
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/simple_content_btn"
             app:layout_constraintTop_toBottomOf="@id/simple_content_btn" />
+
+        <com.rokid.glass.ui.button.GlassButton
+            android:id="@+id/customer_message_btn"
+            style="@style/NormalGlassButton"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="CustomerMessage"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="@id/image_content_btn"
+            app:layout_constraintTop_toBottomOf="@id/image_content_btn" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
 

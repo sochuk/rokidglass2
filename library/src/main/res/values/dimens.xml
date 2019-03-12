@@ -33,11 +33,13 @@
     <dimen name="dialog_simple_message_min_height">155dp</dimen>
     <dimen name="dialog_simple_message_content_height">250dp</dimen>
 
-    <dimen name="dialog_simple_message_padding">20dp</dimen>
+    <dimen name="dialog_simple_message_margin">20dp</dimen>
 
     <dimen name="dialog_image_content_width">560dp</dimen>
     <dimen name="dialog_image_content_height">235dp</dimen>
 
+    <dimen name="dialog_customer_message_width">480dp</dimen>
+    
     <dimen name="dialog_image_width">225dp</dimen>
     <dimen name="dialog_image_small_width">205dp</dimen>
     <dimen name="dialog_image_margin">15dp</dimen>

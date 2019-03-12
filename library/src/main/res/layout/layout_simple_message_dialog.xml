@@ -3,9 +3,7 @@
     android:layout_width="@dimen/dialog_simple_message_width"
     android:layout_height="@dimen/dialog_simple_message_min_height"
     android:background="@mipmap/ic_dialog_bg"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/dialog_simple_message_padding"
-    android:paddingRight="@dimen/dialog_simple_message_padding">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/dialog_title"
@@ -20,7 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dialog_title"
+        android:layout_marginLeft="@dimen/dialog_simple_message_margin"
         android:layout_marginTop="@dimen/dialog_button_margin_top"
+        android:layout_marginRight="@dimen/dialog_simple_message_margin"
         android:layout="@layout/item_dialog_content" />
 
     <LinearLayout
@@ -32,6 +32,13 @@
         android:layout_marginBottom="@dimen/dialog_button_margin_bottom"
         android:gravity="center"
         android:orientation="horizontal">
+
+        <ViewStub
+            android:id="@+id/play_btn"
+            android:layout_width="@dimen/glass_button_width"
+            android:layout_height="@dimen/glass_button_height"
+            android:layout_marginRight="@dimen/glass_button_margin"
+            android:layout="@layout/item_dialog_button" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/confirm_btn"

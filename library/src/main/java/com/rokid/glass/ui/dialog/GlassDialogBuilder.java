@@ -3,6 +3,7 @@ package com.rokid.glass.ui.dialog;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -78,6 +79,17 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
         if (null != mGlassDialog && mGlassDialog.isShowing()) {
             mGlassDialog.dismiss();
         }
+    }
+
+    protected void changeLayoutParams(final View view, final int width, final int height) {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (width > 0) {
+            params.width = width;
+        }
+        if (height > 0) {
+            params.height = height;
+        }
+        view.setLayoutParams(params);
     }
 
     protected void dialogShow() {

@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private GlassDialog mImageDialog;
     private GlassDialog.ImageDialogBuilder mImageDialogBuilder;
 
+    private GlassDialog mCustomerMessageDialog;
+
     private View mCustomTimerView;
     private TextView mTimerTv;
     private CountDownManager countDownManager;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.simple_message_btn).setOnClickListener(this);
         findViewById(R.id.simple_content_btn).setOnClickListener(this);
         findViewById(R.id.image_content_btn).setOnClickListener(this);
+        findViewById(R.id.customer_message_btn).setOnClickListener(this);
 
         mCustomTimerView = LayoutInflater.from(this).inflate(R.layout.layout_timer, null);
         mTimerTv = mCustomTimerView.findViewById(R.id.custom_timer);
@@ -183,7 +186,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setCancelText(getString(R.string.voice_collapse))
                         .setNotifyResId(R.mipmap.ic_notify_img)
                         .setContent(getString(R.string.simple_content))
-
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
@@ -199,6 +201,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             }
                         }).show();
+                break;
+            case R.id.customer_message_btn:
+                mCustomerMessageDialog = new GlassDialog.CustomerSimpleMessageBuilder(this)
+                        .setTitle(getString(R.string.image_content_title))
+                        .setConfirmText(getString(R.string.voice_confirm))
+                        .setCancelText(getString(R.string.voice_collapse))
+                        .setPlayText(getString(R.string.voice_play))
+                        .setContent(getString(R.string.simple_content))
+                        .setPlayListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Play", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setConfirmListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Confirm", Toast.LENGTH_SHORT).show();
+                                if (null != mCustomerMessageDialog && mCustomerMessageDialog.isShowing()) {
+                                    mCustomerMessageDialog.dismiss();
+                                }
+                            }
+                        })
+                        .setCancelListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Cancel", Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .show();
                 break;
         }
     }
