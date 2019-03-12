@@ -29,7 +29,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Simple Voice"
+            android:text="@string/sample_notification"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/notification_btn"
             app:layout_constraintTop_toBottomOf="@id/notification_btn" />
@@ -41,7 +41,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Image"
+            android:text="@string/sample_voice_image"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/simple_voice_btn"
             app:layout_constraintTop_toBottomOf="@id/simple_voice_btn" />
@@ -52,7 +52,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Title"
+            android:text="@string/sample_title"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/image_btn"
             app:layout_constraintTop_toBottomOf="@id/image_btn" />
@@ -63,7 +63,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Content"
+            android:text="@string/sample_content"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/simple_message_btn"
             app:layout_constraintTop_toBottomOf="@id/simple_message_btn" />
@@ -74,7 +74,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="ImageContent"
+            android:text="@string/sample_image_content"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/simple_content_btn"
             app:layout_constraintTop_toBottomOf="@id/simple_content_btn" />
@@ -85,7 +85,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="CustomerMessage"
+            android:text="@string/customer_content"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/image_content_btn"
             app:layout_constraintTop_toBottomOf="@id/image_content_btn" />
@@ -96,7 +96,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="CustomerImage1"
+            android:text="@string/customer_image1"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/customer_message_btn"
             app:layout_constraintTop_toBottomOf="@id/customer_message_btn" />
@@ -107,7 +107,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="CustomerImage2"
+            android:text="@string/customer_image2"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/customer_image_btn"
             app:layout_constraintTop_toBottomOf="@id/customer_image_btn" />

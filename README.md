@@ -48,9 +48,11 @@ notificationDialog.show();
 
 #### SimpleVoiceDialogBuilder
 纯语音通知
+
 ![](images/notify_simple_voice.png)
+
 具体代码参考Sample
-```
+``` java
 GlassDialog simpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(this)
                         .setTitle(getString(R.string.voice_test))
                         .setConfirmText(getString(R.string.voice_play))
@@ -81,10 +83,64 @@ GlassDialog simpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(
 
 simpleVoiceDialogBuilder.show();
 ```
-`setTitle`: 设置标题 
-
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setConfirmListener|设置Confirm监听||
+|setCancelListener|设置Cancel监听||
+|dynamicTitle|动态改变标题||
+|dynamicConfirmText|动态改变确定按钮文字|
+|dynamicCustomConfirmView|自定义Confirm界面布局||
 
 #### ImageDialogBuilder
+语音图片通知
+
+![](images/notify_image.png)
+示例代码
+``` java
+mImageDialogBuilder = new GlassDialog.ImageDialogBuilder(this)
+                        .setTitle(getString(R.string.image_title))
+                        .setConfirmText(getString(R.string.voice_play))
+                        .setCancelText(getString(R.string.voice_collapse))
+                        .setNotifyResId(R.mipmap.ic_notify_img)
+                        .setConfirmListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Confirm", Toast.LENGTH_SHORT).show();
+
+                                mImageDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
+                                countDownManager.start();
+                            }
+                        })
+                        .setCancelListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Cancel", Toast.LENGTH_SHORT).show();
+
+                                if (null != countDownManager) {
+                                    countDownManager.cancel();
+                                }
+                            }
+                        });
+
+mImageDialogBuilder.show();
+```
+|方法|含义|默认值
+|---|---|---|
+|setTitle|设置标题|null|
+|setConfirmText|设置确定按钮文字|确定|
+|setCancelText|设置取消按钮文字|取消|
+|setNotifyResId|设置图片显示,res方式||
+|setNotifyBitmap|设置图片显示,bitmap方式||
+|setConfirmListener|设置Confirm监听||
+|setCancelListener|设置Cancel监听||
+|dynamicConfirmText|动态改变确定按钮文字|
+|dynamicCustomConfirmView|自定义Confirm界面布局||
+
 #### SimpleMessageDialogBuilder
 #### SimpleContentDialogBuilder
 #### ImageContentDialogBuilder

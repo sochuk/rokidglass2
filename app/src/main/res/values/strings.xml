@@ -22,4 +22,13 @@
 
     <!--sample -->
     <string name="sample_notification">通知栏</string>
+    <string name="sample_voice">纯语音</string>
+    <string name="sample_voice_image">语音图片</string>
+    <string name="sample_title">标题</string>
+    <string name="sample_content">内容</string>
+    <string name="sample_image_content">图片内容</string>
+    <string name="customer_content">自定义内容</string>
+    <string name="customer_image1">自定义图片1</string>
+    <string name="customer_image2">自定义图片2</string>
+
 </resources>
