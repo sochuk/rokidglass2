@@ -438,7 +438,7 @@ countDownManager.start();
 |---|---|---|
 |setMillisInFuture|总时间||
 |setCountDownInterval|间隔时间||
-|setCountDownListener|监听回掉||
+|setCountDownListener|监听回调||
 |start|开始|
 |cancel|取消|
 
