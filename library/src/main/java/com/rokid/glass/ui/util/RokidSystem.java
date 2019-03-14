@@ -21,10 +21,10 @@ public class RokidSystem {
      * @return
      */
     public static Rect getAlignmentRect() {
-        return new Rect(toInt(System.getProperty(ALIGNMENT_LEFT)),
-                toInt(System.getProperty(ALIGNMENT_TOP)),
-                toInt(System.getProperty(ALIGNMENT_RIGHT)),
-                toInt(System.getProperty(ALIGNMENT_BOTTOM)));
+        return new Rect(toInt(getSystemProperty(ALIGNMENT_LEFT)),
+                toInt(getSystemProperty(ALIGNMENT_TOP)),
+                toInt(getSystemProperty(ALIGNMENT_RIGHT)),
+                toInt(getSystemProperty(ALIGNMENT_BOTTOM)));
 
     }
 
@@ -34,11 +34,24 @@ public class RokidSystem {
      * @return dvt or evt
      */
     public static String getHardwareVersion() {
-        return System.getProperty(HARDWARE_VERSION);
+        return getSystemProperty(HARDWARE_VERSION);
     }
 
     private static int toInt(final String value) {
         return !TextUtils.isEmpty(value) && TextUtils.isDigitsOnly(value)
                 ? Integer.parseInt(value) : 0;
+    }
+
+    public static String getSystemProperty(String key) {
+        String value = null;
+
+        try {
+            value = (String) Class.forName("android.os.SystemProperties")
+                    .getMethod("get", String.class).invoke(null, key);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return value;
     }
 }
