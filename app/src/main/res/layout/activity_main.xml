@@ -11,17 +11,28 @@
         android:layout_height="match_parent"
         tools:context="com.rokid.glass.ui.sample.MainActivity">
 
+        <TextView
+            android:id="@+id/glass_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textSize="30sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/notification_btn"
             style="@style/NormalGlassButton"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:focusable="true"
             android:text="@string/sample_notification"
             android:textAllCaps="false"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toLeftOf="@id/glass_info"
+            app:layout_constraintRight_toRightOf="@id/glass_info"
+            app:layout_constraintTop_toBottomOf="@id/glass_info" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/simple_voice_btn"
@@ -29,7 +40,7 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="@string/sample_notification"
+            android:text="@string/sample_voice"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="@id/notification_btn"
             app:layout_constraintTop_toBottomOf="@id/notification_btn" />

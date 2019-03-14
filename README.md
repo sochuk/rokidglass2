@@ -441,3 +441,10 @@ countDownManager.start();
 |setCountDownListener|监听回掉||
 |start|开始|
 |cancel|取消|
+
+#### RokidSystem
+##### getAlignmentRect
+获取不同 glass 下的 alignment 参数
+
+##### getHardwareVersion
+获取glass硬件版本,dvt或者evt

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.rokid.glass.ui.dialog.GlassDialog;
 import com.rokid.glass.ui.dialog.GlassDialogListener;
 import com.rokid.glass.ui.util.CountDownManager;
+import com.rokid.glass.ui.util.RokidSystem;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -28,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView mTimerTv;
     private CountDownManager countDownManager;
 
+    private TextView mGlassInfoTv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.customer_message_btn).setOnClickListener(this);
         findViewById(R.id.customer_image_btn).setOnClickListener(this);
         findViewById(R.id.customer_image_content_btn).setOnClickListener(this);
+
+        mGlassInfoTv = findViewById(R.id.glass_info);
+        mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
 
         mCustomTimerView = LayoutInflater.from(this).inflate(R.layout.layout_timer, null);
         mTimerTv = mCustomTimerView.findViewById(R.id.custom_timer);
