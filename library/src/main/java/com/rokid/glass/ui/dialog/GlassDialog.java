@@ -61,7 +61,7 @@ public class GlassDialog extends Dialog {
         params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
         window.setAttributes(params);
 
-        window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+//        window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
     }
 
     @Override
