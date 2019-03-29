@@ -491,7 +491,12 @@ public class GlassDialog extends Dialog {
             }
 
             mTitleTv.setText(mTitle);
-            mMessageTv.setText(mMessage);
+            if (!TextUtils.isEmpty(mMessage)) {
+                mMessageTv.setText(mMessage);
+                mMessageTv.setVisibility(View.VISIBLE);
+            } else {
+                mMessageTv.setVisibility(View.GONE);
+            }
             parent.addView(view);
         }
 
@@ -507,6 +512,12 @@ public class GlassDialog extends Dialog {
                     }
                 }, mDuration);
             }
+        }
+
+        @Override
+        protected void onAfter(Context context, ViewGroup parent, GlassDialog dialog) {
+            super.onAfter(context, parent, dialog);
+            parent.setBackgroundColor(context.getResources().getColor(R.color.transparent));
         }
     }
 
