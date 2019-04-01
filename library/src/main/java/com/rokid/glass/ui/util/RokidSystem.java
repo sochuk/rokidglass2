@@ -31,11 +31,11 @@ public class RokidSystem {
         int h = (int) ((rectF.bottom - rectF.top) * previewHeight);
 
         int left = (int) ((previewRect.left - rectF.left * previewWidth) / w * BASE_WIDTH);
-        int top = (int) ((previewRect.top - rectF.top * previewWidth) / h * BASE_HEIGHT);
+        int top = (int) ((previewRect.top - rectF.top * previewHeight) / h * BASE_HEIGHT);
         int right = (int) ((previewRect.right - rectF.left * previewWidth) / w * BASE_WIDTH);
-        int bottom = (int) ((previewRect.bottom - rectF.top * previewWidth) / h * BASE_HEIGHT);
+        int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) / h * BASE_HEIGHT);
 
-        return new Rect(left,top,right,bottom);
+        return new Rect(left, top, right, bottom);
 
 //        return new Rect((int) ((previewRect.left - rect.left) * 1.0 / w * previewWidth),
 //                (int) ((previewRect.top - rect.top) * 1.0 / h * previewHeight),
