@@ -397,11 +397,76 @@ public class GlassDialog extends Dialog {
     /**
      * pure voice
      */
-    public static class SimpleVoiceDialogBuilder extends MessageDialogBuilder<SimpleVoiceDialogBuilder> {
+    public static class SimpleVoiceDialogBuilder extends CustomerVoiceBaseDialogBuilder<SimpleVoiceDialogBuilder> {
+        public SimpleVoiceDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_simple_voice_dialog;
+        }
+    }
+
+    public static class CustomerVoiceDialogBuilder extends CustomerVoiceBaseDialogBuilder<CustomerVoiceDialogBuilder> {
+        private Button mCustomerBtn;
+        protected String mCustomerText;
+
+        private GlassDialogListener mCustomerListener;
+
+        private int mLayoutWidth;
+
+        public CustomerVoiceDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        protected void init() {
+            super.init();
+            mLayoutWidth = mContext.getResources().getDimensionPixelSize(R.dimen.dialog_customer_message_width);
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+            super.onAfterCreateView(view);
+            if (!TextUtils.isEmpty(mCustomerText)) {
+                ViewStub contentView = view.findViewById(R.id.customer_btn);
+                View inflateView = contentView.inflate();
+                mCustomerBtn = (Button) inflateView;
+                if (null == mCustomerBtn) {
+                    return;
+                }
+
+                mCustomerBtn.setText(mCustomerText);
+                mCustomerBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (null != mCustomerListener) {
+                            mCustomerListener.onClick(v);
+                        }
+                    }
+                });
+
+                changeLayoutParams(view, mLayoutWidth, 0);
+            }
+        }
+
+        public CustomerVoiceDialogBuilder setCustomerText(String customerText) {
+            this.mCustomerText = customerText;
+            return this;
+        }
+
+        public CustomerVoiceDialogBuilder setCstomerListener(GlassDialogListener customerListener) {
+            this.mCustomerListener = customerListener;
+            return this;
+        }
+    }
+
+    private abstract static class CustomerVoiceBaseDialogBuilder<T extends MessageDialogBuilder> extends MessageDialogBuilder<T> {
         private ViewGroup mVoiceLayout;
         private View mCustomConfirmView;
 
-        public SimpleVoiceDialogBuilder(Context context) {
+        public CustomerVoiceBaseDialogBuilder(Context context) {
             super(context);
         }
 

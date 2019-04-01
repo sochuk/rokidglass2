@@ -102,6 +102,17 @@
             app:layout_constraintTop_toBottomOf="@id/image_content_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
+            android:id="@+id/customer_voice_btn"
+            style="@style/NormalGlassButton"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/customer_voice"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="@id/customer_message_btn"
+            app:layout_constraintTop_toBottomOf="@id/customer_message_btn" />
+
+        <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/customer_image_btn"
             style="@style/NormalGlassButton"
             android:layout_width="260dp"
@@ -109,8 +120,8 @@
             android:layout_marginTop="5dp"
             android:text="@string/customer_image1"
             android:textAllCaps="false"
-            app:layout_constraintLeft_toLeftOf="@id/customer_message_btn"
-            app:layout_constraintTop_toBottomOf="@id/customer_message_btn" />
+            app:layout_constraintLeft_toLeftOf="@id/customer_voice_btn"
+            app:layout_constraintTop_toBottomOf="@id/customer_voice_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/customer_image_content_btn"

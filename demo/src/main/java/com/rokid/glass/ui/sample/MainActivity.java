@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private GlassDialog mNotificationDialog;
     private GlassDialog mSimpleVoiceDialog;
     private GlassDialog.SimpleVoiceDialogBuilder mSimpleVoiceDialogBuilder;
+    private GlassDialog.CustomerVoiceDialogBuilder mCustomerVoiceDialogBuilder;
 
     private GlassDialog mImageDialog;
     private GlassDialog.ImageDialogBuilder mImageDialogBuilder;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.simple_content_btn).setOnClickListener(this);
         findViewById(R.id.image_content_btn).setOnClickListener(this);
         findViewById(R.id.customer_message_btn).setOnClickListener(this);
+        findViewById(R.id.customer_voice_btn).setOnClickListener(this);
         findViewById(R.id.customer_image_btn).setOnClickListener(this);
         findViewById(R.id.customer_image_content_btn).setOnClickListener(this);
 
@@ -318,6 +320,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             }
                         })
                         .show();
+                break;
+            case R.id.customer_voice_btn:
+                mCustomerVoiceDialogBuilder = new GlassDialog.CustomerVoiceDialogBuilder(this)
+                        .setTitle(getString(R.string.voice_test))
+                        .setConfirmText(getString(R.string.voice_play))
+                        .setCancelText(getString(R.string.voice_collapse))
+                        .setCustomerText(getString(R.string.voice_customer))
+                        .setConfirmListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Confirm", Toast.LENGTH_SHORT).show();
+
+                                mCustomerVoiceDialogBuilder.dynamicTitle(getString(R.string.voice_playing));
+                                mCustomerVoiceDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
+
+                                countDownManager.start();
+                            }
+                        })
+                        .setCancelListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Toast.makeText(MainActivity.this,
+                                        "Click Cancel", Toast.LENGTH_SHORT).show();
+
+                                if (null != countDownManager) {
+                                    countDownManager.cancel();
+                                }
+                            }
+                        });
+
+                mCustomerVoiceDialogBuilder.show();
                 break;
         }
     }

@@ -31,6 +31,10 @@ allprojects {
         maven {
             url 'http://mvnrepo.rokid-inc.com/nexus/content/repositories/releases/'
         }
+
+        maven {
+            url 'https://dl.bintray.com/rokidglass/maven'
+        }
     }
 }
 
