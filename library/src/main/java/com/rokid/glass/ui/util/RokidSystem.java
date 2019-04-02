@@ -20,6 +20,14 @@ public class RokidSystem {
     private final static int BASE_WIDTH = 1280;
     private final static int BASE_HEIGHT = 720;
 
+    /**
+     * 根据preview的rect，获取到映射后的真实区域
+     *
+     * @param previewWidth
+     * @param previewHeight
+     * @param previewRect
+     * @return
+     */
     public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect) {
 //        Rect rect = getAlignmentRect();
 //        int w = rect.right - rect.left;
@@ -49,7 +57,7 @@ public class RokidSystem {
      * @return
      */
     public static RectF getAlignmentPercent() {
-        Rect rect = getAlignmentRect();
+        Rect rect = getAlignmentBaseRect();
         return new RectF(rect.left / BASE_WIDTH, rect.top / BASE_HEIGHT,
                 rect.right / BASE_WIDTH, rect.bottom / BASE_HEIGHT);
     }
@@ -59,7 +67,7 @@ public class RokidSystem {
      *
      * @return
      */
-    public static Rect getAlignmentRect() {
+    private static Rect getAlignmentBaseRect() {
         return new Rect(toInt(getSystemProperty(ALIGNMENT_LEFT)),
                 toInt(getSystemProperty(ALIGNMENT_TOP)),
                 toInt(getSystemProperty(ALIGNMENT_RIGHT)),
