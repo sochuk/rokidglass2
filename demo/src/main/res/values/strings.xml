@@ -21,6 +21,7 @@
     <string name="voice_replay">重播</string>
 
     <!--sample -->
+    <string name="alignment">Alignment</string>
     <string name="sample_notification">通知栏</string>
     <string name="sample_voice">纯语音</string>
     <string name="sample_voice_image">语音图片</string>

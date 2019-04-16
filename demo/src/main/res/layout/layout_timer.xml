@@ -9,6 +9,6 @@
         android:id="@+id/custom_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@color/glass_ui_white"
         android:textSize="21sp" />
 </LinearLayout>

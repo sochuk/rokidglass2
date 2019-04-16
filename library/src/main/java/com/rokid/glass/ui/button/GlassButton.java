@@ -28,7 +28,7 @@ public class GlassButton extends Button {
     private Paint mUnfocusedStrokePaint;
     private final int mFocusedGlowWidth = 25;
     private final int mBtnPadding = 20;
-    private final float mStrokeWidth = 2f;
+    private final float mStrokeWidth = 4f;
 
     private int defaultButtonUnfocusedColor;
     private float defaultButtonCorner;

@@ -21,7 +21,7 @@ public class RokidSystem {
     private final static int BASE_HEIGHT = 720;
 
     /**
-     * 根据preview的rect，获取到映射后的真实区域
+     * 根据preview的rect，获取到映射到LCD屏幕的区域
      *
      * @param previewWidth
      * @param previewHeight
@@ -29,22 +29,21 @@ public class RokidSystem {
      * @return
      */
     public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect) {
-//        Rect rect = getAlignmentRect();
+//        Rect rect = getAlignmentBaseRect();
 //        int w = rect.right - rect.left;
 //        int h = rect.bottom - rect.top;
-
         RectF rectF = getAlignmentPercent();
 
-        int w = (int) ((rectF.right - rectF.left) * previewWidth);
-        int h = (int) ((rectF.bottom - rectF.top) * previewHeight);
 
-        int left = (int) ((previewRect.left - rectF.left * previewWidth) / w * BASE_WIDTH);
-        int top = (int) ((previewRect.top - rectF.top * previewHeight) / h * BASE_HEIGHT);
-        int right = (int) ((previewRect.right - rectF.left * previewWidth) / w * BASE_WIDTH);
-        int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) / h * BASE_HEIGHT);
+        float w =  ((rectF.right - rectF.left) * previewWidth);
+        float h =  ((rectF.bottom - rectF.top) * previewHeight);
+
+        int left = (int)((previewRect.left - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
+        int top = (int)((previewRect.top - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
+        int right = (int)((previewRect.right - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
+        int bottom = (int)((previewRect.bottom - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
 
         return new Rect(left, top, right, bottom);
-
 //        return new Rect((int) ((previewRect.left - rect.left) * 1.0 / w * previewWidth),
 //                (int) ((previewRect.top - rect.top) * 1.0 / h * previewHeight),
 //                (int) ((previewRect.right - rect.left) * 1.0 / w * previewWidth),
@@ -53,13 +52,14 @@ public class RokidSystem {
 
     /**
      * 获取系统的Alignment百分比
+     * 真实区域在虚拟世界的比例
      *
      * @return
      */
     public static RectF getAlignmentPercent() {
         Rect rect = getAlignmentBaseRect();
-        return new RectF(rect.left / BASE_WIDTH, rect.top / BASE_HEIGHT,
-                rect.right / BASE_WIDTH, rect.bottom / BASE_HEIGHT);
+        return new RectF(rect.left * 1.0f / BASE_WIDTH, rect.top * 1.0f / BASE_HEIGHT,
+                rect.right * 1.0f / BASE_WIDTH, rect.bottom * 1.0f / BASE_HEIGHT);
     }
 
     /**

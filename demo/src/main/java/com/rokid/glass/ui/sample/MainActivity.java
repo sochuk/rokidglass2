@@ -1,5 +1,6 @@
 package com.rokid.glass.ui.sample;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -87,6 +88,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.alignment_btn:
+                Rect rect = new Rect(776,430,900,554);
+                //real rect  Rect(1001,318,1398,713)
+                break;
             case R.id.notification_btn:
                 mNotificationDialog = new GlassDialog.NotificationDialogBuilder(this)
                         .setTitle(getString(R.string.notification_title))

@@ -22,6 +22,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.rokid.glass.ui.button.GlassButton
+            android:id="@+id/alignment_btn"
+            style="@style/NormalGlassButton"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:focusable="true"
+            android:text="@string/alignment"
+            android:textAllCaps="false"
+            app:layout_constraintLeft_toLeftOf="@id/glass_info"
+            app:layout_constraintRight_toRightOf="@id/glass_info"
+            app:layout_constraintTop_toBottomOf="@id/glass_info" />
+
+        <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/notification_btn"
             style="@style/NormalGlassButton"
             android:layout_width="260dp"
@@ -30,9 +43,9 @@
             android:focusable="true"
             android:text="@string/sample_notification"
             android:textAllCaps="false"
-            app:layout_constraintLeft_toLeftOf="@id/glass_info"
-            app:layout_constraintRight_toRightOf="@id/glass_info"
-            app:layout_constraintTop_toBottomOf="@id/glass_info" />
+            app:layout_constraintLeft_toLeftOf="@id/alignment_btn"
+            app:layout_constraintRight_toRightOf="@id/alignment_btn"
+            app:layout_constraintTop_toBottomOf="@id/alignment_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/simple_voice_btn"
