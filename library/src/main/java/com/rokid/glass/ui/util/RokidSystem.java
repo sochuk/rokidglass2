@@ -4,8 +4,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextUtils;
 
-import java.util.WeakHashMap;
-
 /**
  * @author jian.yang
  * @date 2019/3/14
@@ -32,16 +30,20 @@ public class RokidSystem {
 //        Rect rect = getAlignmentBaseRect();
 //        int w = rect.right - rect.left;
 //        int h = rect.bottom - rect.top;
+        if (noAlignment()) {
+            return null;
+        }
+
         RectF rectF = getAlignmentPercent();
 
 
-        float w =  ((rectF.right - rectF.left) * previewWidth);
-        float h =  ((rectF.bottom - rectF.top) * previewHeight);
+        float w = ((rectF.right - rectF.left) * previewWidth);
+        float h = ((rectF.bottom - rectF.top) * previewHeight);
 
-        int left = (int)((previewRect.left - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
-        int top = (int)((previewRect.top - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
-        int right = (int)((previewRect.right - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
-        int bottom = (int)((previewRect.bottom - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
+        int left = (int) ((previewRect.left - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
+        int top = (int) ((previewRect.top - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
+        int right = (int) ((previewRect.right - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
+        int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
 
         return new Rect(left, top, right, bottom);
 //        return new Rect((int) ((previewRect.left - rect.left) * 1.0 / w * previewWidth),
@@ -100,5 +102,9 @@ public class RokidSystem {
         }
 
         return value;
+    }
+
+    private static boolean noAlignment() {
+        return TextUtils.isEmpty(getSystemProperty(ALIGNMENT_LEFT));
     }
 }
