@@ -14,9 +14,45 @@ public class RokidSystem {
     private final static String ALIGNMENT_TOP = "ro.rokid.alignment.top";
     private final static String ALIGNMENT_RIGHT = "ro.rokid.alignment.right";
     private final static String ALIGNMENT_BOTTOM = "ro.rokid.alignment.bottom";
+
+    private final static String ALIGNMENT_LEFT_2K = "ro.rokid.alignment.left";
+    private final static String ALIGNMENT_TOP_2K = "ro.rokid.alignment.top";
+    private final static String ALIGNMENT_RIGHT_2K = "ro.rokid.alignment.right";
+    private final static String ALIGNMENT_BOTTOM_2K = "ro.rokid.alignment.bottom";
+
     private final static String HARDWARE_VERSION = "ro.rokid.hardware.version";
     private final static int BASE_WIDTH = 1280;
     private final static int BASE_HEIGHT = 720;
+
+    private final static int BASE_WIDTH_2K = 2048;
+    private final static int BASE_HEIGHT_2K = 1536;
+
+    /**
+     * 根据preview的rect，获取到映射到LCD屏幕的区域(2K)
+     *
+     * @param previewWidth
+     * @param previewHeight
+     * @param previewRect
+     * @return
+     */
+    public static Rect getAlignmentRect2K(final int previewWidth, final int previewHeight, final Rect previewRect) {
+        if (noAlignment2K()) {
+            return null;
+        }
+
+        RectF rectF = getAlignmentPercent(BASE_WIDTH_2K, BASE_HEIGHT_2K);
+
+
+        float w = ((rectF.right - rectF.left) * previewWidth);
+        float h = ((rectF.bottom - rectF.top) * previewHeight);
+
+        int left = (int) ((previewRect.left - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH_2K);
+        int top = (int) ((previewRect.top - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT_2K);
+        int right = (int) ((previewRect.right - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH_2K);
+        int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT_2K);
+
+        return new Rect(left, top, right, bottom);
+    }
 
     /**
      * 根据preview的rect，获取到映射到LCD屏幕的区域
@@ -34,7 +70,7 @@ public class RokidSystem {
             return null;
         }
 
-        RectF rectF = getAlignmentPercent();
+        RectF rectF = getAlignmentPercent(BASE_WIDTH, BASE_HEIGHT);
 
 
         float w = ((rectF.right - rectF.left) * previewWidth);
@@ -58,10 +94,15 @@ public class RokidSystem {
      *
      * @return
      */
-    public static RectF getAlignmentPercent() {
-        Rect rect = getAlignmentBaseRect();
-        return new RectF(rect.left * 1.0f / BASE_WIDTH, rect.top * 1.0f / BASE_HEIGHT,
-                rect.right * 1.0f / BASE_WIDTH, rect.bottom * 1.0f / BASE_HEIGHT);
+    public static RectF getAlignmentPercent(final int width, final int height) {
+        Rect rect;
+        if (width == BASE_WIDTH_2K) {
+            rect = getAlignmentBaseRect2K();
+        } else {
+            rect = getAlignmentBaseRect();
+        }
+        return new RectF(rect.left * 1.0f / width, rect.top * 1.0f / height,
+                rect.right * 1.0f / width, rect.bottom * 1.0f / height);
     }
 
     /**
@@ -74,6 +115,19 @@ public class RokidSystem {
                 toInt(getSystemProperty(ALIGNMENT_TOP)),
                 toInt(getSystemProperty(ALIGNMENT_RIGHT)),
                 toInt(getSystemProperty(ALIGNMENT_BOTTOM)));
+
+    }
+
+    /**
+     * 获取不同 glass 下的 alignment 参数
+     *
+     * @return
+     */
+    private static Rect getAlignmentBaseRect2K() {
+        return new Rect(toInt(getSystemProperty(ALIGNMENT_LEFT_2K)),
+                toInt(getSystemProperty(ALIGNMENT_TOP_2K)),
+                toInt(getSystemProperty(ALIGNMENT_RIGHT_2K)),
+                toInt(getSystemProperty(ALIGNMENT_BOTTOM_2K)));
 
     }
 
@@ -106,5 +160,9 @@ public class RokidSystem {
 
     private static boolean noAlignment() {
         return TextUtils.isEmpty(getSystemProperty(ALIGNMENT_LEFT));
+    }
+
+    private static boolean noAlignment2K() {
+        return TextUtils.isEmpty(getSystemProperty(ALIGNMENT_LEFT_2K));
     }
 }
