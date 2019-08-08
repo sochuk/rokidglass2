@@ -2,7 +2,6 @@ package com.android.glassui;
 
 import android.content.Context;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -11,7 +10,8 @@ import com.rokid.glass.ui.util.RokidSystem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -36,5 +36,30 @@ public class ExampleInstrumentedTest {
         Rect rect = RokidSystem.getAlignmentRect(1280, 720, previewRect);
         assertArrayEquals(new int[]{expectRect.left, expectRect.top, expectRect.right, expectRect.bottom},
                 new int[]{rect.left, rect.top, rect.right, rect.bottom});
+    }
+
+
+    @Test
+    public void testAlignment2K() {
+        Rect previewRect = new Rect(500, 500, 700, 700);
+
+        Rect rect = RokidSystem.getAlignmentRect(1280, 720, previewRect);
+        System.out.println(rect);
+        Rect windowRect = RokidSystem.getWindowRect(1280, 720, rect);
+
+        assertArrayEquals(new int[]{previewRect.left, previewRect.top, previewRect.right, previewRect.bottom},
+                new int[]{windowRect.left, windowRect.top, windowRect.right, windowRect.bottom});
+    }
+
+    @Test
+    public void testAlignment2KWin() {
+        Rect previewRect = new Rect(800, 800, 1000, 1000);
+
+        Rect rect = RokidSystem.getAlignmentRect2K(2048, 1536, previewRect);
+        System.out.println(rect);
+        Rect windowRect = RokidSystem.getWindowRect2K(2048, 1536, rect);
+
+        assertArrayEquals(new int[]{previewRect.left, previewRect.top, previewRect.right, previewRect.bottom},
+                new int[]{windowRect.left, windowRect.top, windowRect.right, windowRect.bottom});
     }
 }
