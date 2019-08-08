@@ -3,6 +3,7 @@ package com.rokid.glass.ui.util;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.TextUtils;
+import android.util.Pair;
 
 /**
  * @author jian.yang
@@ -27,29 +28,25 @@ public class RokidSystem {
     private final static int BASE_WIDTH_2K = 2048;
     private final static int BASE_HEIGHT_2K = 1536;
 
+    /**
+     * use getWindowRect method
+     *
+     * @param previewWidth
+     * @param previewHeight
+     * @param windowRect
+     * @return
+     */
+    @Deprecated
     public static Rect getWindowRect2K(final int previewWidth, final int previewHeight, final Rect windowRect) {
-        if (noAlignment2K()) {
-            return null;
-        }
-        RectF rectF = getAlignmentPercent(BASE_WIDTH_2K, BASE_HEIGHT_2K);
-
-        float w = ((rectF.right - rectF.left) * previewWidth);
-        float h = ((rectF.bottom - rectF.top) * previewHeight);
-
-        int left = (int) ((windowRect.left * w) * 1.0f / BASE_WIDTH + rectF.left * previewWidth);
-        int top = (int) ((windowRect.top * h) * 1.0f / BASE_HEIGHT + rectF.top * previewHeight);
-        int right = (int) ((windowRect.right * w) * 1.0f / BASE_WIDTH + rectF.left * previewWidth);
-        int bottom = (int) ((windowRect.bottom * h) * 1.0f / BASE_HEIGHT + rectF.top * previewHeight);
-
-        return new Rect(left, top, right, bottom);
+        return getWindowRect(previewWidth, previewHeight, windowRect);
     }
 
 
     public static Rect getWindowRect(final int previewWidth, final int previewHeight, final Rect windowRect) {
-        if (noAlignment()) {
+        RectF rectF = getAlignmentRectF(previewWidth);
+        if (null == rectF) {
             return null;
         }
-        RectF rectF = getAlignmentPercent(BASE_WIDTH, BASE_HEIGHT);
 
         float w = ((rectF.right - rectF.left) * previewWidth);
         float h = ((rectF.bottom - rectF.top) * previewHeight);
@@ -63,30 +60,16 @@ public class RokidSystem {
     }
 
     /**
-     * 根据preview的rect，获取到映射到LCD屏幕的区域(2K)
+     * use getAlignmentRect method
      *
      * @param previewWidth
      * @param previewHeight
      * @param previewRect
      * @return
      */
+    @Deprecated
     public static Rect getAlignmentRect2K(final int previewWidth, final int previewHeight, final Rect previewRect) {
-        if (noAlignment2K()) {
-            return null;
-        }
-
-        RectF rectF = getAlignmentPercent(BASE_WIDTH_2K, BASE_HEIGHT_2K);
-
-
-        float w = ((rectF.right - rectF.left) * previewWidth);
-        float h = ((rectF.bottom - rectF.top) * previewHeight);
-
-        int left = (int) ((previewRect.left - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
-        int top = (int) ((previewRect.top - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
-        int right = (int) ((previewRect.right - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
-        int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
-
-        return new Rect(left, top, right, bottom);
+        return getAlignmentRect(previewWidth, previewHeight, previewRect);
     }
 
     /**
@@ -98,15 +81,10 @@ public class RokidSystem {
      * @return
      */
     public static Rect getAlignmentRect(final int previewWidth, final int previewHeight, final Rect previewRect) {
-//        Rect rect = getAlignmentBaseRect();
-//        int w = rect.right - rect.left;
-//        int h = rect.bottom - rect.top;
-        if (noAlignment()) {
+        RectF rectF = getAlignmentRectF(previewWidth);
+        if (null == rectF) {
             return null;
         }
-
-        RectF rectF = getAlignmentPercent(BASE_WIDTH, BASE_HEIGHT);
-
 
         float w = ((rectF.right - rectF.left) * previewWidth);
         float h = ((rectF.bottom - rectF.top) * previewHeight);
@@ -138,6 +116,36 @@ public class RokidSystem {
         }
         return new RectF(rect.left * 1.0f / width, rect.top * 1.0f / height,
                 rect.right * 1.0f / width, rect.bottom * 1.0f / height);
+    }
+
+    private static RectF getAlignmentRectF(final int previewWidth) {
+        @Alignment.type int type = getBenefitResolution(previewWidth);
+        int width;
+        int height;
+
+        if (type == Alignment.align2K) {
+            if (noAlignment2K()) {
+                return null;
+            }
+            width = BASE_WIDTH_2K;
+            height = BASE_HEIGHT_2K;
+        } else {
+            if (noAlignment()) {
+                return null;
+            }
+            width = BASE_WIDTH;
+            height = BASE_HEIGHT;
+        }
+
+        return getAlignmentPercent(width, height);
+    }
+
+    private static @Alignment.type
+    int getBenefitResolution(final int width) {
+        int close2K = Math.abs(BASE_WIDTH_2K - width);
+        int close720p = Math.abs(BASE_WIDTH - width);
+
+        return close2K < close720p ? Alignment.align2K : Alignment.align720p;
     }
 
     /**

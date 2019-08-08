@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -53,13 +54,21 @@ public class ExampleInstrumentedTest {
 
     @Test
     public void testAlignment2KWin() {
-        Rect previewRect = new Rect(800, 800, 1000, 1000);
+        Rect previewRect = new Rect(718, 694 ,916, 965);
 
-        Rect rect = RokidSystem.getAlignmentRect2K(2048, 1536, previewRect);
+        Rect rect = RokidSystem.getAlignmentRect(2048, 1536, previewRect);
         System.out.println(rect);
-        Rect windowRect = RokidSystem.getWindowRect2K(2048, 1536, rect);
+        Rect windowRect = RokidSystem.getWindowRect(2048, 1536, rect);
 
         assertArrayEquals(new int[]{previewRect.left, previewRect.top, previewRect.right, previewRect.bottom},
                 new int[]{windowRect.left, windowRect.top, windowRect.right, windowRect.bottom});
+    }
+
+    @Test
+    public void testAlignmentView() {
+        Rect rect = new Rect(0, 0, 384, 524);
+        Rect windowRect = RokidSystem.getWindowRect(2048, 1536, rect);
+
+        assertTrue(null != windowRect);
     }
 }
