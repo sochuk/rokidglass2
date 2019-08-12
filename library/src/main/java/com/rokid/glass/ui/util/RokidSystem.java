@@ -41,7 +41,14 @@ public class RokidSystem {
         return getWindowRect(previewWidth, previewHeight, windowRect);
     }
 
-
+    /**
+     * 根据LCD屏幕的rect，获取到preview的区域rect
+     *
+     * @param previewWidth
+     * @param previewHeight
+     * @param windowRect
+     * @return
+     */
     public static Rect getWindowRect(final int previewWidth, final int previewHeight, final Rect windowRect) {
         RectF rectF = getAlignmentRectF(previewWidth);
         if (null == rectF) {

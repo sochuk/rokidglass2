@@ -1,5 +1,5 @@
 # Glass UI SDK
-**Version: 1.0.0**  
+**Version: 1.2.0**  
 
 ## 一、UI SDK介绍
 ---
@@ -33,14 +33,19 @@ implementation 'com.rokid.glass:ui:1.0.0'
 ```
 
 ### 2.2 Demo
-[Glass UI Demo](https://gitlab.rokid-inc.com/rokid-glass/glass-ui)
+[Glass UI Demo](https://github.com/rokid/glass-ui)
 
 ## 三、功能列表
 ---
 ### 3.1 RokidSystem
 Alignment概念：
-Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程，如图：
-![](images/alignment.png)
+Camera预览界面通过Glass显示屏幕进入人眼睛的映射过程.
+
+在手机上开发如下图：
+![](images/alignment_phone.png)
+
+在眼镜上开发如下图：
+![](images/alignment_glass.png)
 
 1. 蓝色代表`相机预览`的画面  
 2. 绿色代表`相机预览`中物体的坐标   
@@ -82,7 +87,30 @@ drawRect2(canvas, 180, rect.width(), rect.height(), paint, rectConfig);
 canvas.restore();
 ...
 ```
+#### 3.1.2 getWindowRect
+说明：根据LCD屏幕的rect，获取到preview的区域rect
+``` java
+public static Rect getWindowRect(final int previewWidth, final int previewHeight, final Rect windowRect) {
+```
+|参数|含义|默认值
+|---|---|---|
+|previewWidth|Camera preview宽||
+|previewHeight|Camera preview高||
+|windowRect|屏幕上的Rect||
 
+示例代码: 根据屏幕上的roi区域，得到preview 上的roi区域
+```java
+Rect window = new Rect(0,0,1280,720);
+roiRect = RokidSystem.getWindowRect2K(CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, window);
+roiRect = FaceRectUtils.scaleRect(roiRect, CameraParams.PREVIEW_WIDTH,CameraParams.PREVIEW_HEIGHT, FaceParams.roiScale);
+...
+
+VideoDFaceConf config = new VideoDFaceConf();
+config.setDataType(DataFormat.DATA_YUV420);
+config.setSize(CameraParams.PREVIEW_WIDTH, CameraParams.PREVIEW_HEIGHT);
+config.setRoi(roiRect);
+
+```
 
 ### 3.2 GlassButton
 Glass自定义的Button
@@ -347,7 +375,7 @@ new GlassDialog.ImageContentDialogBuilder(this)
             }).show();
 ```
 
-#### 3.3.7 CustomerSimpleMsgDialogBuilder
+#### 3.3.7 CustomSimpleMsgDialogBuilder
 自定义标题内容
 
 ![](images/notifiy_customer_content.png)
@@ -356,26 +384,26 @@ new GlassDialog.ImageContentDialogBuilder(this)
 |---|---|---|
 |setTitle|设置标题|null|
 |setContent|设置内容|null|
-|setCustomerText|自定义按钮文本||
+|setCustomText|自定义按钮文本||
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
 |setConfirmListener|设置Confirm监听| |
 |setCancelListener|设置Cancel监听| |
-|setCustomerListener|自定义按钮监听|-|
+|setCustomListener|自定义按钮监听|-|
 
 **示例代码**
 ```java
-mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
+mCustomMessageDialog = new GlassDialog.CustomSimpleMsgDialogBuilder(this)
             .setTitle(getString(R.string.image_content_title))
             .setConfirmText(getString(R.string.voice_play))
             .setCancelText(getString(R.string.voice_collapse))
-            .setCustomerText(getString(R.string.voice_customer))
+            .setCustomText(getString(R.string.voice_custom))
             .setContent(getString(R.string.simple_content))
-            .setCustomerListener(new GlassDialogListener() {
+            .setCustomListener(new GlassDialogListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this,
-                            "Click Customer", Toast.LENGTH_SHORT).show();
+                            "Click Custom", Toast.LENGTH_SHORT).show();
                 }
             })
             .setConfirmListener(new GlassDialogListener() {
@@ -383,8 +411,8 @@ mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this,
                             "Click Confirm", Toast.LENGTH_SHORT).show();
-                    if (null != mCustomerMessageDialog && mCustomerMessageDialog.isShowing()) {
-                        mCustomerMessageDialog.dismiss();
+                    if (null != mCustomMessageDialog && mCustomMessageDialog.isShowing()) {
+                        mCustomMessageDialog.dismiss();
                     }
                 }
             })
@@ -399,7 +427,7 @@ mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
             .show();
 ```
 
-#### 3.3.8 CustomerImageDialogBuilder
+#### 3.3.8 CustomImageDialogBuilder
 自定义图片样式1
 
 ![](images/notify_customer_image1.png)
@@ -407,28 +435,28 @@ mCustomerMessageDialog = new GlassDialog.CustomerSimpleMsgDialogBuilder(this)
 |方法|含义|默认值
 |---|---|---|
 |setTitle|设置标题|null|
-|setCustomerText|自定义按钮文本||
+|setCustomText|自定义按钮文本||
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
 |setNotifyResId|设置图片显示,res方式| |
 |setNotifyBitmap|设置图片显示,bitmap方式| |
 |setConfirmListener|设置Confirm监听| |
 |setCancelListener|设置Cancel监听| |
-|setCustomerListener|自定义按钮监听|-|
+|setCustomListener|自定义按钮监听|-|
 
 **示例代码**
 ```java
-mCustomerImageDialogBuilder = new GlassDialog.CustomerImageDialogBuilder(this)
+mCustomImageDialogBuilder = new GlassDialog.CustomImageDialogBuilder(this)
             .setTitle(getString(R.string.image_title))
             .setConfirmText(getString(R.string.voice_play))
             .setCancelText(getString(R.string.voice_collapse))
-            .setCustomerText(getString(R.string.voice_customer))
+            .setCustomText(getString(R.string.voice_custom))
             .setNotifyResId(R.mipmap.ic_notify_img)
-            .setCustomerListener(new GlassDialogListener() {
+            .setCustomListener(new GlassDialogListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this,
-                            "Click Customer", Toast.LENGTH_SHORT).show();
+                            "Click Custom", Toast.LENGTH_SHORT).show();
                 }
             })
             .setConfirmListener(new GlassDialogListener() {
@@ -436,7 +464,7 @@ mCustomerImageDialogBuilder = new GlassDialog.CustomerImageDialogBuilder(this)
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this,
                             "Click Play", Toast.LENGTH_SHORT).show();
-                    mCustomerImageDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
+                    mCustomImageDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
                     countDownManager.start();
                 }
             })
@@ -449,10 +477,10 @@ mCustomerImageDialogBuilder = new GlassDialog.CustomerImageDialogBuilder(this)
                 }
             });
 
-mCustomerImageDialogBuilder.show();
+mCustomImageDialogBuilder.show();
 ```
 
-#### 3.3.9 CustomerImageContentDialogBuilder
+#### 3.3.9 CustomImageContentDialogBuilder
 自定义图片样式2
 
 ![](images/notify_customer_image2.png)
@@ -461,29 +489,29 @@ mCustomerImageDialogBuilder.show();
 |---|---|---|
 |setTitle|设置标题|null|
 |setContent|设置内容|null|
-|setCustomerText|自定义按钮文本||
+|setCustomText|自定义按钮文本||
 |setConfirmText|设置确定按钮文字|确定|
 |setCancelText|设置取消按钮文字|取消|
 |setNotifyResId|设置图片显示,res方式| |
 |setNotifyBitmap|设置图片显示,bitmap方式| |
 |setConfirmListener|设置Confirm监听| |
 |setCancelListener|设置Cancel监听| |
-|setCustomerListener|自定义按钮监听|-|
+|setCustomListener|自定义按钮监听|-|
 
 **示例代码**
 ```java
-new GlassDialog.CustomerImageContentDialogBuilder(this)
+new GlassDialog.CustomImageContentDialogBuilder(this)
             .setTitle(getString(R.string.image_content_title))
             .setConfirmText(getString(R.string.voice_play))
             .setCancelText(getString(R.string.voice_collapse))
             .setNotifyResId(R.mipmap.ic_notify_img)
             .setContent(getString(R.string.multi_content))
-            .setCustomerText(getString(R.string.voice_customer))
-            .setCustomerListener(new GlassDialogListener() {
+            .setCustomText(getString(R.string.voice_custom))
+            .setCustomListener(new GlassDialogListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this,
-                            "Click Customer", Toast.LENGTH_SHORT).show();
+                            "Click Custom", Toast.LENGTH_SHORT).show();
                 }
             })
             .setConfirmListener(new GlassDialogListener() {
