@@ -3,6 +3,7 @@ package com.rokid.glass.ui.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -61,7 +62,11 @@ public class GlassDialog extends Dialog {
         params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
         window.setAttributes(params);
 
-        window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        if (Build.VERSION.SDK_INT >= 26) {//8.0
+            window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
+        } else {
+            window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        }
     }
 
     @Override
