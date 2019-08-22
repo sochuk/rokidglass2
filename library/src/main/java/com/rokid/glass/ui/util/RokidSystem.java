@@ -2,6 +2,7 @@ package com.rokid.glass.ui.util;
 
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.opengl.Matrix;
 import android.text.TextUtils;
 import android.util.Pair;
 
@@ -176,8 +177,29 @@ public class RokidSystem {
     private static Rect getAlignmentBaseRect2K() {
         return new Rect(toInt(getSystemProperty(ALIGNMENT_LEFT_2K)),
                 toInt(getSystemProperty(ALIGNMENT_TOP_2K)),
-                toInt(getSystemProperty(ALIGNMENT_RIGHT_2K)),
+                toInt( getSystemProperty(ALIGNMENT_RIGHT_2K)),
                 toInt(getSystemProperty(ALIGNMENT_BOTTOM_2K)));
+
+    }
+
+    /**
+     * 获取OpticalSeeThrough眼镜的 3D alignment ProjectionMatrix
+     * at present defaults for rokid glass 1, landscape, opengl es
+     *
+     * @return  opengl es column major ProjectionMatrix, for rokid glass 1 landscape
+     */
+    public static float[] getProjectionMatrix_OpticalSeeThrough() {
+
+        float rawProjectionMatrixGL2[] = { 5.2f,0.00f, 0,0,   0,9f,0.0f,0,    0.001f, 0.004f,-1,-1,    0,0,-0.02f,0};//for default lands
+
+        double tmp[] = {1.0, 0.011,-0.001,0.0, -0.011,0.994,0.047,0.0, 0.002, -0.047,0.994,0.0,  -35.4,10.4,-55.4,1.0};
+        float eyeAdjustmentGL2[] = new float[16];
+        for(int i=0;i<16;i++) {eyeAdjustmentGL2[i] = (float)tmp[i];}
+
+        float projectionMatrix[] = new float[16];
+        Matrix.multiplyMM(projectionMatrix, 0, rawProjectionMatrixGL2, 0, eyeAdjustmentGL2, 0);
+
+        return projectionMatrix;
 
     }
 
