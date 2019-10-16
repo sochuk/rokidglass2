@@ -304,6 +304,21 @@ public class GlassDialog extends Dialog {
         }
     }
 
+    public static class SingleContentDialogBuilder extends MessageDialogBuilder<SingleContentDialogBuilder>{
+        public SingleContentDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        public int layoutId() {
+            return R.layout.layout_single_message_dialog;
+        }
+
+        @Override
+        public void onAfterCreateView(View view) {
+
+        }
+    }
     /**
      * simple message
      */

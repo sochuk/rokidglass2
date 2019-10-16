@@ -31,6 +31,8 @@
 
     <dimen name="dialog_simple_message_width">450dp</dimen>
     <dimen name="dialog_simple_message_min_height">155dp</dimen>
+    <dimen name="dialog_single_message_width">410dp</dimen>
+    <dimen name="dialog_single_message_min_height">180dp</dimen>
     <dimen name="dialog_simple_message_content_height">250dp</dimen>
 
     <dimen name="dialog_simple_message_margin">20dp</dimen>

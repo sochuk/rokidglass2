@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mGlassInfoTv;
     private GlassDialog mTitleDialog;
+    private GlassDialog mSingleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,16 +162,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 mImageDialogBuilder.show();
                 break;
+//            case R.id.simple_message_btn:
+//                mTitleDialog = new GlassDialog.SimpleMessageDialogBuilder(this)
+//                        .setTitle("此操作将清空设备所有数据\n是否确认？")
+//                        .setConfirmText(getString(R.string.voice_play))
+//                        .setConfirmListener(new GlassDialogListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//                                Toast.makeText(MainActivity.this,
+//                                        "Click Confirm", Toast.LENGTH_SHORT).show();
+//                                mTitleDialog.dismiss();
+//                            }
+//                        }).show();
+//                break;
             case R.id.simple_message_btn:
-                mTitleDialog = new GlassDialog.SimpleMessageDialogBuilder(this)
-                        .setTitle(getString(R.string.simple_message_title))
+                mSingleDialog = new GlassDialog.SingleContentDialogBuilder(this)
+                        .setTitle("此操作将清空设备所有数据\n是否确认？")
+//                        .setTitle("此操作将清空设备所有数据")
+                        .setCancelText("ddd")
                         .setConfirmText(getString(R.string.voice_play))
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
                                 Toast.makeText(MainActivity.this,
                                         "Click Confirm", Toast.LENGTH_SHORT).show();
-                                mTitleDialog.dismiss();
+                                mSingleDialog.dismiss();
                             }
                         }).show();
                 break;
