@@ -751,6 +751,8 @@ public class GlassDialog extends Dialog {
 
             if (!TextUtils.isEmpty(mCancelText)) {
                 mCancelBtn.setText(mCancelText);
+            } else {
+                mCancelBtn.setVisibility(View.GONE);
             }
 
             mConfirmBtn.setOnClickListener(new View.OnClickListener() {

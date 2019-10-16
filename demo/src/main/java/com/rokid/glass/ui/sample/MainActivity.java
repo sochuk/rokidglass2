@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CountDownManager countDownManager;
 
     private TextView mGlassInfoTv;
+    private GlassDialog mTitleDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.alignment_btn:
-                Rect rect = new Rect(776,430,900,554);
+                Rect rect = new Rect(776, 430, 900, 554);
                 //real rect  Rect(1001,318,1398,713)
                 break;
             case R.id.notification_btn:
@@ -161,23 +162,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mImageDialogBuilder.show();
                 break;
             case R.id.simple_message_btn:
-                new GlassDialog.SimpleMessageDialogBuilder(this)
+                mTitleDialog = new GlassDialog.SimpleMessageDialogBuilder(this)
                         .setTitle(getString(R.string.simple_message_title))
                         .setConfirmText(getString(R.string.voice_play))
-                        .setCancelText(getString(R.string.voice_collapse))
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
                                 Toast.makeText(MainActivity.this,
                                         "Click Confirm", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setCancelListener(new GlassDialogListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Toast.makeText(MainActivity.this,
-                                        "Click Cancel", Toast.LENGTH_SHORT).show();
-
+                                mTitleDialog.dismiss();
                             }
                         }).show();
                 break;
