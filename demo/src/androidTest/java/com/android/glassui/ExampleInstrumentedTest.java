@@ -39,7 +39,6 @@ public class ExampleInstrumentedTest {
                 new int[]{rect.left, rect.top, rect.right, rect.bottom});
     }
 
-
     @Test
     public void testAlignment2K() {
         Rect previewRect = new Rect(500, 500, 700, 700);
@@ -70,5 +69,15 @@ public class ExampleInstrumentedTest {
         Rect windowRect = RokidSystem.getWindowRect(2048, 1536, rect);
 
         assertTrue(null != windowRect);
+    }
+
+    @Test
+    public void testAlignmentHD() {
+        Rect previewRect = new Rect(776, 430, 900, 554);
+        Rect expectRect = new Rect(1001, 318, 1398, 713);
+
+        Rect rect = RokidSystem.getAlignmentRect(1700, 720, previewRect);
+        assertArrayEquals(new int[]{expectRect.left, expectRect.top, expectRect.right, expectRect.bottom},
+                new int[]{rect.left, rect.top, rect.right, rect.bottom});
     }
 }

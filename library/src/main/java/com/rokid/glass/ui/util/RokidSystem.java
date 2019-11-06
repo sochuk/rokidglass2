@@ -4,7 +4,6 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.opengl.Matrix;
 import android.text.TextUtils;
-import android.util.Pair;
 
 /**
  * @author jian.yang
@@ -17,6 +16,11 @@ public class RokidSystem {
     private final static String ALIGNMENT_RIGHT = "ro.rokid.alignment.right";
     private final static String ALIGNMENT_BOTTOM = "ro.rokid.alignment.bottom";
 
+    private final static String ALIGNMENT_LEFT_HD = "ro.rokid.fhdalignment.left";
+    private final static String ALIGNMENT_TOP_HD = "ro.rokid.fhdalignment.top";
+    private final static String ALIGNMENT_RIGHT_HD = "ro.rokid.fhdalignment.right";
+    private final static String ALIGNMENT_BOTTOM_HD = "ro.rokid.fhdalignment.bottom";
+
     private final static String ALIGNMENT_LEFT_2K = "ro.rokid.2kalignment.left";
     private final static String ALIGNMENT_TOP_2K = "ro.rokid.2kalignment.top";
     private final static String ALIGNMENT_RIGHT_2K = "ro.rokid.2kalignment.right";
@@ -26,8 +30,14 @@ public class RokidSystem {
     private final static int BASE_WIDTH = 1280;
     private final static int BASE_HEIGHT = 720;
 
-    private final static int BASE_WIDTH_2K = 2048;
-    private final static int BASE_HEIGHT_2K = 1536;
+    private final static int BASE_WIDTH_720P = 1280;
+    private final static int BASE_HEIGHT_720P = 720;
+
+    private final static int BASE_WIDTH_HD = 1920;
+    private final static int BASE_HEIGHT_HD = 1080;
+
+//    private final static int BASE_WIDTH_2K = 2048;
+//    private final static int BASE_HEIGHT_2K = 1536;
 
     /**
      * use getWindowRect method
@@ -97,10 +107,21 @@ public class RokidSystem {
         float w = ((rectF.right - rectF.left) * previewWidth);
         float h = ((rectF.bottom - rectF.top) * previewHeight);
 
-        int left = (int) ((previewRect.left - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
-        int top = (int) ((previewRect.top - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
-        int right = (int) ((previewRect.right - rectF.left * previewWidth) * 1.0f / w * BASE_WIDTH);
-        int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) * 1.0f / h * BASE_HEIGHT);
+        @Alignment.type int type = getBenefitResolution(previewWidth);
+        int width;
+        int height;
+        if (type == Alignment.alignHD) {
+            width = BASE_WIDTH_HD;
+            height = BASE_HEIGHT_HD;
+        } else {
+            width = BASE_WIDTH_720P;
+            height = BASE_HEIGHT_720P;
+        }
+
+        int left = (int) ((previewRect.left - rectF.left * previewWidth) * 1.0f / w * width);
+        int top = (int) ((previewRect.top - rectF.top * previewHeight) * 1.0f / h * height);
+        int right = (int) ((previewRect.right - rectF.left * previewWidth) * 1.0f / w * width);
+        int bottom = (int) ((previewRect.bottom - rectF.top * previewHeight) * 1.0f / h * height);
 
         return new Rect(left, top, right, bottom);
 //        return new Rect((int) ((previewRect.left - rect.left) * 1.0 / w * previewWidth),
@@ -117,8 +138,8 @@ public class RokidSystem {
      */
     public static RectF getAlignmentPercent(final int width, final int height) {
         Rect rect;
-        if (width == BASE_WIDTH_2K) {
-            rect = getAlignmentBaseRect2K();
+        if (width == BASE_WIDTH_HD) {
+            rect = getAlignmentBaseRectHD();
         } else {
             rect = getAlignmentBaseRect();
         }
@@ -131,18 +152,18 @@ public class RokidSystem {
         int width;
         int height;
 
-        if (type == Alignment.align2K) {
-            if (noAlignment2K()) {
+        if (type == Alignment.alignHD) {
+            if (noAlignmentHD()) {
                 return null;
             }
-            width = BASE_WIDTH_2K;
-            height = BASE_HEIGHT_2K;
+            width = BASE_WIDTH_HD;
+            height = BASE_HEIGHT_HD;
         } else {
             if (noAlignment()) {
                 return null;
             }
-            width = BASE_WIDTH;
-            height = BASE_HEIGHT;
+            width = BASE_WIDTH_720P;
+            height = BASE_HEIGHT_720P;
         }
 
         return getAlignmentPercent(width, height);
@@ -150,10 +171,11 @@ public class RokidSystem {
 
     private static @Alignment.type
     int getBenefitResolution(final int width) {
-        int close2K = Math.abs(BASE_WIDTH_2K - width);
+//        int close2K = Math.abs(BASE_WIDTH_2K - width);
+        int closeHD = Math.abs(BASE_WIDTH_HD - width);
         int close720p = Math.abs(BASE_WIDTH - width);
 
-        return close2K < close720p ? Alignment.align2K : Alignment.align720p;
+        return closeHD < close720p ? Alignment.alignHD : Alignment.align720p;
     }
 
     /**
@@ -169,6 +191,14 @@ public class RokidSystem {
 
     }
 
+    public static Rect getAlignmentBaseRectHD() {
+        return new Rect(toInt(getSystemProperty(ALIGNMENT_LEFT_HD)),
+                toInt(getSystemProperty(ALIGNMENT_TOP_HD)),
+                toInt(getSystemProperty(ALIGNMENT_RIGHT_HD)),
+                toInt(getSystemProperty(ALIGNMENT_BOTTOM_HD)));
+
+    }
+
     /**
      * 获取不同 glass 下的 alignment 参数
      *
@@ -177,7 +207,7 @@ public class RokidSystem {
     private static Rect getAlignmentBaseRect2K() {
         return new Rect(toInt(getSystemProperty(ALIGNMENT_LEFT_2K)),
                 toInt(getSystemProperty(ALIGNMENT_TOP_2K)),
-                toInt( getSystemProperty(ALIGNMENT_RIGHT_2K)),
+                toInt(getSystemProperty(ALIGNMENT_RIGHT_2K)),
                 toInt(getSystemProperty(ALIGNMENT_BOTTOM_2K)));
 
     }
@@ -186,15 +216,17 @@ public class RokidSystem {
      * 获取OpticalSeeThrough眼镜的 3D alignment ProjectionMatrix
      * at present defaults for rokid glass 1, landscape, opengl es
      *
-     * @return  opengl es column major ProjectionMatrix, for rokid glass 1 landscape
+     * @return opengl es column major ProjectionMatrix, for rokid glass 1 landscape
      */
     public static float[] getProjectionMatrix_OpticalSeeThrough() {
 
-        float rawProjectionMatrixGL2[] = { 5.2f,0.00f, 0,0,   0,9f,0.0f,0,    0.001f, 0.004f,-1,-1,    0,0,-0.02f,0};//for default lands
+        float rawProjectionMatrixGL2[] = {5.2f, 0.00f, 0, 0, 0, 9f, 0.0f, 0, 0.001f, 0.004f, -1, -1, 0, 0, -0.02f, 0};//for default lands
 
-        double tmp[] = {1.0, 0.011,-0.001,0.0, -0.011,0.994,0.047,0.0, 0.002, -0.047,0.994,0.0,  -35.4,10.4,-55.4,1.0};
+        double tmp[] = {1.0, 0.011, -0.001, 0.0, -0.011, 0.994, 0.047, 0.0, 0.002, -0.047, 0.994, 0.0, -35.4, 10.4, -55.4, 1.0};
         float eyeAdjustmentGL2[] = new float[16];
-        for(int i=0;i<16;i++) {eyeAdjustmentGL2[i] = (float)tmp[i];}
+        for (int i = 0; i < 16; i++) {
+            eyeAdjustmentGL2[i] = (float) tmp[i];
+        }
 
         float projectionMatrix[] = new float[16];
         Matrix.multiplyMM(projectionMatrix, 0, rawProjectionMatrixGL2, 0, eyeAdjustmentGL2, 0);
@@ -232,6 +264,10 @@ public class RokidSystem {
 
     private static boolean noAlignment() {
         return TextUtils.isEmpty(getSystemProperty(ALIGNMENT_LEFT));
+    }
+
+    private static boolean noAlignmentHD() {
+        return TextUtils.isEmpty(getSystemProperty(ALIGNMENT_LEFT_HD));
     }
 
     private static boolean noAlignment2K() {

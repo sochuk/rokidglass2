@@ -1,5 +1,6 @@
 package com.rokid.glass.ui.sample;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -106,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setTitle(getString(R.string.voice_test))
                         .setConfirmText(getString(R.string.voice_play))
                         .setCancelText(getString(R.string.voice_collapse))
+                        .setCancelable(true)
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
@@ -116,17 +118,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 mSimpleVoiceDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
 
                                 countDownManager.start();
+
                             }
                         })
                         .setCancelListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
-                                Toast.makeText(MainActivity.this,
-                                        "Click Cancel", Toast.LENGTH_SHORT).show();
-
-                                if (null != countDownManager) {
-                                    countDownManager.cancel();
-                                }
+//                                Toast.makeText(MainActivity.this,
+//                                        "Click Cancel", Toast.LENGTH_SHORT).show();
+//
+//                                if (null != countDownManager) {
+//                                    countDownManager.cancel();
+//                                }
+                                startActivity(new Intent(MainActivity.this, TextViewActivity.class));
                             }
                         });
 
@@ -179,8 +183,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mSingleDialog = new GlassDialog.SingleContentDialogBuilder(this)
                         .setTitle("此操作将清空设备所有数据\n是否确认？")
 //                        .setTitle("此操作将清空设备所有数据")
-                        .setCancelText("ddd")
-                        .setConfirmText(getString(R.string.voice_play))
+//                        .setCancelText("清空数据")
+                        .setConfirmText("返回上级")
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
