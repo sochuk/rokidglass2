@@ -1,0 +1,158 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/4ad9933194c43143690d25c9f6de4278/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/1ae5bcc39ed76e4c1ec920649ba5c98f/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/1163639c983b2897c979a1766bcf41f5/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/29ac51f3cf4bc47ebb328c4169ed2ee3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/189b3558e83ee83baca450e3a3d268af/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/aec47ec3e15d346803a8bcf64021a6b2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/991192ccbffe2714296ee0a3f4b30b46/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/3e1dbfc186ad12cc32146f9d7f188bf7/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/f9602604c4235e74c1f521406348690d/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2ad569cffa4cc65aa11bbfd3291bcbed/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/fdade12f76a288afa2d29ffca5e24e26/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/0346179c3dfced5fc3d572445624b13b/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/343ed36afc3c704d6e6a107b44d5fd21/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/99038878091b4dd3e7e820a6869278bb/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/508ccab2560429f0253c760109800bf2/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/2fb962e91c6edac2bf833f3e7746d666/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/79aa286d3e95b9201a21cfd845259c1c/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/20e89c2160b30bd2b631bf97f60a4da9/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/89a834a90b899f6abdba9077906912fd/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/ee7ca1aa921084e727c02c7ec1be8ca0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/02adbb5641e6cc6c88aadee5ba34536a/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/f8d37ea9377f47f6ff5dc7ab320a8484/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/2b940919ba83c87cb744ad31d47890d9/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/84dbc69be231f3044f6bc5190d342f65/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/e9e1bb7fdcbdb012575f4d4883c1327a/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/691a40b952357fba4ecb7c5365cec154/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/f491cca190e3c277d310f7cecbb4ce38/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+	package
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:3:5-40
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:1-23:12
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:5:5-21:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/1ae5bcc39ed76e4c1ec920649ba5c98f/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/1ae5bcc39ed76e4c1ec920649ba5c98f/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/2fb962e91c6edac2bf833f3e7746d666/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/2fb962e91c6edac2bf833f3e7746d666/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/79aa286d3e95b9201a21cfd845259c1c/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/79aa286d3e95b9201a21cfd845259c1c/AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/2fb962e91c6edac2bf833f3e7746d666/AndroidManifest.xml:22:18-91
+	android:supportsRtl
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:11:9-40
+activity#com.yeungeek.animationset.MainActivity
+ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:12:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:16:27-74
+activity#com.yeungeek.animationset.TextView2Activity
+ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:20:9-54
+	android:name
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml:20:19-52
+uses-sdk
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/4ad9933194c43143690d25c9f6de4278/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/4ad9933194c43143690d25c9f6de4278/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/1ae5bcc39ed76e4c1ec920649ba5c98f/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/1ae5bcc39ed76e4c1ec920649ba5c98f/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/1163639c983b2897c979a1766bcf41f5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0.aar/1163639c983b2897c979a1766bcf41f5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/29ac51f3cf4bc47ebb328c4169ed2ee3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0.aar/29ac51f3cf4bc47ebb328c4169ed2ee3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/189b3558e83ee83baca450e3a3d268af/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0.aar/189b3558e83ee83baca450e3a3d268af/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/aec47ec3e15d346803a8bcf64021a6b2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0.aar/aec47ec3e15d346803a8bcf64021a6b2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/991192ccbffe2714296ee0a3f4b30b46/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0.aar/991192ccbffe2714296ee0a3f4b30b46/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/3e1dbfc186ad12cc32146f9d7f188bf7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/loader-28.0.0.aar/3e1dbfc186ad12cc32146f9d7f188bf7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/f9602604c4235e74c1f521406348690d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0.aar/f9602604c4235e74c1f521406348690d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2ad569cffa4cc65aa11bbfd3291bcbed/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0.aar/2ad569cffa4cc65aa11bbfd3291bcbed/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/fdade12f76a288afa2d29ffca5e24e26/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0.aar/fdade12f76a288afa2d29ffca5e24e26/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/0346179c3dfced5fc3d572445624b13b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0.aar/0346179c3dfced5fc3d572445624b13b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/343ed36afc3c704d6e6a107b44d5fd21/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/customview-28.0.0.aar/343ed36afc3c704d6e6a107b44d5fd21/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/99038878091b4dd3e7e820a6869278bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0.aar/99038878091b4dd3e7e820a6869278bb/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/508ccab2560429f0253c760109800bf2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0.aar/508ccab2560429f0253c760109800bf2/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/2fb962e91c6edac2bf833f3e7746d666/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/2fb962e91c6edac2bf833f3e7746d666/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/79aa286d3e95b9201a21cfd845259c1c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/versionedparcelable-28.0.0.aar/79aa286d3e95b9201a21cfd845259c1c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/20e89c2160b30bd2b631bf97f60a4da9/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0.aar/20e89c2160b30bd2b631bf97f60a4da9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/89a834a90b899f6abdba9077906912fd/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/89a834a90b899f6abdba9077906912fd/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/ee7ca1aa921084e727c02c7ec1be8ca0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0.aar/ee7ca1aa921084e727c02c7ec1be8ca0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/02adbb5641e6cc6c88aadee5ba34536a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0.aar/02adbb5641e6cc6c88aadee5ba34536a/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/f8d37ea9377f47f6ff5dc7ab320a8484/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/print-28.0.0.aar/f8d37ea9377f47f6ff5dc7ab320a8484/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/2b940919ba83c87cb744ad31d47890d9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.1.aar/2b940919ba83c87cb744ad31d47890d9/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/84dbc69be231f3044f6bc5190d342f65/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/livedata-1.1.1.aar/84dbc69be231f3044f6bc5190d342f65/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/e9e1bb7fdcbdb012575f4d4883c1327a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.1.aar/e9e1bb7fdcbdb012575f4d4883c1327a/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/691a40b952357fba4ecb7c5365cec154/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/runtime-1.1.1.aar/691a40b952357fba4ecb7c5365cec154/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/f491cca190e3c277d310f7cecbb4ce38/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /Users/jian.yang/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0.aar/f491cca190e3c277d310f7cecbb4ce38/AndroidManifest.xml:20:5-44
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+		ADDED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml
+		INJECTED from /Users/jian.yang/sources/rokid/glass/sdk/GlassUI/animationset/src/main/AndroidManifest.xml

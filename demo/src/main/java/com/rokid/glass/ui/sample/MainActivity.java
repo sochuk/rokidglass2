@@ -96,11 +96,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //real rect  Rect(1001,318,1398,713)
                 break;
             case R.id.notification_btn:
-                mNotificationDialog = new GlassDialog.NotificationDialogBuilder(this)
-                        .setTitle(getString(R.string.notification_title))
-                        .setMessage(getString(R.string.notification_message))
-                        .create();
-                mNotificationDialog.show();
+//                mNotificationDialog = new GlassDialog.NotificationDialogBuilder(this)
+//                        .setTitle(getString(R.string.notification_title))
+//                        .setMessage(getString(R.string.notification_message))
+//                        .create();
+//                mNotificationDialog.show();
+
+                new GlassDialog.NotificationBuilder(this)
+                        .setTitle("开始录像")
+                        .setTip("00:00:00")
+                        .show();
+//                mNotificationDialog.show();
                 break;
             case R.id.simple_voice_btn:
                 mSimpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(this)

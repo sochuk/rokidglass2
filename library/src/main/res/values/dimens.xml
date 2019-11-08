@@ -18,9 +18,12 @@
     <dimen name="notification_dialog_height">75dp</dimen>
     <dimen name="notification_dialog_icon">50dp</dimen>
     <dimen name="notification_dialog_bg_border">2dp</dimen>
+    <dimen name="notification_bg_border">2dp</dimen>
     <dimen name="notification_dialog_radius">45dp</dimen>
     <dimen name="notification_dialog_padding">13dp</dimen>
     <dimen name="notification_dialog_message_margin">3dp</dimen>
+    <dimen name="notification_padding_top">8dp</dimen>
+    <dimen name="notification_padding_left">40dp</dimen>
 
     <dimen name="dialog_simple_voice_width">340dp</dimen>
     <dimen name="dialog_simple_voice_height">198dp</dimen>

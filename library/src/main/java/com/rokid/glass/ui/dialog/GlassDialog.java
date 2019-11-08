@@ -304,7 +304,7 @@ public class GlassDialog extends Dialog {
         }
     }
 
-    public static class SingleContentDialogBuilder extends MessageDialogBuilder<SingleContentDialogBuilder>{
+    public static class SingleContentDialogBuilder extends MessageDialogBuilder<SingleContentDialogBuilder> {
         public SingleContentDialogBuilder(Context context) {
             super(context);
         }
@@ -319,6 +319,7 @@ public class GlassDialog extends Dialog {
 
         }
     }
+
     /**
      * simple message
      */
@@ -523,6 +524,78 @@ public class GlassDialog extends Dialog {
             this.mVoiceLayout.addView(mCustomConfirmView, new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT
             ));
+        }
+    }
+
+    public static class NotificationBuilder extends GlassDialogBuilder<NotificationBuilder> {
+        private final static int DEFAULT_DURATION = 2000;
+        private int mDuration = DEFAULT_DURATION;
+        private Handler mHandler;
+
+        private TextView mTipTv;
+
+        private String mTitle;
+        private String mTip;
+
+        public NotificationBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        protected void init() {
+            mHandler = new Handler();
+        }
+
+        public NotificationBuilder setDuration(int duration) {
+            this.mDuration = duration;
+            return this;
+        }
+
+        public NotificationBuilder setTitle(String title) {
+            this.mTitle = title;
+            return this;
+        }
+
+        public NotificationBuilder setTip(String tip) {
+            this.mTip = tip;
+            return this;
+        }
+
+        @Override
+        protected void onCreateContent(Context context, ViewGroup parent, GlassDialog dialog) {
+            View view = LayoutInflater.from(context).inflate(R.layout.layout_notification, parent, false);
+            mGlassDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+            mTitleTv = view.findViewById(R.id.notification_title);
+            mTipTv = view.findViewById(R.id.notification_tip);
+
+            mTitleTv.setText(mTitle);
+            if (!TextUtils.isEmpty(mTip)) {
+                mTipTv.setText(mTip);
+                mTipTv.setVisibility(View.VISIBLE);
+            } else {
+                mTipTv.setVisibility(View.GONE);
+            }
+            parent.addView(view);
+        }
+
+        @Override
+        protected void dialogShow() {
+            super.dialogShow();
+            mDuration = mDuration == 0 ? DEFAULT_DURATION : mDuration;
+            if (mDuration > 0) {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dismiss();
+                    }
+                }, mDuration);
+            }
+        }
+
+        @Override
+        protected void onAfter(Context context, ViewGroup parent, GlassDialog dialog) {
+            super.onAfter(context, parent, dialog);
+            parent.setBackgroundColor(context.getResources().getColor(R.color.transparent));
         }
     }
 
