@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.rokid.glass.ui.dialog.GlassDialog;
 import com.rokid.glass.ui.dialog.GlassDialogListener;
+import com.rokid.glass.ui.toast.GlassToastUtil;
 import com.rokid.glass.ui.util.CountDownManager;
 import com.rokid.glass.ui.util.RokidSystem;
 
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.customer_voice_btn).setOnClickListener(this);
         findViewById(R.id.customer_image_btn).setOnClickListener(this);
         findViewById(R.id.customer_image_content_btn).setOnClickListener(this);
+        findViewById(R.id.simple_toast).setOnClickListener(this);
 
         mGlassInfoTv = findViewById(R.id.glass_info);
         mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
@@ -376,6 +378,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         });
 
                 mCustomerVoiceDialogBuilder.show();
+                break;
+            case R.id.simple_toast:
+                GlassToastUtil.showToast(this,R.string.glassui_toast_test);
                 break;
         }
     }
