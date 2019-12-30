@@ -51,7 +51,7 @@ public class GlassToastUtil {
         int height = wm.getDefaultDisplay().getHeight();
 
         //Toast的Y坐标是屏幕高度的1/4，不会出现不适配的问题
-        toastStart.setGravity(Gravity.TOP, 0, height / 6);
+        toastStart.setGravity(Gravity.BOTTOM, 0, height / 5);
 //        toastStart.setDuration(Toast.LENGTH_LONG);
         toastStart.show();
 
