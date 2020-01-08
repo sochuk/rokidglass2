@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                        .setTitle("此操作将清空设备所有数据")
 //                        .setCancelText("清空数据")
                         .setConfirmText("返回上级")
+                        .setCancelText("清空数据")
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
@@ -381,6 +382,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.simple_toast:
                 GlassToastUtil.showToast(this,R.string.glassui_toast_test);
+//                Toast.makeText(MainActivity.this,
+//                        R.string.glassui_toast_test, Toast.LENGTH_SHORT).show();
                 break;
         }
     }
