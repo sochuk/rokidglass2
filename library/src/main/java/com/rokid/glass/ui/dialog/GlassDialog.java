@@ -183,7 +183,12 @@ public class GlassDialog extends Dialog {
 
         @Override
         public int layoutId() {
-            return R.layout.layout_simple_message_dialog;
+            if (Utils.isGenerationOneGlass()) {
+                return R.layout.layout_simple_message_dialog;
+            }else {
+                return R.layout.layout_simple_message_dialog_2g;
+            }
+
         }
 
         public CustomerSimpleMsgDialogBuilder setVoiceTitle(String voiceTitle) {
@@ -286,7 +291,11 @@ public class GlassDialog extends Dialog {
 
         @Override
         public int layoutId() {
-            return R.layout.layout_simple_message_dialog;
+                if (Utils.isGenerationOneGlass()) {
+                    return R.layout.layout_simple_message_dialog;
+                }else {
+                    return R.layout.layout_simple_message_dialog_2g;
+                }
         }
 
         @Override
@@ -313,7 +322,11 @@ public class GlassDialog extends Dialog {
 
         @Override
         public int layoutId() {
-            return R.layout.layout_single_message_dialog;
+            if (Utils.isGenerationOneGlass()) {
+                return R.layout.layout_single_message_dialog;
+            }else {
+                return R.layout.layout_single_message_dialog_2g;
+            }
         }
 
         @Override
@@ -332,7 +345,11 @@ public class GlassDialog extends Dialog {
 
         @Override
         public int layoutId() {
-            return R.layout.layout_simple_message_dialog;
+            if (Utils.isGenerationOneGlass()) {
+                return R.layout.layout_simple_message_dialog;
+            }else {
+                return R.layout.layout_simple_message_dialog_2g;
+            }
         }
 
         @Override

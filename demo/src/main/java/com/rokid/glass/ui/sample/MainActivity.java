@@ -112,55 +112,55 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
             case R.id.simple_voice_btn:
-                mSimpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(this)
-                        .setTitle(getString(R.string.voice_test))
-                        .setConfirmText(getString(R.string.voice_play))
-                        .setCancelText(getString(R.string.voice_collapse))
-                        .setCancelable(true)
-                        .setConfirmListener(new GlassDialogListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Toast.makeText(MainActivity.this,
-                                        "Click Confirm", Toast.LENGTH_SHORT).show();
-
-                                mSimpleVoiceDialogBuilder.dynamicTitle(getString(R.string.voice_playing));
-                                mSimpleVoiceDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
-
-                                countDownManager.start();
-
-                            }
-                        })
-                        .setCancelListener(new GlassDialogListener() {
-                            @Override
-                            public void onClick(View view) {
-//                                Toast.makeText(MainActivity.this,
-//                                        "Click Cancel", Toast.LENGTH_SHORT).show();
-//
-//                                if (null != countDownManager) {
-//                                    countDownManager.cancel();
-//                                }
-                                startActivity(new Intent(MainActivity.this, TextViewActivity.class));
-                            }
-                        });
-//
-                mSimpleVoiceDialogBuilder.show();
-//                new GlassDialog.NormalDialogBuilder(this)
-//                        .setTitle("测试")
-//                        .setContent("测试内容")
-//                        .setCancelText("接听通话")
-//                        .setConfirmText("挂断通话")
+//                mSimpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(this)
+//                        .setTitle(getString(R.string.voice_test))
+//                        .setConfirmText(getString(R.string.voice_play))
+//                        .setCancelText(getString(R.string.voice_collapse))
+//                        .setCancelable(true)
 //                        .setConfirmListener(new GlassDialogListener() {
 //                            @Override
 //                            public void onClick(View view) {
+//                                Toast.makeText(MainActivity.this,
+//                                        "Click Confirm", Toast.LENGTH_SHORT).show();
+//
+//                                mSimpleVoiceDialogBuilder.dynamicTitle(getString(R.string.voice_playing));
+//                                mSimpleVoiceDialogBuilder.dynamicCustomConfirmView(mCustomTimerView);
+//
+//                                countDownManager.start();
 //
 //                            }
 //                        })
 //                        .setCancelListener(new GlassDialogListener() {
 //                            @Override
 //                            public void onClick(View view) {
-//
+////                                Toast.makeText(MainActivity.this,
+////                                        "Click Cancel", Toast.LENGTH_SHORT).show();
+////
+////                                if (null != countDownManager) {
+////                                    countDownManager.cancel();
+////                                }
+//                                startActivity(new Intent(MainActivity.this, TextViewActivity.class));
 //                            }
-//                        }).show();
+//                        });
+////
+//                mSimpleVoiceDialogBuilder.show();
+                new GlassDialog.NormalDialogBuilder(this)
+                        .setTitle("测试")
+                        .setContent("测试内容")
+                        .setCancelText("接听通话")
+                        .setConfirmText("挂断通话")
+                        .setConfirmListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                            }
+                        })
+                        .setCancelListener(new GlassDialogListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                            }
+                        }).show();
                 break;
             case R.id.image_btn:
                 mImageDialogBuilder = new GlassDialog.ImageDialogBuilder(this)
@@ -211,6 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                        .setTitle("此操作将清空设备所有数据")
                         .setCancelText("清空数据")
                         .setConfirmText("返回上级")
+                        .setCancelText("清空数据")
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {
@@ -399,6 +400,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.simple_toast:
                 GlassToastUtil.showToast(this,R.string.glassui_toast_test);
+//                Toast.makeText(MainActivity.this,
+//                        R.string.glassui_toast_test, Toast.LENGTH_SHORT).show();
                 break;
         }
     }

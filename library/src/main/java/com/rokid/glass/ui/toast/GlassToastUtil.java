@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import java.util.TimerTask;
 public class GlassToastUtil {
     public static int DURATION_DEFAULT = 1500;
     private static TextView mTextView;
+    private static LinearLayout ll_root;
 
     public static void showToast(@NonNull Context context, String message, int duration) {
         if (duration >= 3500)
@@ -30,6 +32,12 @@ public class GlassToastUtil {
         //加载Toast布局
 
         View toastRoot = LayoutInflater.from(context).inflate(R.layout.layout_toast, null);
+        WindowManager wm = (WindowManager) context
+                .getSystemService(Context.WINDOW_SERVICE);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(wm.getDefaultDisplay().getWidth(), LinearLayout.LayoutParams.WRAP_CONTENT);
+//        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        ll_root = toastRoot.findViewById(R.id.ll_root);
+        ll_root.setLayoutParams(layoutParams);//需设置第二层的宽高
 
         //初始化布局控件
 
@@ -46,12 +54,12 @@ public class GlassToastUtil {
         //获取屏幕高度
 
 
-        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+//        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
 
         int height = wm.getDefaultDisplay().getHeight();
 
         //Toast的Y坐标是屏幕高度的1/4，不会出现不适配的问题
-        toastStart.setGravity(Gravity.TOP, 0, height / 6);
+        toastStart.setGravity(Gravity.BOTTOM, 0, height / 5);
 //        toastStart.setDuration(Toast.LENGTH_LONG);
         toastStart.show();
 
