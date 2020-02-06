@@ -62,6 +62,7 @@ public class GlassDialog extends Dialog {
         params.height = ViewGroup.LayoutParams.MATCH_PARENT;
         params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
         window.setAttributes(params);
+        window.setWindowAnimations(R.style.GlassDialogWindowAnimation);
 
         if (Build.VERSION.SDK_INT >= 26) {//8.0
             window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
@@ -597,6 +598,115 @@ public class GlassDialog extends Dialog {
         protected void onAfter(Context context, ViewGroup parent, GlassDialog dialog) {
             super.onAfter(context, parent, dialog);
             parent.setBackgroundColor(context.getResources().getColor(R.color.transparent));
+        }
+    }
+
+    public static class NormalDialogBuilder extends GlassDialogBuilder<NormalDialogBuilder> {
+        protected Button mConfirmBtn;
+        protected Button mCancelBtn;
+        protected String mConfirmText;
+        protected String mCancelText;
+        protected String mContent;
+
+        private View mDialogTipView;
+        private TextView mDialogContent;
+
+        protected GlassDialogListener mConfirmListener;
+        protected GlassDialogListener mCancelListener;
+
+        public NormalDialogBuilder(Context context) {
+            super(context);
+        }
+
+        @Override
+        protected void init() {
+
+        }
+
+        @Override
+        protected void onCreateContent(Context context, ViewGroup parent, GlassDialog dialog) {
+            View view = LayoutInflater.from(context).inflate(R.layout.layout_glass_normal_dialog, parent, false);
+            mTitleTv = view.findViewById(R.id.dialog_title);
+            mConfirmBtn = view.findViewById(R.id.confirm_btn);
+            mCancelBtn = view.findViewById(R.id.cancel_btn);
+
+            mDialogTipView = view.findViewById(R.id.dialog_tip);
+            mDialogContent = view.findViewById(R.id.dialog_tip_content);
+
+            mTitleTv.setText(mTitle);
+            if (!TextUtils.isEmpty(mConfirmText)) {
+                mConfirmBtn.setText(mConfirmText);
+            }
+
+            if (!TextUtils.isEmpty(mCancelText)) {
+                mCancelBtn.setVisibility(View.VISIBLE);
+                mCancelBtn.setText(mCancelText);
+            } else {
+                mCancelBtn.setVisibility(View.GONE);
+            }
+
+            if (!TextUtils.isEmpty(mContent)) {
+                mDialogTipView.setVisibility(View.VISIBLE);
+                mDialogContent.setText(mContent);
+            } else {
+                mDialogTipView.setVisibility(View.GONE);
+            }
+
+            mConfirmBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                    if (null != mConfirmListener) {
+                        mConfirmListener.onClick(v);
+                    }
+                }
+            });
+
+            mCancelBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                    if (null != mCancelListener) {
+                        mCancelListener.onClick(v);
+                    }
+                }
+            });
+
+            parent.addView(view);
+        }
+
+        public NormalDialogBuilder setConfirmText(String confirmText) {
+            this.mConfirmText = confirmText;
+            return this;
+        }
+
+        public NormalDialogBuilder setCancelText(String cancelText) {
+            this.mCancelText = cancelText;
+            return this;
+        }
+
+
+        public NormalDialogBuilder setConfirmListener(GlassDialogListener confirmListener) {
+            this.mConfirmListener = confirmListener;
+            return this;
+        }
+
+        public NormalDialogBuilder setCancelListener(GlassDialogListener cancelListener) {
+            this.mCancelListener = cancelListener;
+            return this;
+        }
+
+        public NormalDialogBuilder setContent(String content) {
+            this.mContent = content;
+            return this;
+        }
+
+        @Override
+        protected void onAfter(Context context, ViewGroup parent, GlassDialog dialog) {
+            super.onAfter(context, parent, dialog);
+            ViewGroup.LayoutParams params = parent.getLayoutParams();
+            params.height = Utils.getScreenHeight(context);
+            parent.setLayoutParams(params);
         }
     }
 

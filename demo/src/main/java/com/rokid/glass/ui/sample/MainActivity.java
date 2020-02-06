@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         .setTip("00:00:00")
                         .show();
 //                mNotificationDialog.show();
+
                 break;
             case R.id.simple_voice_btn:
                 mSimpleVoiceDialogBuilder = new GlassDialog.SimpleVoiceDialogBuilder(this)
@@ -141,8 +142,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 startActivity(new Intent(MainActivity.this, TextViewActivity.class));
                             }
                         });
-
+//
                 mSimpleVoiceDialogBuilder.show();
+//                new GlassDialog.NormalDialogBuilder(this)
+//                        .setTitle("测试")
+//                        .setContent("测试内容")
+//                        .setCancelText("接听通话")
+//                        .setConfirmText("挂断通话")
+//                        .setConfirmListener(new GlassDialogListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//
+//                            }
+//                        })
+//                        .setCancelListener(new GlassDialogListener() {
+//                            @Override
+//                            public void onClick(View view) {
+//
+//                            }
+//                        }).show();
                 break;
             case R.id.image_btn:
                 mImageDialogBuilder = new GlassDialog.ImageDialogBuilder(this)
@@ -191,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mSingleDialog = new GlassDialog.SingleContentDialogBuilder(this)
                         .setTitle("此操作将清空设备所有数据\n是否确认？")
 //                        .setTitle("此操作将清空设备所有数据")
-//                        .setCancelText("清空数据")
+                        .setCancelText("清空数据")
                         .setConfirmText("返回上级")
                         .setConfirmListener(new GlassDialogListener() {
                             @Override

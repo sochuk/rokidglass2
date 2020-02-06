@@ -26,4 +26,7 @@
     <color name="notification_start_color">#FF9FA5C0</color>
     <color name="notification_center_color">#FF353469</color>
     <color name="notification_end_color">#FF2B2B5E</color>
+
+    <color name="common_light_text_color">#B3FFFFFF</color>
+    <color name="common_text_color">#80FFFFFF</color>
 </resources>
