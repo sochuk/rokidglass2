@@ -68,7 +68,6 @@ public class AutoSize {
         String key = sizeInDp + "|" + isBaseOnWidth + "|"
                 + AutoSizeConfig.getInstance().getInitScaledDensity() + "|" + screenSize;
 
-        Log.d("DEBUG", "##### autoConvertDensity key: " + key);
         DisplayMetricsInfo displayMetricsInfo = mCache.get(key);
 
         float targetDensity = 0;

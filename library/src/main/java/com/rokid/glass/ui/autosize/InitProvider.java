@@ -23,8 +23,6 @@ public class InitProvider extends ContentProvider {
 
         AutoSizeConfig.getInstance()
                 .init((Application) application);
-
-        Log.d("DEBUG", "##### init provider");
         return true;
     }
 
