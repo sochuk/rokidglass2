@@ -25,8 +25,23 @@
 
         </activity>
 
-        <activity android:name=".TextView2Activity"/>
+        <activity
+            android:name=".TextView2Activity"
+            android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".AutoSizeActivity"
+            android:screenOrientation="landscape" />
+
+        <!-- default width in dp -->
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="640" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="360" />
     </application>
+
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 </manifest>

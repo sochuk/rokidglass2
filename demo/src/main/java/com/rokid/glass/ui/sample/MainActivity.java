@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.customer_image_btn).setOnClickListener(this);
         findViewById(R.id.customer_image_content_btn).setOnClickListener(this);
         findViewById(R.id.simple_toast).setOnClickListener(this);
+        findViewById(R.id.auto_size_btn).setOnClickListener(this);
 
         mGlassInfoTv = findViewById(R.id.glass_info);
         mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
@@ -399,9 +400,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mCustomerVoiceDialogBuilder.show();
                 break;
             case R.id.simple_toast:
-                GlassToastUtil.showToast(this,R.string.glassui_toast_test);
+                GlassToastUtil.showToast(this, R.string.glassui_toast_test);
 //                Toast.makeText(MainActivity.this,
 //                        R.string.glassui_toast_test, Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.auto_size_btn:
+                startActivity(new Intent(this, AutoSizeActivity.class));
                 break;
         }
     }
