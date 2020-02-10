@@ -558,4 +558,4 @@ new GlassDialog.CustomImageContentDialogBuilder(this)
      </application>           
 </manifest>
 ```
-这里的都是根据设计图的尺寸来，已宽或者高为基准，默认是宽。
+这里的都是根据设计图的尺寸来，以宽或者高为基准，默认是宽。
