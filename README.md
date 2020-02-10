@@ -1,5 +1,5 @@
 # Glass UI SDK
-**Version: 1.2.3**  
+**Version: 1.4.0**
 
 ## 一、UI SDK介绍
 ---
@@ -29,7 +29,7 @@ allprojects {
 ```
 ### 2.1 Gradle依赖
 ``` gradle
-implementation 'com.rokid.glass:ui:1.2.0'
+implementation 'com.rokid.glass:ui:1.4.0'
 ```
 
 ### 2.2 Demo
@@ -544,3 +544,18 @@ new GlassDialog.CustomImageContentDialogBuilder(this)
             })
             .show();
 ```
+### 3.4 屏幕适配
+接入，在app的`AndroidManifest.xml`声明：
+``` java
+<manifest>
+    <application>            
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="640"/>
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="360"/>           
+     </application>           
+</manifest>
+```
+这里的都是根据设计图的尺寸来，已宽或者高为基准，默认是宽。
