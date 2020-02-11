@@ -559,3 +559,5 @@ new GlassDialog.CustomImageContentDialogBuilder(this)
 </manifest>
 ```
 这里的都是根据设计图的尺寸来，以宽或者高为基准，默认是宽。
+#### 模拟器Preview设置
+![](images/preview.jpg)
