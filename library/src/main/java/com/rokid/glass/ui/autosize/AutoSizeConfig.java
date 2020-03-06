@@ -65,6 +65,10 @@ public class AutoSizeConfig {
      */
     private int mInitScreenHeightDp;
 
+    private boolean isExcludeFontScale;
+
+    private float privateFontScale;
+
     private AutoSizeActivityLifecycle mActivityLifecycle;
     private boolean isStop;
 
@@ -223,6 +227,14 @@ public class AutoSizeConfig {
 
     public int getScreenHeight() {
         return mScreenHeight;
+    }
+
+    public float getPrivateFontScale() {
+        return privateFontScale;
+    }
+
+    public boolean isExcludeFontScale() {
+        return isExcludeFontScale;
     }
 
     private void getMetaData(final Context context) {

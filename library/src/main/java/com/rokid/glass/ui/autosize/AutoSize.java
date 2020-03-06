@@ -81,8 +81,14 @@ public class AutoSize {
                 targetDensity = AutoSizeConfig.getInstance().getScreenHeight() * 1.0f / sizeInDp;
             }
 
-            targetScaledDensity = targetDensity * (AutoSizeConfig.getInstance().
-                    getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity());
+            if (AutoSizeConfig.getInstance().getPrivateFontScale() > 0) {
+                targetScaledDensity = targetDensity * AutoSizeConfig.getInstance().getPrivateFontScale();
+            } else {
+                float systemFontScale = AutoSizeConfig.getInstance().isExcludeFontScale() ? 1 : AutoSizeConfig.getInstance().
+                        getInitScaledDensity() * 1.0f / AutoSizeConfig.getInstance().getInitDensity();
+                targetScaledDensity = targetDensity * systemFontScale;
+            }
+
             targetDensityDpi = (int) (targetDensity * 160);
         } else {
             targetDensity = displayMetricsInfo.getDensity();
