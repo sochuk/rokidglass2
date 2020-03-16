@@ -237,6 +237,16 @@ public class AutoSizeConfig {
         return isExcludeFontScale;
     }
 
+    public AutoSizeConfig setExcludeFontScale(boolean excludeFontScale) {
+        isExcludeFontScale = excludeFontScale;
+        return this;
+    }
+
+    public AutoSizeConfig setPrivateFontScale(float fontScale) {
+        privateFontScale = fontScale;
+        return this;
+    }
+
     private void getMetaData(final Context context) {
         new Thread(new Runnable() {
             @Override
