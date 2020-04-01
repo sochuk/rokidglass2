@@ -1,8 +1,6 @@
 package com.rokid.glass.ui.toast;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +22,7 @@ public class GlassToastUtil {
     private static TextView mTextView;
     private static LinearLayout ll_root;
 
-    public static void showToast(@NonNull Context context, String message, int duration) {
+    public static void showToast(Context context, String message, int duration) {
         if (duration >= 3500)
             duration = 3500;
         //Toast的初始化
@@ -74,10 +72,10 @@ public class GlassToastUtil {
 
     }
 
-    public static void showToast(@NonNull Context context, String message) {
+    public static void showToast(Context context, String message) {
         showToast(context, message, DURATION_DEFAULT);
     }
-    public static void showToast(@NonNull Context context, @StringRes int resId) {
+    public static void showToast(Context context, int resId) {
         showToast(context, context.getResources().getString(resId));
     }
 
