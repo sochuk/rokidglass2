@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke
-        android:width="@dimen/notification_dialog_bg_border"
-        android:color="@color/glass_ui_white" />
-    <solid android:color="@color/notification_dialog_color" />
-    <corners android:radius="@dimen/notification_dialog_radius" />
-</shape>

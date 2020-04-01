@@ -131,7 +131,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="RokidGlass.Button" parent="@style/Text.NormalLight">
+    <style name="RokidGlass.Button" parent="@style/Text.SmallLight">
         <item name="android:gravity">center</item>
         <item name="android:maxLines">1</item>
         <item name="android:maxEms">12</item>

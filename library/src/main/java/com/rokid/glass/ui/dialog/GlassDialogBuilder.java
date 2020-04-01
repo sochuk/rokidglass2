@@ -20,9 +20,6 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
     protected Context mContext;
     private ViewGroup mRootView;
 
-    protected TextView mTitleTv;
-    protected String mTitle;
-
     private boolean mCancelable;
     private boolean mCanceledOnTouchOutside;
 
@@ -51,15 +48,9 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
         mGlassDialog.setCancelable(mCancelable);
         mGlassDialog.setCanceledOnTouchOutside(mCanceledOnTouchOutside);
         mGlassDialog.addContentView(mRootView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+                ViewGroup.LayoutParams.MATCH_PARENT));
         onAfter(context, mRootView, mGlassDialog);
         return mGlassDialog;
-    }
-
-    public void dynamicTitle(final String title) {
-        if (!TextUtils.isEmpty(title) && mGlassDialog.isShowing()) {
-            mTitleTv.setText(title);
-        }
     }
 
     public T setCancelable(boolean cancelable) {
@@ -72,26 +63,10 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
         return (T) this;
     }
 
-    public T setTitle(String title) {
-        this.mTitle = title;
-        return (T) this;
-    }
-
     protected void dismiss() {
         if (null != mGlassDialog && mGlassDialog.isShowing()) {
             mGlassDialog.dismiss();
         }
-    }
-
-    protected void changeLayoutParams(final View view, final int width, final int height) {
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (width > 0) {
-            params.width = width;
-        }
-        if (height > 0) {
-            params.height = height;
-        }
-        view.setLayoutParams(params);
     }
 
     protected void dialogShow() {
