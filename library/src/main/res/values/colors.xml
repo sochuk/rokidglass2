@@ -7,12 +7,16 @@
 
     <color name="glass_button_unfocused">@color/glassColorPrimary</color>
 
-    <color name="glass_button_focused_glow_top_edge">#FFADDFFF</color>
+    <color name="glass_button_focused_start_color">#FFDFDFE7</color>
+    <color name="glass_button_focused_glow_top_edge">#FFA3C0FF</color>
     <color name="glass_button_focused_glow_bottom_edge">#FF7784FF</color>
-    <color name="glass_button_focused_top_edge">@color/glass_ui_white</color>
-    <color name="glass_button_focused_mid">#FF353469</color>
-    <color name="glass_button_focused_bottom_edge">#FF090918</color>
+    <color name="glass_button_focused_top_edge">#FF25244C</color>
+    <color name="glass_button_focused_mid">#FF585783</color>
+    <color name="glass_button_focused_bottom_edge">#FF0019ED</color>
     <color name="glass_button_focused_solid">#FF000000</color>
+    <color name="glass_button_unfocused_start_color">#FF878795</color>
+    <color name="glass_button_unfocused_center_color">#FF353549</color>
+    <color name="glass_button_unfocused_end_color">#FF1D1E38</color>
 
     <color name="glass_title_text_color">@color/glass_ui_white</color>
     <color name="glass_button_focused_text_color">@color/glass_ui_white</color>

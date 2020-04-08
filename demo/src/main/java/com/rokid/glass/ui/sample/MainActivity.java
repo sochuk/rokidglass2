@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //real rect  Rect(1001,318,1398,713)
                 break;
             case R.id.dialog_btn:
-                new GlassDialog.CommonDialogBuilder(getApplicationContext())
+                new GlassDialog.CommonDialogBuilder(this)
                         .setTitle("Title")
                         .setContent("Content")
                         .setCancelText("撤销")

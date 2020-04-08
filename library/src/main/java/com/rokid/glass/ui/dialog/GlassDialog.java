@@ -59,11 +59,11 @@ public class GlassDialog extends Dialog {
         window.setAttributes(params);
         window.setWindowAnimations(R.style.GlassDialogWindowAnimation);
 
-        if (Build.VERSION.SDK_INT >= 26) {//8.0
-            window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
-        } else {
-            window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
-        }
+//        if (Build.VERSION.SDK_INT >= 26) {//8.0
+//            window.setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
+//        } else {
+//            window.setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+//        }
     }
 
     @Override

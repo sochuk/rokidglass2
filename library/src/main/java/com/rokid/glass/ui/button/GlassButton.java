@@ -26,7 +26,7 @@ public class GlassButton extends Button {
     private Paint mFocusedPaint;
     private Paint mFocusedStrokePaint;
     private Paint mUnfocusedStrokePaint;
-    private final int mFocusedGlowWidth = 25;
+    private final int mFocusedGlowWidth = 28;
     private final int mBtnPadding = 20;
     private final float mStrokeWidth = 4f;
 
@@ -58,12 +58,16 @@ public class GlassButton extends Button {
     }
 
     protected void init(final int height) {
-        int startColor = getResources().getColor(R.color.glass_button_focused_glow_top_edge);
+        int startColor = getResources().getColor(R.color.glass_button_focused_start_color);
         int centerColor = getResources().getColor(R.color.glass_button_focused_mid);
         int endColor = getResources().getColor(R.color.glass_button_focused_top_edge);
 
         int glowStartColor = getResources().getColor(R.color.glass_button_focused_glow_top_edge);
         int glowEndColor = getResources().getColor(R.color.glass_button_focused_bottom_edge);
+
+        int unstartColor = getResources().getColor(R.color.glass_button_unfocused_start_color);
+        int uncenterColor = getResources().getColor(R.color.glass_button_unfocused_center_color);
+        int unendColor = getResources().getColor(R.color.glass_button_unfocused_end_color);
 
         mFocusedPaint = new Paint();
         mFocusedPaint.setAntiAlias(true);
@@ -78,7 +82,7 @@ public class GlassButton extends Button {
         mUnfocusedStrokePaint.setAntiAlias(true);
         mUnfocusedStrokePaint.setStyle(Paint.Style.STROKE);
         mUnfocusedStrokePaint.setStrokeWidth(mStrokeWidth);
-        mUnfocusedStrokePaint.setColor(defaultButtonUnfocusedColor);
+//        mUnfocusedStrokePaint.setColor(defaultButtonUnfocusedColor);
 
         LinearGradient storkeGradient = new LinearGradient(0, mBtnPadding, 0, (int) (height * 1.4),
                 new int[]{startColor, centerColor, endColor}, null, Shader.TileMode.CLAMP);
@@ -86,8 +90,12 @@ public class GlassButton extends Button {
         LinearGradient glowGradient = new LinearGradient(0, 0, 0, height,
                 new int[]{glowStartColor, glowEndColor}, null, Shader.TileMode.CLAMP);
 
+        LinearGradient unStorkeGradient = new LinearGradient(0, mBtnPadding, 0, (int) (height * 1.4),
+                new int[]{unstartColor, uncenterColor, unendColor}, null, Shader.TileMode.CLAMP);
+
         mFocusedPaint.setShader(glowGradient);
         mFocusedStrokePaint.setShader(storkeGradient);
+        mUnfocusedStrokePaint.setShader(unStorkeGradient);
 
         mFocusedPaint.setMaskFilter(new BlurMaskFilter(mFocusedGlowWidth, BlurMaskFilter.Blur.OUTER));
         setLayerType(LAYER_TYPE_SOFTWARE, null);
