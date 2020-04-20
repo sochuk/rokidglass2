@@ -22,6 +22,7 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
 
     private boolean mCancelable;
     private boolean mCanceledOnTouchOutside;
+    private boolean isApplicationDialog;
 
     public GlassDialogBuilder(final Context context) {
         this.mContext = context;
@@ -37,7 +38,7 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
     public GlassDialog create() {
         return create(R.style.GlassDialogStyle);
     }
-    
+
 
     public GlassDialog create(final int style) {
         mGlassDialog = new GlassDialog(mContext, style, this);
@@ -75,6 +76,15 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
 
     protected void onAfter(Context context, ViewGroup parent, GlassDialog dialog) {
 
+    }
+
+    public T setApplicationDialog(boolean applicationDialog) {
+        isApplicationDialog = applicationDialog;
+        return (T) this;
+    }
+
+    public boolean isApplicationDialog() {
+        return isApplicationDialog;
     }
 
     protected abstract void init();
