@@ -24,7 +24,7 @@
         <item name="android:windowAnimationStyle">@style/GlassDialogWindowAnimation</item>
     </style>
 
-    <style name="GlassDialogWindowAnimation">
+    <style name="GlassDialogWindowAnimation" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/dialog_window_in</item>
         <item name="android:windowExitAnimation">@anim/dialog_window_out</item>
     </style>

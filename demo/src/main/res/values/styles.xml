@@ -29,4 +29,9 @@
         <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="CustomStyle" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_window_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_window_out</item>
+    </style>
 </resources>

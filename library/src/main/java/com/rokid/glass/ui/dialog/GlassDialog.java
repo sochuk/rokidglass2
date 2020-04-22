@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.rokid.glass.ui.R;
@@ -58,7 +57,12 @@ public class GlassDialog extends Dialog {
         params.height = ViewGroup.LayoutParams.MATCH_PARENT;
         params.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
         window.setAttributes(params);
-        window.setWindowAnimations(R.style.GlassDialogWindowAnimation);
+
+        if (null != mBuilder && mBuilder.getAnimationStyle() != 0) {
+            window.setWindowAnimations(mBuilder.getAnimationStyle());
+        } else {
+            window.setWindowAnimations(R.style.GlassDialogWindowAnimation);
+        }
 
         if (null != mBuilder && mBuilder.isApplicationDialog()) {
             if (!(getContext() instanceof Activity)) { //

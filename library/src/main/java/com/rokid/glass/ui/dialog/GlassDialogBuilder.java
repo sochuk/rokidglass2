@@ -23,6 +23,7 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
     private boolean mCancelable;
     private boolean mCanceledOnTouchOutside;
     private boolean isApplicationDialog;
+    private int mAnimationRes;
 
     public GlassDialogBuilder(final Context context) {
         this.mContext = context;
@@ -62,6 +63,15 @@ public abstract class GlassDialogBuilder<T extends GlassDialogBuilder> {
     public T setCanceledOnTouchOutside(boolean canceledOnTouchOutside) {
         this.mCanceledOnTouchOutside = canceledOnTouchOutside;
         return (T) this;
+    }
+
+    public T setAnimationStyle(int animationStyle) {
+        this.mAnimationRes = animationStyle;
+        return (T) this;
+    }
+
+    public int getAnimationStyle() {
+        return mAnimationRes;
     }
 
     protected void dismiss() {
