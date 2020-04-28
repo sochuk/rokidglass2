@@ -53,7 +53,6 @@
     <dimen name="glass_dialog_voice_content_text_size">25sp</dimen>
 
 
-
     <dimen name="glass_bigger_text_size">50sp</dimen>
     <dimen name="glass_larger_text_size">40sp</dimen>
     <dimen name="glass_large_text_size">35sp</dimen>
@@ -80,4 +79,9 @@
     <dimen name="glass_dialog_margin_top">20dp</dimen>
     <dimen name="glass_dialog_margin">10dp</dimen>
     <dimen name="glass_dialog_padding">100dp</dimen>
+
+    <dimen name="glass_btn_padding_left">39dp</dimen>
+    <dimen name="glass_btn_padding_right">39dp</dimen>
+    <dimen name="glass_btn_padding_top">14dp</dimen>
+    <dimen name="glass_btn_padding_bottom">15dp</dimen>
 </resources>

@@ -3,10 +3,10 @@
     package="com.rokid.glass.ui.sample">
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -34,6 +34,9 @@
             android:name=".AutoSizeActivity"
             android:screenOrientation="landscape" />
 
+        <activity
+            android:name=".FontActivity"
+            android:screenOrientation="landscape" />
         <!-- default width in dp -->
         <meta-data
             android:name="design_width_in_dp"

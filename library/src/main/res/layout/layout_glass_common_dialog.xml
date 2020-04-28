@@ -29,6 +29,15 @@
         android:paddingLeft="@dimen/glass_dialog_padding"
         android:paddingRight="@dimen/glass_dialog_padding" />
 
+    <ViewStub
+        android:id="@+id/dialog_custom_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/glass_dialog_margin"
+        android:layout="@layout/layout_glass_content"
+        android:paddingLeft="@dimen/glass_dialog_padding"
+        android:paddingRight="@dimen/glass_dialog_padding" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

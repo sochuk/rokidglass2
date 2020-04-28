@@ -13,6 +13,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewStub;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -96,11 +97,13 @@ public class GlassDialog extends Dialog {
         private TextView mDialogContentTv;
         private GlassButton mConfirmBtn;
         private GlassButton mCancelBtn;
+        private ViewStub mCustomContent;
 
         private String mTitle;
         protected String mConfirmText;
         protected String mCancelText;
         protected String mContent;
+        protected int mContentLayoutId;
 
         protected GlassDialogListener mConfirmListener;
         protected GlassDialogListener mCancelListener;
@@ -121,6 +124,7 @@ public class GlassDialog extends Dialog {
             mDialogContentTv = view.findViewById(R.id.dialog_content);
             mConfirmBtn = view.findViewById(R.id.dialog_confirm);
             mCancelBtn = view.findViewById(R.id.dialog_cancel);
+            mCustomContent = view.findViewById(R.id.dialog_custom_content);
 
             mDialogTitleTv.setText(mTitle);
             if (!TextUtils.isEmpty(mConfirmText)) {
@@ -132,6 +136,19 @@ public class GlassDialog extends Dialog {
                 mDialogContentTv.setText(mContent);
             } else {
                 mDialogContentTv.setVisibility(View.GONE);
+            }
+
+            if (mContentLayoutId != 0) {
+                View contentView = LayoutInflater.from(context).inflate(mContentLayoutId, parent, false);
+                if (null != contentView) {
+                    try {
+                        ViewGroup customContent = (ViewGroup) mCustomContent.inflate();
+                        customContent.addView(contentView);
+                        mDialogContentTv.setVisibility(View.GONE);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             if (!TextUtils.isEmpty(mCancelText)) {
@@ -193,6 +210,11 @@ public class GlassDialog extends Dialog {
 
         public CommonDialogBuilder setCancelListener(GlassDialogListener cancelListener) {
             this.mCancelListener = cancelListener;
+            return this;
+        }
+
+        public CommonDialogBuilder setContentLayoutId(int contentLayoutId) {
+            this.mContentLayoutId = contentLayoutId;
             return this;
         }
     }

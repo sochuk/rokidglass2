@@ -1,6 +1,5 @@
 package com.rokid.glass.ui.button;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.BlurMaskFilter;
@@ -11,9 +10,10 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.Button;
+import android.util.TypedValue;
 
 import com.rokid.glass.ui.R;
 import com.rokid.glass.ui.util.Utils;
@@ -23,8 +23,7 @@ import com.rokid.glass.ui.util.Utils;
  * @date 2019/2/20
  */
 
-@SuppressLint("AppCompatCustomView")
-public class GlassButton extends Button {
+public class GlassButton extends AppCompatButton {
     private Paint mFocusedPaint;
     private Paint mFocusedStrokePaint;
     private Paint mUnfocusedStrokePaint;
@@ -34,10 +33,6 @@ public class GlassButton extends Button {
 
     private int defaultButtonUnfocusedColor;
     private float defaultButtonCorner;
-    private int mPaddingLeft;
-    private int mPaddingRight;
-    private int mPaddingTop;
-    private int mPaddingBottom;
 
     public GlassButton(Context context) {
         super(context);
@@ -52,18 +47,27 @@ public class GlassButton extends Button {
                 getResources().getColor(R.color.glass_button_unfocused));
         defaultButtonCorner = a.getFloat(R.styleable.GlassButton_corner, 100f);
 
+        int textSize = a.getDimensionPixelSize(R.styleable.GlassButton_android_textSize,
+                getResources().getDimensionPixelSize(R.dimen.common_text_size));
+        int textColor = a.getColor(R.styleable.GlassButton_android_textColor, getResources().getColor(R.color.common_text_color));
+
+        int paddingLeft = a.getDimensionPixelSize(R.styleable.GlassButton_android_paddingLeft,
+                getResources().getDimensionPixelSize(R.dimen.glass_btn_padding_left));
+        int paddingRight = a.getDimensionPixelSize(R.styleable.GlassButton_android_paddingRight,
+                getResources().getDimensionPixelSize(R.dimen.glass_btn_padding_right));
+        int paddingTop = a.getDimensionPixelSize(R.styleable.GlassButton_android_paddingTop,
+                getResources().getDimensionPixelSize(R.dimen.glass_btn_padding_top));
+        int paddingBottom = a.getDimensionPixelSize(R.styleable.GlassButton_android_paddingBottom,
+                getResources().getDimensionPixelSize(R.dimen.glass_btn_padding_bottom));
+
         a.recycle();
 
         setBackgroundDrawable(null);
         setAllCaps(false);
 
-        mPaddingLeft = Utils.dp2px(context, 32);
-        mPaddingRight = Utils.dp2px(context, 32);
-        mPaddingTop = Utils.dp2px(context, 16);
-        mPaddingBottom = Utils.dp2px(context, 16);
-        setPadding(mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom);
-        setTextColor(getResources().getColor(R.color.common_text_color));
-        setFocusable(true);
+        setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+        setTextColor(textColor);
+        setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
     }
 
     @Override

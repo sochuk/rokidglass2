@@ -21,28 +21,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        findViewById(R.id.font_btn).setOnClickListener(this);
         findViewById(R.id.simple_toast).setOnClickListener(this);
+        findViewById(R.id.custom_dialog_btn).setOnClickListener(this);
         findViewById(R.id.dialog_btn).setOnClickListener(this);
         findViewById(R.id.auto_size_btn).setOnClickListener(this);
 
         mGlassInfoTv = findViewById(R.id.glass_info);
-        mGlassInfoTv.setText("通知栏");
-//        mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
+        mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.alignment_btn:
-                Rect rect = new Rect(776, 430, 900, 554);
-                //real rect  Rect(1001,318,1398,713)
+            case R.id.font_btn:
+                startActivity(new Intent(this, FontActivity.class));
                 break;
             case R.id.dialog_btn:
                 new GlassDialog.CommonDialogBuilder(this)
                         .setTitle("我是很长我是很长我是很" +
                                 "长我是很长我是很长我是很长我是很长我是很长")
-                        .setContent("Content很长很长Content很长很长Content很长很长Content很长很长" +
-                                "Content很长很长Content很长很长Content很长很长Content很长很长Content很长很长Content很长很长")
                         .setConfirmText("确定按钮")
                         .setCancelText("次级按钮")
                         .setConfirmListener(new GlassDialogListener() {
@@ -57,6 +55,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             }
                         })
+                        .show();
+                break;
+            case R.id.custom_dialog_btn:
+                new GlassDialog.CommonDialogBuilder(this)
+                        .setTitle("Custom Content")
+                        .setConfirmText("确定")
+                        .setCancelText("取消")
+                        .setContentLayoutId(R.layout.layout_custom_dialog_content)
                         .show();
                 break;
             case R.id.simple_toast:

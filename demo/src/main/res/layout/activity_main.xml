@@ -12,31 +12,34 @@
 
         <TextView
             android:id="@+id/glass_info"
-            style="@style/Text.LargeLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/common_c1_text_color"
+            android:textSize="21sp"
+            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.rokid.glass.ui.button.GlassButton
-            android:id="@+id/alignment_btn"
+            android:id="@+id/font_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alignment"
+            android:text="高亮"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/glass_info" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/notification_btn"
+            style="@style/Text.LargeLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="true"
             android:text="@string/sample_notification"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/alignment_btn" />
+            app:layout_constraintTop_toBottomOf="@id/font_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/dialog_btn"
@@ -48,13 +51,22 @@
             app:layout_constraintTop_toBottomOf="@id/notification_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
+            android:id="@+id/custom_dialog_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Custom Dialog"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dialog_btn" />
+
+        <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/simple_toast"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/glassui_toast_test"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dialog_btn" />
+            app:layout_constraintTop_toBottomOf="@id/custom_dialog_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/auto_size_btn"
