@@ -25,8 +25,10 @@
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
         <item name="android:focusableInTouchMode">true</item>
-        <item name="android:paddingTop">@dimen/button_padding_top</item>
-        <item name="android:paddingBottom">@dimen/button_padding_bottom</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingLeft">35dp</item>
+        <item name="android:paddingRight">35dp</item>
+        <item name="android:paddingBottom">15dp</item>
         <item name="android:textAllCaps">false</item>
     </style>
 

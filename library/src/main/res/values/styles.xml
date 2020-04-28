@@ -74,70 +74,50 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-
+    <!-- text -->
     <style name="Text">
-        <item name="android:textColor">@color/common_light_text_color</item>
+        <item name="android:textColor">@color/common_c1_text_color</item>
     </style>
-    <style name="Text.BiggerLight" parent="Text">
-        <item name="android:textColor">@color/common_light_text_color</item>
-        <item name="android:textSize">@dimen/glass_bigger_text_size</item>
+
+    <style name="Text.LargeLight" parent="Text">
+        <item name="android:textSize">@dimen/common_title_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="Text.LargeLight">
-        <item name="android:textColor">@color/common_light_text_color</item>
-        <item name="android:textSize">@dimen/glass_large_text_size</item>
+
+    <style name="Text.LargeBold">
+        <item name="android:textSize">@dimen/common_title_text_size</item>
+        <item name="android:textColor">@color/common_text_color</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="Text.LargerLight" parent="Text">
-        <item name="android:textColor">@color/common_light_text_color</item>
-        <item name="android:textSize">@dimen/glass_larger_text_size</item>
+
+    <style name="Text.Large">
+        <item name="android:textSize">@dimen/common_title_text_size</item>
+        <item name="android:textColor">@color/common_text_color</item>
+    </style>
+
+    <style name="Text.NormalLight" parent="Text">
+        <item name="android:textSize">@dimen/common_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
-    <style name="Text.MediumLight">
-        <item name="android:textColor">@color/common_light_text_color</item>
-        <item name="android:textSize">@dimen/glass_medium_text_size</item>
+
+    <style name="Text.NormalBold">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/common_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="Text.Normal">
         <item name="android:textColor">@color/common_text_color</item>
-        <item name="android:textSize">@dimen/glass_text_size</item>
+        <item name="android:textSize">@dimen/common_text_size</item>
     </style>
-    <style name="Text.NormalLight">
-        <item name="android:textColor">@color/common_light_text_color</item>
-        <item name="android:textSize">@dimen/glass_text_size</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="Text.Small">
-        <item name="android:textColor">@color/common_text_color</item>
-        <item name="android:textSize">@dimen/glass_small_text_size</item>
-    </style>
-    <style name="Text.SmallDark">
-        <item name="android:textColor">@color/common_text_color</item>
-        <item name="android:textSize">@dimen/glass_small_text_size</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="Text.SmallLight">
-        <item name="android:textColor">@color/common_light_text_color</item>
-        <item name="android:textSize">@dimen/glass_small_text_size</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="Text.Thin">
-        <item name="android:textColor">@color/common_text_color</item>
-        <item name="android:textSize">@dimen/glass_thin_text_size</item>
-    </style>
-    <style name="Text.ThinLight">
-        <item name="android:textColor">@color/common_light_text_color</item>
-        <item name="android:textSize">@dimen/glass_thin_text_size</item>
+
+    <style name="Text.SmallLight" parent="Text">
+        <item name="android:textSize">@dimen/common_small_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="RokidGlass.Button" parent="@style/Text.SmallLight">
-        <item name="android:gravity">center</item>
-        <item name="android:maxLines">1</item>
-        <item name="android:maxEms">12</item>
-        <item name="android:focusable">true</item>
-        <item name="android:clickable">true</item>
-        <item name="android:focusableInTouchMode">true</item>
-        <item name="android:textAllCaps">false</item>
+    <style name="Text.Small">
+        <item name="android:textColor">@color/common_text_color</item>
+        <item name="android:textSize">@dimen/common_small_text_size</item>
     </style>
 </resources>

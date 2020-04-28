@@ -32,8 +32,19 @@
     <color name="notification_end_color">#FF2B2B5E</color>
 
     <color name="common_light_text_color">#B3FFFFFF</color>
-    <color name="common_text_color">#80FFFFFF</color>
+<!--    <color name="common_text_color">#80FFFFFF</color>-->
     <!-- text color -->
     <color name="common_primary_color">#CCFFFFFF</color>
     <color name="common_second_color">#99FFFFFF</color>
+
+
+    <!-- common -->
+    <color name="common_transparent">#00000000</color>
+    <color name="common_white">#FFFFFFFF</color>
+    <color name="common_black">#FF000000</color>
+
+    <color name="common_c1_text_color">#CCFFFFFF</color>
+    <color name="common_c8_text_color">#B3FFFFFF</color>
+    <color name="common_text_color">#99FFFFFF</color>
+    <color name="common_c5_text_color">#80FFFFFF</color>
 </resources>

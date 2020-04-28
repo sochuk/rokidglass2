@@ -26,7 +26,7 @@ public class RokidSystem {
     private final static String ALIGNMENT_RIGHT_2K = "ro.rokid.2kalignment.right";
     private final static String ALIGNMENT_BOTTOM_2K = "ro.rokid.2kalignment.bottom";
 
-    private final static String HARDWARE_VERSION = "ro.rokid.hardware.version";
+    private final static String HARDWARE_VERSION = "ro.hardware";
     private final static int BASE_WIDTH = 1280;
     private final static int BASE_HEIGHT = 720;
 

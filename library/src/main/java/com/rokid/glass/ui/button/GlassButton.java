@@ -12,9 +12,11 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.Button;
 
 import com.rokid.glass.ui.R;
+import com.rokid.glass.ui.util.Utils;
 
 /**
  * @author jian.yang
@@ -28,10 +30,14 @@ public class GlassButton extends Button {
     private Paint mUnfocusedStrokePaint;
     private final int mFocusedGlowWidth = 28;
     private final int mBtnPadding = 20;
-    private final float mStrokeWidth = 4f;
+    private final float mStrokeWidth = 3f;
 
     private int defaultButtonUnfocusedColor;
     private float defaultButtonCorner;
+    private int mPaddingLeft;
+    private int mPaddingRight;
+    private int mPaddingTop;
+    private int mPaddingBottom;
 
     public GlassButton(Context context) {
         super(context);
@@ -49,6 +55,15 @@ public class GlassButton extends Button {
         a.recycle();
 
         setBackgroundDrawable(null);
+        setAllCaps(false);
+
+        mPaddingLeft = Utils.dp2px(context, 32);
+        mPaddingRight = Utils.dp2px(context, 32);
+        mPaddingTop = Utils.dp2px(context, 16);
+        mPaddingBottom = Utils.dp2px(context, 16);
+        setPadding(mPaddingLeft, mPaddingTop, mPaddingRight, mPaddingBottom);
+        setTextColor(getResources().getColor(R.color.common_text_color));
+        setFocusable(true);
     }
 
     @Override
@@ -69,6 +84,7 @@ public class GlassButton extends Button {
         int uncenterColor = getResources().getColor(R.color.glass_button_unfocused_center_color);
         int unendColor = getResources().getColor(R.color.glass_button_unfocused_end_color);
 
+
         mFocusedPaint = new Paint();
         mFocusedPaint.setAntiAlias(true);
         mFocusedPaint.setStyle(Paint.Style.FILL);
@@ -84,13 +100,13 @@ public class GlassButton extends Button {
         mUnfocusedStrokePaint.setStrokeWidth(mStrokeWidth);
 //        mUnfocusedStrokePaint.setColor(defaultButtonUnfocusedColor);
 
-        LinearGradient storkeGradient = new LinearGradient(0, mBtnPadding, 0, (int) (height * 1.4),
+        LinearGradient storkeGradient = new LinearGradient(0, mBtnPadding, 0, (int) (height * 1.4f),
                 new int[]{startColor, centerColor, endColor}, null, Shader.TileMode.CLAMP);
 
         LinearGradient glowGradient = new LinearGradient(0, 0, 0, height,
                 new int[]{glowStartColor, glowEndColor}, null, Shader.TileMode.CLAMP);
 
-        LinearGradient unStorkeGradient = new LinearGradient(0, mBtnPadding, 0, (int) (height * 1.4),
+        LinearGradient unStorkeGradient = new LinearGradient(0, mBtnPadding, 0, (int) (height * 1.4f),
                 new int[]{unstartColor, uncenterColor, unendColor}, null, Shader.TileMode.CLAMP);
 
         mFocusedPaint.setShader(glowGradient);
@@ -105,19 +121,21 @@ public class GlassButton extends Button {
     protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
         if (isFocused()) {
-            this.setTextColor(getResources().getColor(R.color.glass_button_focused_text_color));
+            this.setTextColor(getResources().getColor(R.color.common_c1_text_color));
             setTypeface(null, Typeface.BOLD);
         } else {
-            this.setTextColor(getResources().getColor(R.color.glass_button_text_color));
+            this.setTextColor(getResources().getColor(R.color.common_text_color));
             setTypeface(null, Typeface.NORMAL);
         }
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         if (isFocused()) {
             canvas.drawRoundRect(new RectF(mFocusedGlowWidth, mBtnPadding, getWidth() - mFocusedGlowWidth, getHeight() - mBtnPadding),
                     defaultButtonCorner, defaultButtonCorner, mFocusedPaint);
+
             canvas.drawRoundRect(new RectF(mFocusedGlowWidth, mBtnPadding, getWidth() - mFocusedGlowWidth, getHeight() - mBtnPadding),
                     defaultButtonCorner, defaultButtonCorner, mFocusedStrokePaint);
         } else {

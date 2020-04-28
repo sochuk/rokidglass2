@@ -52,8 +52,7 @@
     <dimen name="glass_dialog_voice_text_size">30sp</dimen>
     <dimen name="glass_dialog_voice_content_text_size">25sp</dimen>
 
-    <dimen name="glass_dialog_margin_top">38dp</dimen>
-    <dimen name="glass_dialog_margin">15dp</dimen>
+
 
     <dimen name="glass_bigger_text_size">50sp</dimen>
     <dimen name="glass_larger_text_size">40sp</dimen>
@@ -67,4 +66,18 @@
     <dimen name="glass_button_width_2g">175dp</dimen>
     <dimen name="glass_button_height_2g">90dp</dimen>
     <dimen name="dialog_single_message_min_height_2g">235dp</dimen>
+
+
+    <!-- font -->
+    <dimen name="common_title_text_size">25sp</dimen>
+    <dimen name="common_text_size">21sp</dimen>
+    <dimen name="common_small_text_size">18sp</dimen>
+
+    <dimen name="glass_btn_padding">15dp</dimen>
+    <dimen name="glass_btn_small_padding">7dp</dimen>
+
+    <dimen name="glass_btn_margin_left">-10dp</dimen>
+    <dimen name="glass_dialog_margin_top">20dp</dimen>
+    <dimen name="glass_dialog_margin">10dp</dimen>
+    <dimen name="glass_dialog_padding">100dp</dimen>
 </resources>

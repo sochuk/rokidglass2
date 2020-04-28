@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.auto_size_btn).setOnClickListener(this);
 
         mGlassInfoTv = findViewById(R.id.glass_info);
-        mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
+        mGlassInfoTv.setText("通知栏");
+//        mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
     }
 
     @Override
@@ -38,9 +39,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.dialog_btn:
                 new GlassDialog.CommonDialogBuilder(this)
-                        .setTitle("Title")
-                        .setContent("Content")
-                        .setCancelText("撤销")
+                        .setTitle("我是很长我是很长我是很" +
+                                "长我是很长我是很长我是很长我是很长我是很长")
+                        .setContent("Content很长很长Content很长很长Content很长很长Content很长很长" +
+                                "Content很长很长Content很长很长Content很长很长Content很长很长Content很长很长Content很长很长")
+                        .setConfirmText("确定按钮")
+                        .setCancelText("次级按钮")
                         .setConfirmListener(new GlassDialogListener() {
                             @Override
                             public void onClick(View view) {

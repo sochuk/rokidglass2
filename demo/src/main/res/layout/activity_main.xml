@@ -12,73 +12,57 @@
 
         <TextView
             android:id="@+id/glass_info"
+            style="@style/Text.LargeLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#ffffff"
-            android:textSize="30sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/alignment_btn"
-            style="@style/NormalGlassButton"
-            android:layout_width="260dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:focusable="true"
-            android:text="@string/alignment"
-            android:textAllCaps="false"
-            app:layout_constraintLeft_toLeftOf="@id/glass_info"
-            app:layout_constraintRight_toRightOf="@id/glass_info"
+            android:text="Alignment"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/glass_info" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/notification_btn"
-            style="@style/NormalGlassButton"
-            android:layout_width="260dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:focusable="true"
             android:text="@string/sample_notification"
-            android:textAllCaps="false"
-            app:layout_constraintLeft_toLeftOf="@id/alignment_btn"
-            app:layout_constraintRight_toRightOf="@id/alignment_btn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/alignment_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/dialog_btn"
-            style="@style/NormalGlassButton"
-            android:layout_width="260dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:focusable="true"
             android:text="Dialog"
-            android:textAllCaps="false"
-            app:layout_constraintLeft_toLeftOf="@id/notification_btn"
-            app:layout_constraintRight_toRightOf="@id/notification_btn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/notification_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/simple_toast"
-            style="@style/NormalGlassButton"
-            android:layout_width="260dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:text="@string/glassui_toast_test"
-            android:textAllCaps="false"
-            app:layout_constraintLeft_toLeftOf="@id/dialog_btn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dialog_btn" />
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/auto_size_btn"
-            style="@style/NormalGlassButton"
-            android:layout_width="260dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:text="AutoSize"
-            android:textAllCaps="false"
-            app:layout_constraintLeft_toLeftOf="@id/simple_toast"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/simple_toast" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

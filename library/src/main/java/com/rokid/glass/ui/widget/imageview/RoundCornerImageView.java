@@ -1,4 +1,4 @@
-package com.rokid.glass.ui.imageview;
+package com.rokid.glass.ui.widget.imageview;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

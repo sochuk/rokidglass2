@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="dialog_single_message_width">450dp</dimen>
-    <dimen name="dialog_single_message_min_height">210dp</dimen>
-    <dimen name="dialog_single_message_min_height_2g">260dp</dimen>
-</resources>
