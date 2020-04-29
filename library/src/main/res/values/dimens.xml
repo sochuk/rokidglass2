@@ -68,9 +68,9 @@
 
 
     <!-- font -->
-    <dimen name="common_title_text_size">25sp</dimen>
-    <dimen name="common_text_size">21sp</dimen>
-    <dimen name="common_small_text_size">18sp</dimen>
+    <dimen name="glass_common_title_text_size">25sp</dimen>
+    <dimen name="glass_common_text_size">21sp</dimen>
+    <dimen name="glass_common_small_text_size">18sp</dimen>
 
     <dimen name="glass_btn_padding">15dp</dimen>
     <dimen name="glass_btn_small_padding">7dp</dimen>
@@ -82,6 +82,8 @@
 
     <dimen name="glass_btn_padding_left">39dp</dimen>
     <dimen name="glass_btn_padding_right">39dp</dimen>
-    <dimen name="glass_btn_padding_top">14dp</dimen>
-    <dimen name="glass_btn_padding_bottom">15dp</dimen>
+    <dimen name="glass_btn_padding_top">12dp</dimen>
+    <dimen name="glass_btn_padding_bottom">14dp</dimen>
+
+    <dimen name="glass_btn_height">60dp</dimen>
 </resources>

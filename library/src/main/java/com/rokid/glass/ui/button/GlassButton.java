@@ -12,11 +12,10 @@ import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 
 import com.rokid.glass.ui.R;
-import com.rokid.glass.ui.util.Utils;
 
 /**
  * @author jian.yang
@@ -48,7 +47,7 @@ public class GlassButton extends AppCompatButton {
         defaultButtonCorner = a.getFloat(R.styleable.GlassButton_corner, 100f);
 
         int textSize = a.getDimensionPixelSize(R.styleable.GlassButton_android_textSize,
-                getResources().getDimensionPixelSize(R.dimen.common_text_size));
+                getResources().getDimensionPixelSize(R.dimen.glass_common_text_size));
         int textColor = a.getColor(R.styleable.GlassButton_android_textColor, getResources().getColor(R.color.common_text_color));
 
         int paddingLeft = a.getDimensionPixelSize(R.styleable.GlassButton_android_paddingLeft,
@@ -65,6 +64,7 @@ public class GlassButton extends AppCompatButton {
         setBackgroundDrawable(null);
         setAllCaps(false);
 
+        setGravity(Gravity.CENTER);
         setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
         setTextColor(textColor);
         setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
