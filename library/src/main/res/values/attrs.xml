@@ -11,6 +11,13 @@
         <attr name="android:paddingBottom" />
     </declare-styleable>
 
+    <declare-styleable name="GlassRoundImageButton">
+        <attr name="android:padding" />
+        <attr name="radius" format="dimension" />
+        <attr name="focused_src" format="reference" />
+        <attr name="unfocused_src" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="RoundCornerImageView">
         <attr name="is_circle" format="boolean" />
         <attr name="is_cover_src" format="boolean" />

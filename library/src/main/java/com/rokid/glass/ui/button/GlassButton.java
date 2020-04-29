@@ -67,6 +67,10 @@ public class GlassButton extends AppCompatButton {
         setGravity(Gravity.CENTER);
         setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
         setTextColor(textColor);
+
+        //TODO default font padding top > bottom
+//        setIncludeFontPadding(false);
+
         setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize);
     }
 

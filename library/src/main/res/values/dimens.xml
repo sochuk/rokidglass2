@@ -85,5 +85,7 @@
     <dimen name="glass_btn_padding_top">12dp</dimen>
     <dimen name="glass_btn_padding_bottom">14dp</dimen>
 
+    <dimen name="glass_round_btn_padding">24dp</dimen>
+
     <dimen name="glass_btn_height">60dp</dimen>
 </resources>
