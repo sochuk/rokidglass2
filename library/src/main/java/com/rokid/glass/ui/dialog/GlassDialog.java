@@ -104,6 +104,7 @@ public class GlassDialog extends Dialog {
         protected String mCancelText;
         protected String mContent;
         protected int mContentLayoutId;
+        protected View mContentLayoutView;
 
         protected GlassDialogListener mConfirmListener;
         protected GlassDialogListener mCancelListener;
@@ -148,6 +149,16 @@ public class GlassDialog extends Dialog {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+                }
+            }
+
+            if (null != mContentLayoutView) {
+                try {
+                    ViewGroup customContent = (ViewGroup) mCustomContent.inflate();
+                    customContent.addView(mContentLayoutView);
+                    mDialogContentTv.setVisibility(View.GONE);
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
 
@@ -215,6 +226,11 @@ public class GlassDialog extends Dialog {
 
         public CommonDialogBuilder setContentLayoutId(int contentLayoutId) {
             this.mContentLayoutId = contentLayoutId;
+            return this;
+        }
+
+        public CommonDialogBuilder setContentLayoutView(View contentLayoutView) {
+            this.mContentLayoutView = contentLayoutView;
             return this;
         }
     }
