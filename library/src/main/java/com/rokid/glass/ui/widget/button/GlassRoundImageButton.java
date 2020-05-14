@@ -8,6 +8,7 @@ import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Shader;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.AttributeSet;
@@ -128,5 +129,11 @@ public class GlassRoundImageButton extends AppCompatImageButton {
             canvas.drawCircle(getWidth() / 2, getHeight() / 2, (getWidth() - mPadding) / 2, mUnfocusedStrokePaint);
         }
         super.onDraw(canvas);
+    }
+
+    public void setSrc(@DrawableRes int focused, @DrawableRes int unfocused) {
+        mFocusedRes = focused;
+        mUnFocusedRes = unfocused;
+        invalidate();
     }
 }

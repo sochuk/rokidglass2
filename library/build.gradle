@@ -35,7 +35,7 @@ rokid {
     maven {
         groupId = "com.rokid.glass"
         artifactId = "ui" // module
-        version = "1.5.4"
+        version = "1.5.5"
 
         // Release
         repository {
