@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/dialog_title"
-        style="@style/Text.LargeLight"
+        style="@style/GlassText.LargeLight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/glass_dialog_margin_top"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/dialog_content"
-        style="@style/Text.Normal"
+        style="@style/GlassText.Normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/glass_dialog_margin"

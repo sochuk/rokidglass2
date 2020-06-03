@@ -75,48 +75,48 @@
     </style>
 
     <!-- text -->
-    <style name="Text">
+    <style name="GlassText">
         <item name="android:textColor">@color/common_c1_text_color</item>
     </style>
 
-    <style name="Text.LargeLight" parent="Text">
+    <style name="GlassText.LargeLight" parent="GlassText">
         <item name="android:textSize">@dimen/glass_common_title_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Text.LargeBold">
+    <style name="GlassText.LargeBold">
         <item name="android:textSize">@dimen/glass_common_title_text_size</item>
         <item name="android:textColor">@color/common_text_color</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Text.Large">
+    <style name="GlassText.Large">
         <item name="android:textSize">@dimen/glass_common_title_text_size</item>
         <item name="android:textColor">@color/common_text_color</item>
     </style>
 
-    <style name="Text.NormalLight" parent="Text">
+    <style name="Text.NormalLight" parent="GlassText">
         <item name="android:textSize">@dimen/glass_common_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Text.NormalBold">
+    <style name="GlassText.NormalBold">
         <item name="android:textColor">@color/common_text_color</item>
         <item name="android:textSize">@dimen/glass_common_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Text.Normal">
+    <style name="GlassText.Normal">
         <item name="android:textColor">@color/common_text_color</item>
         <item name="android:textSize">@dimen/glass_common_text_size</item>
     </style>
 
-    <style name="Text.SmallLight" parent="Text">
+    <style name="GlassText.SmallLight" parent="GlassText">
         <item name="android:textSize">@dimen/glass_common_small_text_size</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="Text.Small">
+    <style name="GlassText.Small">
         <item name="android:textColor">@color/common_text_color</item>
         <item name="android:textSize">@dimen/glass_common_small_text_size</item>
     </style>

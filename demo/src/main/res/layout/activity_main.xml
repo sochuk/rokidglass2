@@ -81,7 +81,7 @@
 
         <com.rokid.glass.ui.button.GlassButton
             android:id="@+id/notification_btn"
-            style="@style/Text.LargeLight"
+            style="@style/GlassText.LargeLight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:focusable="true"
