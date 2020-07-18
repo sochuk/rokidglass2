@@ -11,10 +11,12 @@ import com.rokid.glass.ui.dialog.GlassDialog;
 import com.rokid.glass.ui.dialog.GlassDialogListener;
 import com.rokid.glass.ui.toast.GlassToastUtil;
 import com.rokid.glass.ui.util.RokidSystem;
+import com.rokid.glass.ui.widget.button.GlassRoundImageButton;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView mGlassInfoTv;
+    private GlassRoundImageButton roundBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +28,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.custom_dialog_btn).setOnClickListener(this);
         findViewById(R.id.dialog_btn).setOnClickListener(this);
         findViewById(R.id.auto_size_btn).setOnClickListener(this);
+        findViewById(R.id.imuview_btn).setOnClickListener(this);
 
         mGlassInfoTv = findViewById(R.id.glass_info);
         mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
+        roundBtn = findViewById(R.id.roundBtn);
+        roundBtn.setSrc(R.mipmap.icon_brightness_active,R.mipmap.ic_delete);
     }
 
     @Override
@@ -70,6 +75,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.auto_size_btn:
                 startActivity(new Intent(this, AutoSizeActivity.class));
+                break;
+            case R.id.imuview_btn:
+                startActivity(new Intent(this, IMUActivity.class));
                 break;
         }
     }

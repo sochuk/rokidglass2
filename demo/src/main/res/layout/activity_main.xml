@@ -45,11 +45,12 @@
             app:layout_constraintTop_toBottomOf="@id/glass_info">
 
             <com.rokid.glass.ui.widget.button.GlassRoundImageButton
+                android:id="@+id/roundBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
                 app:focused_src="@mipmap/ic_right"
-                app:unfocused_src="@mipmap/ic_right_unfocused"/>
+                app:unfocused_src="@mipmap/ic_right_unfocused" />
         </LinearLayout>
 
         <LinearLayout
@@ -126,6 +127,15 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/simple_toast" />
+
+        <com.rokid.glass.ui.button.GlassButton
+            android:id="@+id/imuview_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="IMUView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/auto_size_btn" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
 

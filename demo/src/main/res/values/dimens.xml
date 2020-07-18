@@ -5,4 +5,7 @@
 
     <dimen name="button_padding_top">30dp</dimen>
     <dimen name="button_padding_bottom">30dp</dimen>
+
+    <dimen name="image_size">160dp</dimen>
+    <dimen name="glass_base_item_label_text_size">15sp</dimen>
 </resources>

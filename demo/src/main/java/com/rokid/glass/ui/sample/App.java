@@ -2,6 +2,7 @@ package com.rokid.glass.ui.sample;
 
 import android.app.Application;
 
+import com.rokid.glass.imusdk.IMUSdk;
 import com.rokid.glass.ui.autosize.AutoSizeConfig;
 
 public class App extends Application {
@@ -9,5 +10,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         AutoSizeConfig.getInstance().setExcludeFontScale(true);
+        IMUSdk.init(this);
     }
 }

@@ -37,6 +37,9 @@
         <activity
             android:name=".FontActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".IMUActivity"
+            android:screenOrientation="landscape" />
         <!-- default width in dp -->
         <meta-data
             android:name="design_width_in_dp"
