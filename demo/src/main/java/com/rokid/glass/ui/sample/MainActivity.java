@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mGlassInfoTv = findViewById(R.id.glass_info);
         mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
         roundBtn = findViewById(R.id.roundBtn);
-        roundBtn.setSrc(R.mipmap.icon_brightness_active,R.mipmap.ic_delete);
+//        roundBtn.setSrc(R.mipmap.icon_brightness_active,R.mipmap.ic_delete);
     }
 
     @Override

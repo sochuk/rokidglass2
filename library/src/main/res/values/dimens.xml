@@ -68,7 +68,7 @@
 
 
     <!-- font -->
-    <dimen name="glass_common_title_text_size">25sp</dimen>
+    <dimen name="glass_ui_title_text_size">25sp</dimen>
     <dimen name="glass_common_text_size">21sp</dimen>
     <dimen name="glass_common_small_text_size">18sp</dimen>
 
