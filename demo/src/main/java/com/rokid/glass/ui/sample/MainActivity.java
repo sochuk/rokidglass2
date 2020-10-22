@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 GlassToastUtil.showToast(this, R.string.glassui_toast_test);
                 break;
             case R.id.auto_size_btn:
-                startActivity(new Intent(this, AutoSizeActivity.class));
+                startActivity(new Intent(this, TextViewActivity.class));
                 break;
             case R.id.imuview_btn:
                 startActivity(new Intent(this, IMUActivity.class));

@@ -5,6 +5,7 @@ import android.graphics.RectF;
 import android.opengl.Matrix;
 import android.text.TextUtils;
 
+
 /**
  * @author jian.yang
  * @date 2019/3/14
@@ -26,7 +27,7 @@ public class RokidSystem {
     private final static String ALIGNMENT_RIGHT_2K = "ro.rokid.2kalignment.right";
     private final static String ALIGNMENT_BOTTOM_2K = "ro.rokid.2kalignment.bottom";
 
-    private final static String HARDWARE_VERSION = "ro.hardware";
+    private final static String HARDWARE_VERSION = "ro.rokid.hardware.version";
     private final static int BASE_WIDTH = 1280;
     private final static int BASE_HEIGHT = 720;
 
@@ -66,13 +67,20 @@ public class RokidSystem {
             return null;
         }
 
+        int width = ContextUtil.getApplicationContext().getResources().getDisplayMetrics().widthPixels;
+        int height = ContextUtil.getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+
+
+//        int width = BaseLibrary.getInstance().getScreenSize().first;
+//        int height = BaseLibrary.getInstance().getScreenSize().second;
+
         float w = ((rectF.right - rectF.left) * previewWidth);
         float h = ((rectF.bottom - rectF.top) * previewHeight);
 
-        int left = (int) ((windowRect.left * w) * 1.0f / BASE_WIDTH + rectF.left * previewWidth);
-        int top = (int) ((windowRect.top * h) * 1.0f / BASE_HEIGHT + rectF.top * previewHeight);
-        int right = (int) ((windowRect.right * w) * 1.0f / BASE_WIDTH + rectF.left * previewWidth);
-        int bottom = (int) ((windowRect.bottom * h) * 1.0f / BASE_HEIGHT + rectF.top * previewHeight);
+        int left = (int) ((windowRect.left * w) * 1.0f / width + rectF.left * previewWidth);
+        int top = (int) ((windowRect.top * h) * 1.0f / height + rectF.top * previewHeight);
+        int right = (int) ((windowRect.right * w) * 1.0f / width + rectF.left * previewWidth);
+        int bottom = (int) ((windowRect.bottom * h) * 1.0f / height + rectF.top * previewHeight);
 
         return new Rect(left, top, right, bottom);
     }
@@ -107,16 +115,15 @@ public class RokidSystem {
         float w = ((rectF.right - rectF.left) * previewWidth);
         float h = ((rectF.bottom - rectF.top) * previewHeight);
 
-        @Alignment.type int type = getBenefitResolution(previewWidth);
-        int width;
-        int height;
-        if (type == Alignment.alignHD) {
-            width = BASE_WIDTH_HD;
-            height = BASE_HEIGHT_HD;
-        } else {
-            width = BASE_WIDTH_720P;
-            height = BASE_HEIGHT_720P;
-        }
+        int width = ContextUtil.getApplicationContext().getResources().getDisplayMetrics().widthPixels;
+        int height = ContextUtil.getApplicationContext().getResources().getDisplayMetrics().heightPixels;
+//        if (type == Alignment.alignHD) {
+//            width = BASE_WIDTH_HD;
+//            height = BASE_HEIGHT_HD;
+//        } else {
+//            width = BASE_WIDTH_720P;
+//            height = BASE_HEIGHT_720P;
+//        }
 
         int left = (int) ((previewRect.left - rectF.left * previewWidth) * 1.0f / w * width);
         int top = (int) ((previewRect.top - rectF.top * previewHeight) * 1.0f / h * height);

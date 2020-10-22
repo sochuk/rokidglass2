@@ -14,6 +14,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.KeyEvent;
 
 import com.rokid.glass.ui.R;
 
@@ -137,6 +138,15 @@ public class GlassButton extends AppCompatButton {
         }
     }
 
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (event.getKeyCode()) {
+            case KeyEvent.KEYCODE_DPAD_RIGHT:
+            case KeyEvent.KEYCODE_DPAD_LEFT:
+                return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
