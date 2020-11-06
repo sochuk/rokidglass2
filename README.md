@@ -1,5 +1,5 @@
 # Glass UI SDK
-**Version: 1.5.4**
+**Version: 1.6.0**
 
 ## 一、UI SDK介绍
 ---
@@ -35,7 +35,7 @@ allprojects {
 ```
 ### 2.1 Gradle依赖
 ``` gradle
-implementation 'com.rokid.glass:ui:1.5.6'
+implementation 'com.rokid.glass:ui:1.6.0'
 ```
 
 ### 2.2 Demo下载
