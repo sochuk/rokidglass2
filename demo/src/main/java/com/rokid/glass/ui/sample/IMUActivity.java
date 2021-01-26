@@ -2,6 +2,8 @@ package com.rokid.glass.ui.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
 
 import com.rokid.glass.imusdk.core.IMUView;
 import com.rokid.glass.ui.sample.adapter.IMUImageAdapter;
@@ -48,6 +50,23 @@ public class IMUActivity extends AppCompatActivity {
         }
 
         mAdapter.setData(mItems);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+            case KeyEvent.KEYCODE_ENTER://此处做点击事件的响应
+                Log.d("position", "current pos  =" + mAdapter.getCurrentPosition() + "    keyCode = " + keyCode);
+                IMUImageItem data = mAdapter.getItem(mAdapter.getCurrentPosition());
+                if (null == data) {
+                    return super.onKeyUp(keyCode, event);
+                }
+//                enterItem(data);
+                break;
+
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }
