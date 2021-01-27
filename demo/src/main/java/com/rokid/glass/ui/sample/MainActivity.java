@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.rokid.glass.ui.dialog.GlassDialog;
 import com.rokid.glass.ui.dialog.GlassDialogListener;
+import com.rokid.glass.ui.sample.handcontrol.HandControlActivity;
 import com.rokid.glass.ui.toast.GlassToastUtil;
 import com.rokid.glass.ui.util.RokidSystem;
 import com.rokid.glass.ui.widget.button.GlassRoundImageButton;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.dialog_btn).setOnClickListener(this);
         findViewById(R.id.auto_size_btn).setOnClickListener(this);
         findViewById(R.id.imuview_btn).setOnClickListener(this);
+        findViewById(R.id.handcontrol_btn).setOnClickListener(this);
 
         mGlassInfoTv = findViewById(R.id.glass_info);
         mGlassInfoTv.setText(RokidSystem.getHardwareVersion());
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.imuview_btn:
                 startActivity(new Intent(this, IMUActivity.class));
+                break;
+            case R.id.handcontrol_btn:
+                startActivity(new Intent(this, HandControlActivity.class));
                 break;
         }
     }
