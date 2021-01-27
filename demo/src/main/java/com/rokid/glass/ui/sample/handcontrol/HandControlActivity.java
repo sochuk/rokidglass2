@@ -22,6 +22,7 @@ import java.util.List;
 /**
  * @Author: sunchao
  * @CreateDate: 2020/7/18 2:52 PM
+ * imu头控实现示例
  */
 public class HandControlActivity extends AppCompatActivity implements Orientation.Listener{
 
