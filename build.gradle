@@ -4,7 +4,7 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven { url 'http://appmaven.rokid-inc.com/repository/maven-public/' }
+//        maven { url 'http://appmaven.rokid-inc.com/repository/maven-public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.1'
@@ -16,7 +16,7 @@ buildscript {
         // Remove it if you won't to publish SNAPSHOT version.
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.5.4"
 
-        classpath 'com.rokid.build:gradle-plugin:1.3.5'
+//        classpath 'com.rokid.build:gradle-plugin:1.3.5'
 //        classpath 'com.novoda:bintray-release:0.9'
     }
 }
