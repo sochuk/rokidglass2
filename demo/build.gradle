@@ -26,7 +26,8 @@ dependencies {
 
 //    implementation('com.rokid.glass:ui:1.5.X-SNAPSHOT') { changing = true }
 
-    implementation project(':library')
+//    implementation project(':library')
+    implementation 'com.rokid.glass:ui:1.6.4'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
