@@ -5,6 +5,7 @@ buildscript {
         google()
         jcenter()
 //        maven { url 'http://appmaven.rokid-inc.com/repository/maven-public/' }
+        maven { url 'https://maven.rokid.com/repository/maven-public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.1'
