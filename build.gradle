@@ -4,8 +4,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-//        maven { url 'http://appmaven.rokid-inc.com/repository/maven-public/' }
-        maven { url 'https://maven.rokid.com/repository/maven-public/' }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.3.1'
@@ -20,11 +18,8 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'http://mvnrepo.rokid-inc.com/nexus/content/groups/public/' }
+        maven { url 'https://maven.rokid.com/repository/maven-public/' }
 
-        maven {
-            url 'https://dl.bintray.com/rokidglass/maven'
-        }
     }
 }
 
