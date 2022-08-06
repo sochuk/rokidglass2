@@ -9,7 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context="com.rokid.glass.ui.sample.MainActivity">
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="TEST"/>
         <Button
             android:id="@+id/test_btn"
             style="@style/Text.NormalLight"
@@ -18,7 +21,7 @@
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:text="中文"
+            android:text="TEST"
             android:textAllCaps="false"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
